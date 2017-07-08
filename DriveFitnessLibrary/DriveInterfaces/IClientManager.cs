@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DriveFitnessLibrary.DriveInterfaces
+﻿namespace DriveFitnessLibrary.DriveInterfaces
 {
     public interface IClientManager
     {
+        void AddNewClient(Client client);
+        void RemoveClient(Client client);
+        void ChangeClientInformation(Client client);
+        void BuySubscription(Client client, Subscription subscription);
     }
 }

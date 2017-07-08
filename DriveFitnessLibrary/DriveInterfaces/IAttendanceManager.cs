@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace DriveFitnessLibrary.DriveInterfaces
 {
     public interface IAttendanceManager
     {
+        void AddAttendance(Client client, DateTime dateVisit, string payment, float price);
+        void RemoveAttendance(Client client, DateTime dateVisit);
+        DataTable GetAttendanceData(Group group, DateTime startDate, DateTime endDate);
     }
 }

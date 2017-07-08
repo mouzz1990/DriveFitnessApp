@@ -44,7 +44,7 @@ namespace DriveFitnessLibrary
         public static string GetNextId(string tableName)
         {
             string querry = string.Format("SELECT auto_increment FROM information_schema.tables WHERE table_name='{0}';", tableName);
-            DataTable dt = GetMySqlDataTableFromQuerry(querry);
+            DataTable dt = GetData(querry);
 
             var sel = dt.Select();
             return sel[0].ItemArray[0].ToString();
@@ -62,14 +62,14 @@ namespace DriveFitnessLibrary
                 groupId +
                 ")";
 
-            DataTable DatesVisit = GetMySqlDataTableFromQuerry(querry);
+            DataTable DatesVisit = GetData(querry);
 
             //получение БД по посещяемости занятий
             //!!!!!
             querry = string.Format("SELECT * FROM attendance");
             //querry = string.Format("SELECT * FROM attendance WHERE datevisit >= '{0}' AND datevisit <= {1}", stDt, enDt);
 
-            DataTable Attendance = GetMySqlDataTableFromQuerry(querry);
+            DataTable Attendance = GetData(querry);
 
             //получение информации о всех клиентах
             querry = "SELECT * FROM drivefitness.clients " +
@@ -77,7 +77,7 @@ namespace DriveFitnessLibrary
                 "LEFT JOIN subscription on subscriptionid = subscription.id " +
                 "WHERE groupid = " + groupId;
 
-            DataTable Clients = GetMySqlDataTableFromQuerry(querry);
+            DataTable Clients = GetData(querry);
 
             //Создание таблицы для ее формирования и вывда в datagridview
             DataTable attendanceTable = new DataTable("Attendance");
@@ -94,7 +94,7 @@ namespace DriveFitnessLibrary
                                                  groupId
                                                  );
 
-            DataTable SubscriptionTable = MySqlManager.GetMySqlDataTableFromQuerry(subQuerry);
+            DataTable SubscriptionTable = MySqlManager.GetData(subQuerry);
             //Выборка по покупке абонементов
             var subSel = SubscriptionTable.Select();
 
@@ -136,21 +136,21 @@ namespace DriveFitnessLibrary
                 attendanceTable.Columns.Add(new DataColumn(d.ToShortDateString()));
             }
 
-            List<DriveClient> ClientsList = new List<DriveClient>();
+            List<Client> ClientsList = new List<Client>();
 
             foreach (var client in Clients.Select())
             {
-                DriveSubscription subscr;
+                Subscription subscr;
 
                 int subid;
 
                 if (int.TryParse(client["subscriptionid"].ToString(), out subid))
                 {
-                    subscr = new DriveSubscription(subid, (int)client["count"], (float)client["subprice"], (DateTime)client["subdate"], (int)client["clientsubid"]);
+                    subscr = new Subscription(subid, (int)client["count"], (float)client["subprice"], (DateTime)client["subdate"], (int)client["clientsubid"]);
                 }
                 else subscr = null;
 
-                ClientsList.Add(new DriveClient(
+                ClientsList.Add(new Client(
                     (string)client["name"],
                     (string)client["lastname"],
                     (DateTime)client["birthday"],
@@ -264,7 +264,7 @@ namespace DriveFitnessLibrary
         public static List<Group> GetGroups()
         {
             List<Group> GroupList = new List<Group>();
-            DataTable dt = GetMySqlDataTableFromQuerry("SELECT * FROM groups");
+            DataTable dt = GetData("SELECT * FROM groups");
 
             DataRow[] rows = dt.Select();
             foreach (var r in rows)
@@ -275,22 +275,22 @@ namespace DriveFitnessLibrary
             return GroupList;
         }
 
-        public static List<DriveClient> GetClients(int groupId)
+        public static List<Client> GetClients(int groupId)
         {
-            List<DriveClient> ClientsList = new List<DriveClient>();
-            DataTable dt = GetMySqlDataTableFromQuerry("SELECT * FROM clients LEFT JOIN groups on groupid = groups.id LEFT JOIN subscription on subscriptionid = subscription.id WHERE groupid = " + groupId);
+            List<Client> ClientsList = new List<Client>();
+            DataTable dt = GetData("SELECT * FROM clients LEFT JOIN groups on groupid = groups.id LEFT JOIN subscription on subscriptionid = subscription.id WHERE groupid = " + groupId);
 
             DataRow[] rows = dt.Select();
             foreach (var r in rows)
             {
-                DriveSubscription sub = null;
+                Subscription sub = null;
                 int subid;
                 if (int.TryParse(r["subscriptionid"].ToString(), out subid))
                 {
-                    sub = new DriveSubscription((int)r["subscriptionid"], (int)r["count"], (float)r["subprice"], (DateTime)r["subdate"], (int)r["clientsubid"]);
+                    sub = new Subscription((int)r["subscriptionid"], (int)r["count"], (float)r["subprice"], (DateTime)r["subdate"], (int)r["clientsubid"]);
                 }
 
-                ClientsList.Add(new DriveClient(
+                ClientsList.Add(new Client(
                     (string)r["name"],
                     (string)r["lastname"],
                     (DateTime)r["birthday"],

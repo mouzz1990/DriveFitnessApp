@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DriveFitnessLibrary
 {
@@ -16,13 +13,17 @@ namespace DriveFitnessLibrary
 
         public event EventHandler<AttendanceEventArgs> ClientVisited;
 
-        public Client(string n, string l, DateTime b, string e, string t, Group g, int id, Subscription sub)
-            :base(n,l,b,e,t)
+        public Client(string n, string l, DateTime b, string e, string t, Group g, int id)
+            : base(n, l, b, e, t)
         {
             GroupClient = g;
             ID = id;
-            Subscription = sub;
             AttendanceInfo = new Dictionary<DateTime, string>();
+        }
+        public Client(string n, string l, DateTime b, string e, string t, Group g, int id, Subscription sub)
+            :this(n,l,b,e,t,g,id)
+        {
+            Subscription = sub;
         }
 
         public void CheckVisitation(float sum, DateTime date)

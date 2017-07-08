@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AttendanceEventArgs.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="DateTimeFormatter.cs" />
     <Compile Include="DriveInterfaces\IAttendanceManager.cs" />
     <Compile Include="DriveInterfaces\IClientManager.cs" />
     <Compile Include="DriveInterfaces\IDataBaseExecutable.cs" />
