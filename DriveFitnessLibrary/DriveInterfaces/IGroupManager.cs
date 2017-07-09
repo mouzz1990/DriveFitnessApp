@@ -4,10 +4,10 @@ namespace DriveFitnessLibrary.DriveInterfaces
 {
     public interface IGroupManager
     {
-        void AddNewGroup(int id, string groupName);
+        void AddNewGroup(string groupName);
         void RemoveGroup(Group group);
-        void ChangeGroupInfo(string groupName);
+        void ChangeGroupInfo(Group group, string newGroupName);
         List<Group> GetGroups();
-        List<Client> GetClients(Group group);
+        List<Client> GetClients(int groupId);
     }
 }

@@ -5,7 +5,7 @@ namespace DriveFitnessLibrary
     public class Group
     {
         public int ID { get; private set; }
-        public string GroupName { get; private set; }
+        public string GroupName { get; set; }
         public List<Client> ClientsList { get; private set; }
 
         public Group(int id, string grname, List<Client> clist)

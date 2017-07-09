@@ -13,12 +13,22 @@ namespace DriveFitnessLibrary
 
         public event EventHandler CountTrainingChanged;
 
-        public Subscription(int id, int count, float subpr, DateTime dt, int clientId)
+        public static Subscription CreateNewSubscription(int count, float subpr, DateTime dt)
         {
-            ID = id;
+            return new Subscription(count, subpr, dt);
+        }
+
+        private Subscription(int count, float subpr, DateTime dt)
+        {
             CountTraining = count;
             SubPrice = subpr;
             SubDate = dt;
+        }
+
+        public Subscription(int id, int count, float subpr, DateTime dt, int clientId) : 
+            this(count, subpr, dt)
+        {
+            ID = id;
             ClientId = clientId;
         }
 

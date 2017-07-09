@@ -5,7 +5,15 @@ namespace DriveFitnessLibrary.Managers
 {
     public class SubscriptionManager : ISubscriptionManager
     {
+        IDataBaseExecutable DataBaseManager;
+        IMessager messager;
         DateTimeFormatter dtFormatter = new DateTimeFormatter();
+
+        public SubscriptionManager(IDataBaseExecutable db, IMessager mes)
+        {
+            DataBaseManager = db;
+            messager = mes;
+        }
 
         public void AddNewSubscription(Client client, Subscription subscription)
         {
@@ -19,17 +27,50 @@ namespace DriveFitnessLibrary.Managers
             client.ID
             );
 
-            MySqlManager.SqlManager.SendCommand(querry);
+            DataBaseManager.SendCommand(querry);
+
+            messager.SuccessMessage(string.Format("Клиенту \"{3}\" добавлен новый абонемент:{0}Занятий: {1}, Стоимость: {2}", 
+                Environment.NewLine,
+                subscription.CountTraining,
+                subscription.SubPrice,
+                client
+                ));
         }
 
         public void CloseSubscription(Client client)
         {
-            throw new NotImplementedException();
+            string delQuerry = string.Format(
+                "UPDATE `drivefitness`.`clients` SET `subscriptionid`=NULL WHERE `id`='{0}';",
+                        client.Subscription.ClientId
+                        );
+
+            DataBaseManager.SendCommand(delQuerry);
+
+            messager.SuccessMessage(
+                string.Format("Абонемент клиента закрыт!{0}{0}Абонемент был приобретен: {1}",
+                Environment.NewLine,
+                client.Subscription.SubDate.ToShortDateString())
+                );
+            
+            client.Subscription = null;
         }
 
         public void DecreaseSubscriptionCount(Client client)
         {
-            throw new NotImplementedException();
+            client.Subscription.SubtractVisitation();
+
+            string querry = string.Format("UPDATE `drivefitness`.`subscription` SET `count`='{0}' WHERE `id`='{1}';",
+                    client.Subscription.CountTraining,
+                    client.Subscription.ID);
+
+            DataBaseManager.SendCommand(querry);
+
+            messager.SuccessMessage(
+                string.Format("Зафиксировано посещение клиента {0}.{1}{1}На абонементе осталось занятий: {2}.",
+                client,
+                Environment.NewLine,
+                client.Subscription.CountTraining)
+                );
         }
     }
 }
