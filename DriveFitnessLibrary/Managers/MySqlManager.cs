@@ -3,14 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using DriveFitnessLibrary.DriveInterfaces;
 
-namespace DriveFitnessLibrary
+namespace DriveFitnessLibrary.Managers
 {
-    public static class MySqlManager
+    public class MySqlManager : IDataBaseExecutable
     {
-        private static string connString = "server=localhost;database=drivefitness;pwd=root;user=root;";
+        public static MySqlManager SqlManager { get; set; }
+        static readonly string connString = "server=localhost;database=drivefitness;pwd=root;user=root;";
 
-        public static DataTable GetData(string querryString)
+        static MySqlManager()
+        {
+            if (SqlManager == null)
+                SqlManager = new MySqlManager();
+        }
+
+        public DataTable GetData(string querryString)
         {
             //creating a connection
             MySqlConnection con = new MySqlConnection(connString);
@@ -32,7 +40,7 @@ namespace DriveFitnessLibrary
             return dt;
         }
 
-        public static void SendCommand(string querryString)
+        public void SendCommand(string querryString)
         {
             MySqlConnection con = new MySqlConnection(connString);
             con.Open();
@@ -41,7 +49,7 @@ namespace DriveFitnessLibrary
             con.Close();
         }
 
-        public static string GetNextId(string tableName)
+        public string GetNextId(string tableName)
         {
             string querry = string.Format("SELECT auto_increment FROM information_schema.tables WHERE table_name='{0}';", tableName);
             DataTable dt = GetData(querry);
@@ -50,7 +58,7 @@ namespace DriveFitnessLibrary
             return sel[0].ItemArray[0].ToString();
         }
 
-        public static DataTable GetAttendanceTable(int groupId, DateTime startDate, DateTime endDate)
+        public DataTable GetAttendanceTable(int groupId, DateTime startDate, DateTime endDate)
         {
             //получение всех дат занятий
             string stDt = startDate.ToString("yyyy-MM-dd");
@@ -94,7 +102,7 @@ namespace DriveFitnessLibrary
                                                  groupId
                                                  );
 
-            DataTable SubscriptionTable = MySqlManager.GetData(subQuerry);
+            DataTable SubscriptionTable = SqlManager.GetData(subQuerry);
             //Выборка по покупке абонементов
             var subSel = SubscriptionTable.Select();
 
@@ -142,22 +150,27 @@ namespace DriveFitnessLibrary
             {
                 Subscription subscr;
 
-                int subid;
-
-                if (int.TryParse(client["subscriptionid"].ToString(), out subid))
+                if (int.TryParse(client["subscriptionid"].ToString(), out int subid))
                 {
-                    subscr = new Subscription(subid, (int)client["count"], (float)client["subprice"], (DateTime)client["subdate"], (int)client["clientsubid"]);
+                    subscr = new Subscription(
+                        subid, 
+                        (int)client["count"], 
+                        (float)client["subprice"], 
+                        (DateTime)client["subdate"],
+                        (int)client["clientsubid"]
+                        );
+                        
                 }
                 else subscr = null;
 
                 ClientsList.Add(new Client(
+                    (int)client["id"],
                     (string)client["name"],
                     (string)client["lastname"],
                     (DateTime)client["birthday"],
                     (string)client["email"],
                     (string)client["telephone"],
-                    new Group((int)client["groupid"], (string)client["groupname"]),
-                    (int)client["id"],
+                    //new Group((int)client["groupid"], (string)client["groupname"]),
                     subscr
 
                     ));
@@ -261,43 +274,53 @@ namespace DriveFitnessLibrary
             return attendanceTable;
         }
 
-        public static List<Group> GetGroups()
+        public List<Group> GetGroups()
         {
             List<Group> GroupList = new List<Group>();
-            DataTable dt = GetData("SELECT * FROM groups");
-
+            DataTable dt = SqlManager.GetData("SELECT * FROM groups");
+            
+            
             DataRow[] rows = dt.Select();
             foreach (var r in rows)
             {
-                GroupList.Add(new Group((int)r["id"], (string)r["groupname"]));
+                GroupList.Add(new Group(
+                    (int)r["id"], 
+                    (string)r["groupname"], 
+                    GetClients((int)r["id"]))
+                    );
             }
 
             return GroupList;
         }
 
-        public static List<Client> GetClients(int groupId)
+        List<Client> GetClients(int groupId)
         {
             List<Client> ClientsList = new List<Client>();
-            DataTable dt = GetData("SELECT * FROM clients LEFT JOIN groups on groupid = groups.id LEFT JOIN subscription on subscriptionid = subscription.id WHERE groupid = " + groupId);
+            DataTable dt = SqlManager.GetData("SELECT * FROM clients LEFT JOIN groups on groupid = groups.id LEFT JOIN subscription on subscriptionid = subscription.id WHERE groupid = " + groupId);
 
             DataRow[] rows = dt.Select();
             foreach (var r in rows)
             {
                 Subscription sub = null;
-                int subid;
-                if (int.TryParse(r["subscriptionid"].ToString(), out subid))
+                if (int.TryParse(r["subscriptionid"].ToString(), out int subid))
                 {
-                    sub = new Subscription((int)r["subscriptionid"], (int)r["count"], (float)r["subprice"], (DateTime)r["subdate"], (int)r["clientsubid"]);
+                    sub = new Subscription(
+                        (int)r["subscriptionid"],
+                        (int)r["count"],
+                        (float)r["subprice"],
+                        (DateTime)r["subdate"],
+                        (int)r["clientsubid"]
+                        );
                 }
 
                 ClientsList.Add(new Client(
+                    (int)r["id"],
                     (string)r["name"],
                     (string)r["lastname"],
                     (DateTime)r["birthday"],
                     (string)r["email"],
                     (string)r["telephone"],
-                    new Group((int)r["groupid"], (string)r["groupname"]),
-                    (int)r["id"],
+                    //new Group((int)r["groupid"], (string)r["groupname"]),
                     sub
                     )
                     );

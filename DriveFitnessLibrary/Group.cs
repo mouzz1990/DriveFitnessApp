@@ -1,14 +1,18 @@
-﻿namespace DriveFitnessLibrary
+﻿using System.Collections.Generic;
+
+namespace DriveFitnessLibrary
 {
     public class Group
     {
         public int ID { get; private set; }
         public string GroupName { get; private set; }
+        public List<Client> ClientsList { get; private set; }
 
-        public Group(int id, string grname)
+        public Group(int id, string grname, List<Client> clist)
         {
             ID = id;
             GroupName = grname;
+            ClientsList = clist;
         }
 
         public override string ToString()

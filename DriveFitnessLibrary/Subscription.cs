@@ -8,6 +8,7 @@ namespace DriveFitnessLibrary
         public int CountTraining { get; private set; }
         public float SubPrice { get; private set; }
         public DateTime SubDate { get; private set; }
+        public DateTime? SubCloseDate { get; private set; }
         public int ClientId { get; set; }
 
         public event EventHandler CountTrainingChanged;

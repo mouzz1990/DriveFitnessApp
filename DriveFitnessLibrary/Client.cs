@@ -5,23 +5,28 @@ namespace DriveFitnessLibrary
 {
     public class Client : Person
     {
-        public Group GroupClient { get; private set; }
-        public int ID { get; private set; }
+        //public Group GroupClient { get; private set; }
+        //public int ID { get; private set; }
+
         public Subscription Subscription { get; set; }
         public Dictionary<DateTime, string> AttendanceInfo;
         public float Cash;
 
         public event EventHandler<AttendanceEventArgs> ClientVisited;
 
-        public Client(string n, string l, DateTime b, string e, string t, Group g, int id)
+        public Client(string n, string l, DateTime b, string e, string t)
             : base(n, l, b, e, t)
+        { }
+
+        public Client(int id, string n, string l, DateTime b, string e, string t /*, Group g*/)
+            : base(id, n, l, b, e, t)
         {
-            GroupClient = g;
-            ID = id;
+            //GroupClient = g;
+            //ID = id;
             AttendanceInfo = new Dictionary<DateTime, string>();
         }
-        public Client(string n, string l, DateTime b, string e, string t, Group g, int id, Subscription sub)
-            :this(n,l,b,e,t,g,id)
+        public Client(int id, string n, string l, DateTime b, string e, string t, /*Group g,*/ Subscription sub)
+            :this(id, n, l, b, e, t/*,g,*/)
         {
             Subscription = sub;
         }
