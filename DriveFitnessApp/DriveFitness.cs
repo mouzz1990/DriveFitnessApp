@@ -35,5 +35,14 @@ namespace DriveFitnessApp
 
             chClient.ShowDialog();
         }
+
+        private void BtnGroupManage_Click(object sender, EventArgs e)
+        {
+            GroupView grF = new GroupView();
+            GroupPresenter gp = new GroupPresenter(grF, dataBaseManager, messager, groupManager);
+
+            grF.ShowDialog();
+
+        }
     }
 }

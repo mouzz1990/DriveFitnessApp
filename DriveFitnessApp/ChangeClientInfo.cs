@@ -101,6 +101,9 @@ namespace DriveFitnessApp
 
         private void lbClients_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lbClients.SelectedIndex < 0)
+                return;
+            
             Client selectedClient = (Client)lbClients.SelectedItem;
 
             txbLastName.Text = selectedClient.LastName;

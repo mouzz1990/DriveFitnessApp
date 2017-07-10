@@ -151,6 +151,7 @@
             this.BtnGroupManage.TabIndex = 0;
             this.BtnGroupManage.Text = "Работа с группами";
             this.BtnGroupManage.UseVisualStyleBackColor = true;
+            this.BtnGroupManage.Click += new System.EventHandler(this.BtnGroupManage_Click);
             // 
             // BtnReport
             // 
