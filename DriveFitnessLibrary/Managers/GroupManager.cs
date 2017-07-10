@@ -56,7 +56,8 @@ namespace DriveFitnessLibrary.Managers
             foreach (var r in rows)
             {
                 Subscription sub = null;
-                if (int.TryParse(r["subscriptionid"].ToString(), out int subid))
+                int subid;
+                if (int.TryParse(r["subscriptionid"].ToString(), out subid))
                 {
                     sub = new Subscription(
                         (int)r["subscriptionid"],

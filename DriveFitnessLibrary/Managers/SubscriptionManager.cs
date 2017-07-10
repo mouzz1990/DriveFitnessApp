@@ -5,8 +5,8 @@ namespace DriveFitnessLibrary.Managers
 {
     public class SubscriptionManager : ISubscriptionManager
     {
-        IDataBaseExecutable DataBaseManager;
-        IMessager messager;
+        public IDataBaseExecutable DataBaseManager { get; set; }
+        public IMessager messager { get; set; }
         DateTimeFormatter dtFormatter = new DateTimeFormatter();
 
         public SubscriptionManager(IDataBaseExecutable db, IMessager mes)

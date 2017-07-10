@@ -13,11 +13,12 @@ namespace DriveFitnessLibrary.Managers
         ISubscriptionManager subscriptionManager;
         DateTimeFormatter dtFormatter;
 
-        public AttendanceManager(IDataBaseExecutable db, IMessager m, ISubscriptionManager sm)
+        public AttendanceManager(ISubscriptionManager sm)
         {
-            DataBaseManager = db;
-            messager = m;
             subscriptionManager = sm;
+            DataBaseManager = subscriptionManager.DataBaseManager;
+            messager = sm.messager;
+            
             dtFormatter = new DateTimeFormatter();
         }
 
@@ -201,8 +202,8 @@ namespace DriveFitnessLibrary.Managers
             foreach (var client in Clients.Select())
             {
                 Subscription subscr;
-
-                if (int.TryParse(client["subscriptionid"].ToString(), out int subid))
+                int subid;
+                if (int.TryParse(client["subscriptionid"].ToString(), out subid))
                 {
                     subscr = new Subscription(
                         subid,
