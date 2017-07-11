@@ -33,9 +33,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnSubscription = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BtnAddNewClient = new System.Windows.Forms.Button();
             this.BtnChangeClientInfo = new System.Windows.Forms.Button();
+            this.BtnAddNewClient = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BtnGroupManage = new System.Windows.Forms.Button();
             this.BtnReport = new System.Windows.Forms.Button();
@@ -89,6 +89,7 @@
             this.BtnSubscription.TabIndex = 1;
             this.BtnSubscription.Text = "Работа с абонементами";
             this.BtnSubscription.UseVisualStyleBackColor = true;
+            this.BtnSubscription.Click += new System.EventHandler(this.BtnSubscription_Click);
             // 
             // panel3
             // 
@@ -101,15 +102,16 @@
             this.panel3.Size = new System.Drawing.Size(420, 173);
             this.panel3.TabIndex = 3;
             // 
-            // label1
+            // BtnChangeClientInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(85, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Работа с клиентами";
+            this.BtnChangeClientInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnChangeClientInfo.Location = new System.Drawing.Point(9, 89);
+            this.BtnChangeClientInfo.Name = "BtnChangeClientInfo";
+            this.BtnChangeClientInfo.Size = new System.Drawing.Size(400, 72);
+            this.BtnChangeClientInfo.TabIndex = 2;
+            this.BtnChangeClientInfo.Text = "Изменить информацию о клиенте";
+            this.BtnChangeClientInfo.UseVisualStyleBackColor = true;
+            this.BtnChangeClientInfo.Click += new System.EventHandler(this.BtnChangeClientInfo_Click);
             // 
             // BtnAddNewClient
             // 
@@ -122,16 +124,15 @@
             this.BtnAddNewClient.UseVisualStyleBackColor = true;
             this.BtnAddNewClient.Click += new System.EventHandler(this.BtnAddNewClient_Click);
             // 
-            // BtnChangeClientInfo
+            // label1
             // 
-            this.BtnChangeClientInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnChangeClientInfo.Location = new System.Drawing.Point(9, 89);
-            this.BtnChangeClientInfo.Name = "BtnChangeClientInfo";
-            this.BtnChangeClientInfo.Size = new System.Drawing.Size(400, 72);
-            this.BtnChangeClientInfo.TabIndex = 2;
-            this.BtnChangeClientInfo.Text = "Изменить информацию о клиенте";
-            this.BtnChangeClientInfo.UseVisualStyleBackColor = true;
-            this.BtnChangeClientInfo.Click += new System.EventHandler(this.BtnChangeClientInfo_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(85, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(248, 29);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Работа с клиентами";
             // 
             // panel4
             // 
@@ -193,7 +194,7 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // DriveFitness

@@ -18,12 +18,23 @@ namespace DriveFitnessApp
             InitializeComponent();
         }
 
+        public ChangeClientInfo(Group selectedGroup)
+        {
+            InitializeComponent();
+            selectedGr = selectedGroup;
+        }
+
+        Group selectedGr;
+
         private void ChangeClientInfo_Load(object sender, EventArgs e)
         {
             OnGroupsRequred();
 
             if (cmbGroup.Items.Count > 0)
-                cmbGroup.SelectedIndex = 0;
+            {
+                if (selectedGr != null) cmbGroup.SelectedItem = selectedGr;
+                else cmbGroup.SelectedIndex = 0;
+            }
         }
 
         public string NameClient

@@ -11,8 +11,8 @@ namespace DriveFitnessApp
         static Messager messager = new Messager();
         static MySqlManager dataBaseManager = new MySqlManager();
         static GroupManager groupManager = new GroupManager(dataBaseManager, messager);
-        static ClientManager clientManager = new ClientManager(dataBaseManager, messager);
         static SubscriptionManager subscriptionManager = new SubscriptionManager(dataBaseManager, messager);
+        static ClientManager clientManager = new ClientManager(dataBaseManager, messager, subscriptionManager);
         static AttendanceManager attendanceManager = new AttendanceManager(subscriptionManager);
 
         public DriveFitness()
@@ -43,6 +43,15 @@ namespace DriveFitnessApp
 
             grF.ShowDialog();
 
+        }
+
+        private void BtnSubscription_Click(object sender, EventArgs e)
+        {
+            SubscriptionForm sf = new SubscriptionForm();
+
+            SubscriptionPresenter sp = new SubscriptionPresenter(subscriptionManager, groupManager, messager, clientManager, sf);
+
+            sf.ShowDialog();
         }
     }
 }

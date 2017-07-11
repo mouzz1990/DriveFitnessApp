@@ -1,4 +1,5 @@
 ﻿using DriveFitnessLibrary.DriveInterfaces;
+using System;
 
 namespace DriveFitnessLibrary.Managers
 {
@@ -42,7 +43,7 @@ namespace DriveFitnessLibrary.Managers
 
         public void BuySubscription(Client client, Subscription subscription)
         {
-            string subNextId = MySqlManager.SqlManager.GetNextId("subscription");
+            string subNextId = DataBaseManager.GetNextId("subscription");
 
             subscriptionManager.AddNewSubscription(client, subscription);
 
@@ -54,7 +55,14 @@ namespace DriveFitnessLibrary.Managers
 
             DataBaseManager.SendCommand(querry);
 
-            messager.SuccessMessage(string.Format("Абонемент выдан клиенту: {0}", client));
+            //messager.SuccessMessage(string.Format("Абонемент выдан клиенту: {0}", client));
+
+            messager.SuccessMessage(string.Format("Клиенту \"{3}\" добавлен новый абонемент:{0}Занятий: {1}, Стоимость: {2}",
+                Environment.NewLine,
+                subscription.CountTraining,
+                subscription.SubPrice,
+                client
+                ));
         }
 
         public void ChangeClientInformation(Client client, Group group)

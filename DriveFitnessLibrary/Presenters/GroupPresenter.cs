@@ -9,14 +9,12 @@ namespace DriveFitnessLibrary.Presenters
 {
     public class GroupPresenter
     {
-        IDataBaseExecutable DataBaseManager;
         IMessager messager;
         IGroupManager groupManager;
         IGroupView view;
 
         public GroupPresenter(IGroupView view, IDataBaseExecutable DataBaseManager, IMessager messager, IGroupManager groupManager)
         {
-            this.DataBaseManager = DataBaseManager;
             this.messager = messager;
             this.groupManager = groupManager;
             this.view = view;

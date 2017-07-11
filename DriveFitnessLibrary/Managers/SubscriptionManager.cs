@@ -5,6 +5,7 @@ namespace DriveFitnessLibrary.Managers
 {
     public class SubscriptionManager : ISubscriptionManager
     {
+        
         public IDataBaseExecutable DataBaseManager { get; set; }
         public IMessager messager { get; set; }
         DateTimeFormatter dtFormatter = new DateTimeFormatter();
@@ -17,24 +18,33 @@ namespace DriveFitnessLibrary.Managers
 
         public void AddNewSubscription(Client client, Subscription subscription)
         {
+            string subNextId = DataBaseManager.GetNextId("subscription");
+            string price = subscription.SubPrice.ToString().Replace(',', '.');
+
             string querry = string.Format(dtFormatter,
                 "INSERT INTO `drivefitness`.`subscription` " +
                 "(`count`, `subprice`, `subdate`, `clientsubid`)" +
                 " VALUES ('{0}', '{1}', '{2}', '{3}');",
             subscription.CountTraining,
-            subscription.SubPrice,
+            price,
             subscription.SubDate,
             client.ID
             );
 
             DataBaseManager.SendCommand(querry);
 
-            messager.SuccessMessage(string.Format("Клиенту \"{3}\" добавлен новый абонемент:{0}Занятий: {1}, Стоимость: {2}", 
-                Environment.NewLine,
-                subscription.CountTraining,
-                subscription.SubPrice,
-                client
-                ));
+            //querry = string.Format("UPDATE `drivefitness`.`clients` SET `subscriptionid`='{0}' WHERE `id`='{1}';",
+            //    subNextId,
+            //    client.ID
+            //    );
+
+            //DataBaseManager.SendCommand(querry);
+            //messager.SuccessMessage(string.Format("Клиенту \"{3}\" добавлен новый абонемент:{0}Занятий: {1}, Стоимость: {2}",
+            //Environment.NewLine,
+            //subscription.CountTraining,
+            //subscription.SubPrice,
+            //client
+            //));
         }
 
         public void CloseSubscription(Client client)

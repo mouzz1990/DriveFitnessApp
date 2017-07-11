@@ -26,12 +26,14 @@ namespace DriveFitnessApp
         {
             pAdd.Visible = false;
             pEdit.Visible = true;
+            lbGroups.Enabled = true;
         }
 
         private void rbAdd_CheckedChanged(object sender, EventArgs e)
         {
             pAdd.Visible = true;
             pEdit.Visible = false;
+            lbGroups.Enabled = false;
         }
 
         public Group Group
@@ -91,11 +93,10 @@ namespace DriveFitnessApp
                     Messager mess = new Messager();
                     ClientManager clm = new ClientManager(dbm, mess);
                     GroupManager gm = new GroupManager(dbm, mess);
-                    ChangeClientInfo chClient = new ChangeClientInfo();
+                    ChangeClientInfo chClient = new ChangeClientInfo((Group)lbGroups.SelectedItem);
 
                     ClientPresenter clPress = new ClientPresenter(chClient, clm, gm, mess);
 
-                    chClient.SelectGroup((Group)lbGroups.SelectedItem);
                     chClient.ShowDialog();
                     
                 }
