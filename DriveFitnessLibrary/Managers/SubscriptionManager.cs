@@ -32,19 +32,6 @@ namespace DriveFitnessLibrary.Managers
             );
 
             DataBaseManager.SendCommand(querry);
-
-            //querry = string.Format("UPDATE `drivefitness`.`clients` SET `subscriptionid`='{0}' WHERE `id`='{1}';",
-            //    subNextId,
-            //    client.ID
-            //    );
-
-            //DataBaseManager.SendCommand(querry);
-            //messager.SuccessMessage(string.Format("Клиенту \"{3}\" добавлен новый абонемент:{0}Занятий: {1}, Стоимость: {2}",
-            //Environment.NewLine,
-            //subscription.CountTraining,
-            //subscription.SubPrice,
-            //client
-            //));
         }
 
         public void CloseSubscription(Client client)

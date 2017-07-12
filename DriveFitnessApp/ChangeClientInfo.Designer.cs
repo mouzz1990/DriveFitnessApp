@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pClientInfo = new System.Windows.Forms.Panel();
+            this.BtnRemove = new System.Windows.Forms.Button();
             this.cmbClientGroup = new System.Windows.Forms.ComboBox();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
             this.BtnChangeInfo = new System.Windows.Forms.Button();
@@ -43,40 +44,56 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbClients = new System.Windows.Forms.ListBox();
             this.cmbGroup = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.lbClients = new System.Windows.Forms.ListBox();
-            this.BtnRemove = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.pClientInfo.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pClientInfo
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.cmbClientGroup);
-            this.panel1.Controls.Add(this.dtpBirthday);
-            this.panel1.Controls.Add(this.BtnChangeInfo);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txbTelephone);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txbEmail);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txbName);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txbLastName);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(375, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(468, 415);
-            this.panel1.TabIndex = 6;
+            this.pClientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pClientInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pClientInfo.Controls.Add(this.BtnRemove);
+            this.pClientInfo.Controls.Add(this.cmbClientGroup);
+            this.pClientInfo.Controls.Add(this.dtpBirthday);
+            this.pClientInfo.Controls.Add(this.BtnChangeInfo);
+            this.pClientInfo.Controls.Add(this.label1);
+            this.pClientInfo.Controls.Add(this.txbTelephone);
+            this.pClientInfo.Controls.Add(this.label2);
+            this.pClientInfo.Controls.Add(this.txbEmail);
+            this.pClientInfo.Controls.Add(this.label3);
+            this.pClientInfo.Controls.Add(this.txbName);
+            this.pClientInfo.Controls.Add(this.label4);
+            this.pClientInfo.Controls.Add(this.txbLastName);
+            this.pClientInfo.Controls.Add(this.label5);
+            this.pClientInfo.Controls.Add(this.label6);
+            this.pClientInfo.Location = new System.Drawing.Point(375, 12);
+            this.pClientInfo.Name = "pClientInfo";
+            this.pClientInfo.Size = new System.Drawing.Size(468, 415);
+            this.pClientInfo.TabIndex = 6;
+            // 
+            // BtnRemove
+            // 
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnRemove.Location = new System.Drawing.Point(259, 344);
+            this.BtnRemove.Name = "BtnRemove";
+            this.BtnRemove.Size = new System.Drawing.Size(193, 52);
+            this.BtnRemove.TabIndex = 5;
+            this.BtnRemove.Text = "Удалить запись";
+            this.BtnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnRemove.UseVisualStyleBackColor = true;
+            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // cmbClientGroup
             // 
+            this.cmbClientGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbClientGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmbClientGroup.FormattingEnabled = true;
             this.cmbClientGroup.Location = new System.Drawing.Point(151, 188);
@@ -86,6 +103,8 @@
             // 
             // dtpBirthday
             // 
+            this.dtpBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpBirthday.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dtpBirthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dtpBirthday.Location = new System.Drawing.Point(151, 83);
@@ -95,6 +114,7 @@
             // 
             // BtnChangeInfo
             // 
+            this.BtnChangeInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnChangeInfo.Location = new System.Drawing.Point(101, 239);
             this.BtnChangeInfo.Name = "BtnChangeInfo";
@@ -117,6 +137,8 @@
             // 
             // txbTelephone
             // 
+            this.txbTelephone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txbTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txbTelephone.Location = new System.Drawing.Point(151, 153);
             this.txbTelephone.Name = "txbTelephone";
@@ -135,6 +157,8 @@
             // 
             // txbEmail
             // 
+            this.txbEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txbEmail.Location = new System.Drawing.Point(151, 118);
             this.txbEmail.Name = "txbEmail";
@@ -153,6 +177,8 @@
             // 
             // txbName
             // 
+            this.txbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txbName.Location = new System.Drawing.Point(151, 48);
             this.txbName.Name = "txbName";
@@ -171,6 +197,8 @@
             // 
             // txbLastName
             // 
+            this.txbLastName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txbLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txbLastName.Location = new System.Drawing.Point(151, 13);
             this.txbLastName.Name = "txbLastName";
@@ -199,6 +227,8 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.lbClients);
             this.panel2.Controls.Add(this.cmbGroup);
@@ -207,6 +237,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(357, 415);
             this.panel2.TabIndex = 7;
+            // 
+            // lbClients
+            // 
+            this.lbClients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbClients.FormattingEnabled = true;
+            this.lbClients.ItemHeight = 20;
+            this.lbClients.Location = new System.Drawing.Point(16, 52);
+            this.lbClients.Name = "lbClients";
+            this.lbClients.Size = new System.Drawing.Size(329, 344);
+            this.lbClients.TabIndex = 1;
+            this.lbClients.SelectedIndexChanged += new System.EventHandler(this.lbClients_SelectedIndexChanged);
             // 
             // cmbGroup
             // 
@@ -228,67 +272,31 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Группа:";
             // 
-            // lbClients
-            // 
-            this.lbClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbClients.FormattingEnabled = true;
-            this.lbClients.ItemHeight = 20;
-            this.lbClients.Location = new System.Drawing.Point(16, 52);
-            this.lbClients.Name = "lbClients";
-            this.lbClients.Size = new System.Drawing.Size(329, 344);
-            this.lbClients.TabIndex = 1;
-            this.lbClients.SelectedIndexChanged += new System.EventHandler(this.lbClients_SelectedIndexChanged);
-            // 
-            // BtnRemove
-            // 
-            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnRemove.Location = new System.Drawing.Point(3, 3);
-            this.BtnRemove.Name = "BtnRemove";
-            this.BtnRemove.Size = new System.Drawing.Size(193, 52);
-            this.BtnRemove.TabIndex = 5;
-            this.BtnRemove.Text = "Удалить запись";
-            this.BtnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnRemove.UseVisualStyleBackColor = true;
-            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Maroon;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.BtnRemove);
-            this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel3.Location = new System.Drawing.Point(250, 335);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(202, 61);
-            this.panel3.TabIndex = 8;
-            // 
             // ChangeClientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 439);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pClientInfo);
+            this.MaximumSize = new System.Drawing.Size(1100, 600);
+            this.MinimumSize = new System.Drawing.Size(871, 477);
             this.Name = "ChangeClientInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ChangeClientInfo";
+            this.Text = "Изменение информации о клиенте";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ChangeClientInfo_FormClosed);
             this.Load += new System.EventHandler(this.ChangeClientInfo_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pClientInfo.ResumeLayout(false);
+            this.pClientInfo.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pClientInfo;
         private System.Windows.Forms.ComboBox cmbClientGroup;
         private System.Windows.Forms.DateTimePicker dtpBirthday;
         private System.Windows.Forms.Button BtnRemove;
@@ -307,6 +315,5 @@
         private System.Windows.Forms.ListBox lbClients;
         private System.Windows.Forms.ComboBox cmbGroup;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel3;
     }
 }

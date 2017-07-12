@@ -16,6 +16,7 @@ namespace DriveFitnessApp
         public ChangeClientInfo()
         {
             InitializeComponent();
+            pClientInfo.Visible = false;
         }
 
         public ChangeClientInfo(Group selectedGroup)
@@ -108,13 +109,19 @@ namespace DriveFitnessApp
         {
             if (GroupChanged != null)
                 GroupChanged(this, EventArgs.Empty);
+
+            pClientInfo.Visible = false;
         }
 
         private void lbClients_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbClients.SelectedIndex < 0)
+            {
+                pClientInfo.Visible = false;
                 return;
+            }
             
+            pClientInfo.Visible = true;
             Client selectedClient = (Client)lbClients.SelectedItem;
 
             txbLastName.Text = selectedClient.LastName;
@@ -161,7 +168,14 @@ namespace DriveFitnessApp
 
                 if (ClientDeleted != null)
                     ClientDeleted(this, clEvArg);
+
+                
             }
+        }
+
+        private void ChangeClientInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }
 }

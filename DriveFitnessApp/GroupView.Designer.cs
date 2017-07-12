@@ -33,15 +33,15 @@
             this.rbEdit = new System.Windows.Forms.RadioButton();
             this.rbAdd = new System.Windows.Forms.RadioButton();
             this.pEdit = new System.Windows.Forms.Panel();
-            this.pAdd = new System.Windows.Forms.Panel();
-            this.pGroups = new System.Windows.Forms.Panel();
-            this.txbEdit = new System.Windows.Forms.TextBox();
-            this.txbAdd = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.BtnChange = new System.Windows.Forms.Button();
-            this.BtnAdd = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
+            this.BtnChange = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txbEdit = new System.Windows.Forms.TextBox();
+            this.pAdd = new System.Windows.Forms.Panel();
+            this.BtnAdd = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txbAdd = new System.Windows.Forms.TextBox();
+            this.pGroups = new System.Windows.Forms.Panel();
             this.pEdit.SuspendLayout();
             this.pAdd.SuspendLayout();
             this.pGroups.SuspendLayout();
@@ -107,6 +107,44 @@
             this.pEdit.Size = new System.Drawing.Size(426, 125);
             this.pEdit.TabIndex = 4;
             // 
+            // BtnDelete
+            // 
+            this.BtnDelete.Location = new System.Drawing.Point(18, 71);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(103, 37);
+            this.BtnDelete.TabIndex = 2;
+            this.BtnDelete.Text = "Удалить";
+            this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // BtnChange
+            // 
+            this.BtnChange.Location = new System.Drawing.Point(307, 71);
+            this.BtnChange.Name = "BtnChange";
+            this.BtnChange.Size = new System.Drawing.Size(103, 37);
+            this.BtnChange.TabIndex = 2;
+            this.BtnChange.Text = "Изменить";
+            this.BtnChange.UseVisualStyleBackColor = true;
+            this.BtnChange.Click += new System.EventHandler(this.BtnChange_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(14, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(260, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Изменить информацию о группе:";
+            // 
+            // txbEdit
+            // 
+            this.txbEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txbEdit.Location = new System.Drawing.Point(18, 39);
+            this.txbEdit.Name = "txbEdit";
+            this.txbEdit.Size = new System.Drawing.Size(392, 26);
+            this.txbEdit.TabIndex = 0;
+            // 
             // pAdd
             // 
             this.pAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -119,42 +157,15 @@
             this.pAdd.Size = new System.Drawing.Size(426, 125);
             this.pAdd.TabIndex = 5;
             // 
-            // pGroups
+            // BtnAdd
             // 
-            this.pGroups.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pGroups.Controls.Add(this.label1);
-            this.pGroups.Controls.Add(this.lbGroups);
-            this.pGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pGroups.Location = new System.Drawing.Point(12, 15);
-            this.pGroups.Name = "pGroups";
-            this.pGroups.Size = new System.Drawing.Size(260, 424);
-            this.pGroups.TabIndex = 6;
-            // 
-            // txbEdit
-            // 
-            this.txbEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txbEdit.Location = new System.Drawing.Point(18, 39);
-            this.txbEdit.Name = "txbEdit";
-            this.txbEdit.Size = new System.Drawing.Size(392, 26);
-            this.txbEdit.TabIndex = 0;
-            // 
-            // txbAdd
-            // 
-            this.txbAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txbAdd.Location = new System.Drawing.Point(18, 37);
-            this.txbAdd.Name = "txbAdd";
-            this.txbAdd.Size = new System.Drawing.Size(392, 26);
-            this.txbAdd.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(14, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(260, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Изменить информацию о группе:";
+            this.BtnAdd.Location = new System.Drawing.Point(154, 69);
+            this.BtnAdd.Name = "BtnAdd";
+            this.BtnAdd.Size = new System.Drawing.Size(103, 37);
+            this.BtnAdd.TabIndex = 2;
+            this.BtnAdd.Text = "Добавить";
+            this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // label3
             // 
@@ -166,35 +177,24 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Добавить новую группу:";
             // 
-            // BtnChange
+            // txbAdd
             // 
-            this.BtnChange.Location = new System.Drawing.Point(307, 71);
-            this.BtnChange.Name = "BtnChange";
-            this.BtnChange.Size = new System.Drawing.Size(103, 37);
-            this.BtnChange.TabIndex = 2;
-            this.BtnChange.Text = "Изменить";
-            this.BtnChange.UseVisualStyleBackColor = true;
-            this.BtnChange.Click += new System.EventHandler(this.BtnChange_Click);
+            this.txbAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txbAdd.Location = new System.Drawing.Point(18, 37);
+            this.txbAdd.Name = "txbAdd";
+            this.txbAdd.Size = new System.Drawing.Size(392, 26);
+            this.txbAdd.TabIndex = 0;
             // 
-            // BtnAdd
+            // pGroups
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(154, 69);
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(103, 37);
-            this.BtnAdd.TabIndex = 2;
-            this.BtnAdd.Text = "Добавить";
-            this.BtnAdd.UseVisualStyleBackColor = true;
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
-            // 
-            // BtnDelete
-            // 
-            this.BtnDelete.Location = new System.Drawing.Point(18, 71);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(103, 37);
-            this.BtnDelete.TabIndex = 2;
-            this.BtnDelete.Text = "Удалить";
-            this.BtnDelete.UseVisualStyleBackColor = true;
-            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            this.pGroups.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pGroups.Controls.Add(this.label1);
+            this.pGroups.Controls.Add(this.lbGroups);
+            this.pGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pGroups.Location = new System.Drawing.Point(12, 15);
+            this.pGroups.Name = "pGroups";
+            this.pGroups.Size = new System.Drawing.Size(260, 424);
+            this.pGroups.TabIndex = 6;
             // 
             // GroupView
             // 
@@ -206,9 +206,10 @@
             this.Controls.Add(this.pEdit);
             this.Controls.Add(this.rbAdd);
             this.Controls.Add(this.rbEdit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GroupView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GroupView";
+            this.Text = "Работа с группами";
             this.Load += new System.EventHandler(this.GroupView_Load);
             this.pEdit.ResumeLayout(false);
             this.pEdit.PerformLayout();

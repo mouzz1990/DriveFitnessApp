@@ -20,22 +20,14 @@ namespace DriveFitnessApp
             InitializeComponent();
             rbAdd.Checked = true;
             pAdd.Location = new Point(290,45);
-        }
-
-        private void rbEdit_CheckedChanged(object sender, EventArgs e)
-        {
-            pAdd.Visible = false;
-            pEdit.Visible = true;
-            lbGroups.Enabled = true;
-        }
-
-        private void rbAdd_CheckedChanged(object sender, EventArgs e)
-        {
-            pAdd.Visible = true;
             pEdit.Visible = false;
-            lbGroups.Enabled = false;
         }
 
+        public event EventHandler AddNewGroup;
+        public event EventHandler ChangeGroup;
+        public event EventHandler RemoveGroup;
+        public event EventHandler RefreshGroupList;
+        
         public Group Group
         {
             get { return (Group)lbGroups.SelectedItem; }
@@ -50,11 +42,6 @@ namespace DriveFitnessApp
         {
             get { return txbEdit.Text; }
         }
-
-        public event EventHandler AddNewGroup;
-        public event EventHandler ChangeGroup;
-        public event EventHandler RemoveGroup;
-        public event EventHandler RefreshGroupList;
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
@@ -74,6 +61,8 @@ namespace DriveFitnessApp
             {
                 if (RemoveGroup != null)
                     RemoveGroup(this, EventArgs.Empty);
+
+                txbEdit.Text = string.Empty;
             }
             catch (RemoveGroupException rge)
             {
@@ -97,7 +86,16 @@ namespace DriveFitnessApp
 
                     ClientPresenter clPress = new ClientPresenter(chClient, clm, gm, mess);
 
-                    chClient.ShowDialog();
+                    int grInx = lbGroups.SelectedIndex;
+                    DialogResult clientFormClosedResult = chClient.ShowDialog();
+
+                    if (clientFormClosedResult == System.Windows.Forms.DialogResult.OK)
+                    {
+                        if (RefreshGroupList != null)
+                            RefreshGroupList(this, EventArgs.Empty);
+
+                        lbGroups.SelectedIndex = grInx;
+                    }
                     
                 }
             }
@@ -119,9 +117,37 @@ namespace DriveFitnessApp
 
         private void lbGroups_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbGroups.SelectedIndex < 0) return;
+            if (lbGroups.SelectedIndex < 0)
+            {
+                pEdit.Visible = false;
+                return;
+            }
 
+            pEdit.Visible = true;
             txbEdit.Text = ((Group)lbGroups.SelectedItem).GroupName;
+        }
+
+        private void rbEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            pAdd.Visible = false;
+            lbGroups.Enabled = true;
+
+            if (lbGroups.SelectedIndex < 0)
+                pEdit.Visible = false;
+
+            else pEdit.Visible = true;
+        }
+
+        private void rbAdd_CheckedChanged(object sender, EventArgs e)
+        {
+            pAdd.Visible = true;
+
+            lbGroups.Enabled = false;
+
+            if (lbGroups.SelectedIndex < 0)
+                pEdit.Visible = false;
+
+            else pEdit.Visible = true;
         }
 
     }

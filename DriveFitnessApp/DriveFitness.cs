@@ -10,6 +10,7 @@ namespace DriveFitnessApp
     {
         static Messager messager = new Messager();
         static MySqlManager dataBaseManager = new MySqlManager();
+        static ReportManager reportManager = new ReportManager(dataBaseManager);
         static GroupManager groupManager = new GroupManager(dataBaseManager, messager);
         static SubscriptionManager subscriptionManager = new SubscriptionManager(dataBaseManager, messager);
         static ClientManager clientManager = new ClientManager(dataBaseManager, messager, subscriptionManager);
@@ -52,6 +53,29 @@ namespace DriveFitnessApp
             SubscriptionPresenter sp = new SubscriptionPresenter(subscriptionManager, groupManager, messager, clientManager, sf);
 
             sf.ShowDialog();
+        }
+
+        private void BtnReport_Click(object sender, EventArgs e)
+        {
+            ReportForm rf = new ReportForm();
+            ReportPresenter rp = new ReportPresenter(reportManager, groupManager, rf);
+
+            rf.ShowDialog();
+        }
+
+        private void BtnAttendance_Click(object sender, EventArgs e)
+        {
+            
+            AttendanceForm atF = new AttendanceForm();
+            AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, atF);
+
+            atF.ShowDialog();
+
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
