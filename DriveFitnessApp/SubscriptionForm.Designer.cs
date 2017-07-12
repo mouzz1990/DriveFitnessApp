@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbGroups = new System.Windows.Forms.ComboBox();
             this.pSubAdd = new System.Windows.Forms.Panel();
-            this.BtnAdd = new System.Windows.Forms.Button();
             this.dtpNewDate = new System.Windows.Forms.DateTimePicker();
             this.txbNewPrice = new System.Windows.Forms.TextBox();
             this.txbNewCount = new System.Windows.Forms.TextBox();
@@ -49,6 +48,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txbSubCount = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.BtnAdd = new System.Windows.Forms.Button();
             this.pGroups.SuspendLayout();
             this.pSubAdd.SuspendLayout();
             this.pSubInfo.SuspendLayout();
@@ -114,19 +114,6 @@
             this.pSubAdd.Name = "pSubAdd";
             this.pSubAdd.Size = new System.Drawing.Size(404, 247);
             this.pSubAdd.TabIndex = 1;
-            // 
-            // BtnAdd
-            // 
-            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnAdd.Location = new System.Drawing.Point(31, 188);
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(356, 45);
-            this.BtnAdd.TabIndex = 5;
-            this.BtnAdd.Text = "Оформить абонемент";
-            this.BtnAdd.UseVisualStyleBackColor = true;
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // dtpNewDate
             // 
@@ -274,6 +261,22 @@
             this.label9.Size = new System.Drawing.Size(115, 20);
             this.label9.TabIndex = 3;
             this.label9.Text = "Дата покупки:";
+            // 
+            // BtnAdd
+            // 
+            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnAdd.Image = global::DriveFitnessApp.Properties.Resources.SubscriptionAdd;
+            this.BtnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAdd.Location = new System.Drawing.Point(78, 188);
+            this.BtnAdd.Name = "BtnAdd";
+            this.BtnAdd.Size = new System.Drawing.Size(246, 45);
+            this.BtnAdd.TabIndex = 5;
+            this.BtnAdd.Text = "Оформить абонемент";
+            this.BtnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // SubscriptionForm
             // 

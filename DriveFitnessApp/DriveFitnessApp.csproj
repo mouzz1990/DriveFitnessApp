@@ -176,6 +176,9 @@
     <None Include="Resources\Attendance.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Subscription.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\ClientChangeInfo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +188,22 @@
     <None Include="Resources\Report.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Subscription.png" />
+    <None Include="Resources\ClientDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GroupsEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GroupsDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GroupsAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubscriptionAdd.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

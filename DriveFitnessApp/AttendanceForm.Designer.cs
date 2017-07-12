@@ -35,10 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.BtnCheckVisit = new System.Windows.Forms.Button();
             this.numPrice = new System.Windows.Forms.NumericUpDown();
+            this.BtnCheckVisit = new System.Windows.Forms.Button();
             this.lbPrice = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPrice)).BeginInit();
@@ -125,28 +125,6 @@
             this.panel2.Size = new System.Drawing.Size(542, 441);
             this.panel2.TabIndex = 6;
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(181, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Дата посещения:";
-            // 
-            // BtnCheckVisit
-            // 
-            this.BtnCheckVisit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCheckVisit.Location = new System.Drawing.Point(144, 393);
-            this.BtnCheckVisit.Name = "BtnCheckVisit";
-            this.BtnCheckVisit.Size = new System.Drawing.Size(255, 37);
-            this.BtnCheckVisit.TabIndex = 5;
-            this.BtnCheckVisit.Text = "Зафиксировать посещение";
-            this.BtnCheckVisit.UseVisualStyleBackColor = true;
-            this.BtnCheckVisit.Click += new System.EventHandler(this.BtnCheckVisit_Click);
-            // 
             // numPrice
             // 
             this.numPrice.DecimalPlaces = 1;
@@ -165,6 +143,22 @@
             0,
             0});
             // 
+            // BtnCheckVisit
+            // 
+            this.BtnCheckVisit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCheckVisit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnCheckVisit.Image = global::DriveFitnessApp.Properties.Resources.Attendance;
+            this.BtnCheckVisit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCheckVisit.Location = new System.Drawing.Point(126, 389);
+            this.BtnCheckVisit.Name = "BtnCheckVisit";
+            this.BtnCheckVisit.Size = new System.Drawing.Size(289, 41);
+            this.BtnCheckVisit.TabIndex = 5;
+            this.BtnCheckVisit.Text = "Зафиксировать посещение";
+            this.BtnCheckVisit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCheckVisit.UseVisualStyleBackColor = true;
+            this.BtnCheckVisit.Click += new System.EventHandler(this.BtnCheckVisit_Click);
+            // 
             // lbPrice
             // 
             this.lbPrice.AutoSize = true;
@@ -173,6 +167,16 @@
             this.lbPrice.Size = new System.Drawing.Size(62, 20);
             this.lbPrice.TabIndex = 4;
             this.lbPrice.Text = "Плата:";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(181, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Дата посещения:";
             // 
             // AttendanceForm
             // 

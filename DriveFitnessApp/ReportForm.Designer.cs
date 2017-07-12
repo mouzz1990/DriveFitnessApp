@@ -36,8 +36,8 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.BtnReport = new System.Windows.Forms.Button();
             this.dgvReport = new System.Windows.Forms.DataGridView();
+            this.BtnReport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
@@ -125,18 +125,6 @@
             this.panel2.Size = new System.Drawing.Size(1028, 512);
             this.panel2.TabIndex = 3;
             // 
-            // BtnReport
-            // 
-            this.BtnReport.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnReport.Location = new System.Drawing.Point(402, 465);
-            this.BtnReport.Name = "BtnReport";
-            this.BtnReport.Size = new System.Drawing.Size(224, 41);
-            this.BtnReport.TabIndex = 1;
-            this.BtnReport.Text = "Сформировать отчет";
-            this.BtnReport.UseVisualStyleBackColor = true;
-            this.BtnReport.Click += new System.EventHandler(this.BtnReport_Click);
-            // 
             // dgvReport
             // 
             this.dgvReport.AllowUserToAddRows = false;
@@ -149,6 +137,21 @@
             this.dgvReport.RowHeadersVisible = false;
             this.dgvReport.Size = new System.Drawing.Size(1020, 456);
             this.dgvReport.TabIndex = 0;
+            // 
+            // BtnReport
+            // 
+            this.BtnReport.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnReport.Image = global::DriveFitnessApp.Properties.Resources.Report1;
+            this.BtnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnReport.Location = new System.Drawing.Point(393, 465);
+            this.BtnReport.Name = "BtnReport";
+            this.BtnReport.Size = new System.Drawing.Size(241, 41);
+            this.BtnReport.TabIndex = 1;
+            this.BtnReport.Text = "Сформировать отчет";
+            this.BtnReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnReport.UseVisualStyleBackColor = true;
+            this.BtnReport.Click += new System.EventHandler(this.BtnReport_Click);
             // 
             // ReportForm
             // 
