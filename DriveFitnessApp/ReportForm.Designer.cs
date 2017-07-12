@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
             this.cmbGroup = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,8 +37,8 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dgvReport = new System.Windows.Forms.DataGridView();
             this.BtnReport = new System.Windows.Forms.Button();
+            this.dgvReport = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
@@ -125,19 +126,6 @@
             this.panel2.Size = new System.Drawing.Size(1028, 512);
             this.panel2.TabIndex = 3;
             // 
-            // dgvReport
-            // 
-            this.dgvReport.AllowUserToAddRows = false;
-            this.dgvReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReport.Location = new System.Drawing.Point(3, 3);
-            this.dgvReport.Name = "dgvReport";
-            this.dgvReport.RowHeadersVisible = false;
-            this.dgvReport.Size = new System.Drawing.Size(1020, 456);
-            this.dgvReport.TabIndex = 0;
-            // 
             // BtnReport
             // 
             this.BtnReport.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -153,6 +141,19 @@
             this.BtnReport.UseVisualStyleBackColor = true;
             this.BtnReport.Click += new System.EventHandler(this.BtnReport_Click);
             // 
+            // dgvReport
+            // 
+            this.dgvReport.AllowUserToAddRows = false;
+            this.dgvReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReport.Location = new System.Drawing.Point(3, 3);
+            this.dgvReport.Name = "dgvReport";
+            this.dgvReport.RowHeadersVisible = false;
+            this.dgvReport.Size = new System.Drawing.Size(1020, 456);
+            this.dgvReport.TabIndex = 0;
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -161,6 +162,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

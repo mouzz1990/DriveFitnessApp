@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupView));
             this.lbGroups = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rbEdit = new System.Windows.Forms.RadioButton();
             this.rbAdd = new System.Windows.Forms.RadioButton();
             this.pEdit = new System.Windows.Forms.Panel();
+            this.BtnDelete = new System.Windows.Forms.Button();
+            this.BtnChange = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txbEdit = new System.Windows.Forms.TextBox();
             this.pAdd = new System.Windows.Forms.Panel();
+            this.BtnAdd = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txbAdd = new System.Windows.Forms.TextBox();
             this.pGroups = new System.Windows.Forms.Panel();
-            this.BtnAdd = new System.Windows.Forms.Button();
-            this.BtnDelete = new System.Windows.Forms.Button();
-            this.BtnChange = new System.Windows.Forms.Button();
             this.pEdit.SuspendLayout();
             this.pAdd.SuspendLayout();
             this.pGroups.SuspendLayout();
@@ -107,6 +108,34 @@
             this.pEdit.Size = new System.Drawing.Size(426, 125);
             this.pEdit.TabIndex = 4;
             // 
+            // BtnDelete
+            // 
+            this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnDelete.Image = global::DriveFitnessApp.Properties.Resources.GroupsDelete;
+            this.BtnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnDelete.Location = new System.Drawing.Point(18, 71);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(146, 37);
+            this.BtnDelete.TabIndex = 2;
+            this.BtnDelete.Text = "Удалить";
+            this.BtnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // BtnChange
+            // 
+            this.BtnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnChange.Image = global::DriveFitnessApp.Properties.Resources.GroupsEdit;
+            this.BtnChange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnChange.Location = new System.Drawing.Point(257, 71);
+            this.BtnChange.Name = "BtnChange";
+            this.BtnChange.Size = new System.Drawing.Size(153, 37);
+            this.BtnChange.TabIndex = 2;
+            this.BtnChange.Text = "Изменить";
+            this.BtnChange.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnChange.UseVisualStyleBackColor = true;
+            this.BtnChange.Click += new System.EventHandler(this.BtnChange_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -137,6 +166,20 @@
             this.pAdd.Size = new System.Drawing.Size(426, 125);
             this.pAdd.TabIndex = 5;
             // 
+            // BtnAdd
+            // 
+            this.BtnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnAdd.Image = global::DriveFitnessApp.Properties.Resources.GroupsAdd;
+            this.BtnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAdd.Location = new System.Drawing.Point(132, 69);
+            this.BtnAdd.Name = "BtnAdd";
+            this.BtnAdd.Size = new System.Drawing.Size(161, 37);
+            this.BtnAdd.TabIndex = 2;
+            this.BtnAdd.Text = "Добавить";
+            this.BtnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -166,48 +209,6 @@
             this.pGroups.Size = new System.Drawing.Size(260, 424);
             this.pGroups.TabIndex = 6;
             // 
-            // BtnAdd
-            // 
-            this.BtnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnAdd.Image = global::DriveFitnessApp.Properties.Resources.GroupsAdd;
-            this.BtnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAdd.Location = new System.Drawing.Point(132, 69);
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(161, 37);
-            this.BtnAdd.TabIndex = 2;
-            this.BtnAdd.Text = "Добавить";
-            this.BtnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnAdd.UseVisualStyleBackColor = true;
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
-            // 
-            // BtnDelete
-            // 
-            this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnDelete.Image = global::DriveFitnessApp.Properties.Resources.GroupsDelete;
-            this.BtnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnDelete.Location = new System.Drawing.Point(18, 71);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(146, 37);
-            this.BtnDelete.TabIndex = 2;
-            this.BtnDelete.Text = "Удалить";
-            this.BtnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnDelete.UseVisualStyleBackColor = true;
-            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
-            // 
-            // BtnChange
-            // 
-            this.BtnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnChange.Image = global::DriveFitnessApp.Properties.Resources.GroupsEdit;
-            this.BtnChange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnChange.Location = new System.Drawing.Point(257, 71);
-            this.BtnChange.Name = "BtnChange";
-            this.BtnChange.Size = new System.Drawing.Size(153, 37);
-            this.BtnChange.TabIndex = 2;
-            this.BtnChange.Text = "Изменить";
-            this.BtnChange.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnChange.UseVisualStyleBackColor = true;
-            this.BtnChange.Click += new System.EventHandler(this.BtnChange_Click);
-            // 
             // GroupView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,6 +220,7 @@
             this.Controls.Add(this.rbAdd);
             this.Controls.Add(this.rbEdit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GroupView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Работа с группами";

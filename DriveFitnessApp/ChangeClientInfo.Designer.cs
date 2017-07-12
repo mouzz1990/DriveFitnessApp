@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeClientInfo));
             this.pClientInfo = new System.Windows.Forms.Panel();
+            this.BtnRemove = new System.Windows.Forms.Button();
             this.cmbClientGroup = new System.Windows.Forms.ComboBox();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
+            this.BtnChangeInfo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txbTelephone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,8 +48,6 @@
             this.lbClients = new System.Windows.Forms.ListBox();
             this.cmbGroup = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.BtnRemove = new System.Windows.Forms.Button();
-            this.BtnChangeInfo = new System.Windows.Forms.Button();
             this.pClientInfo.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +77,22 @@
             this.pClientInfo.Size = new System.Drawing.Size(468, 415);
             this.pClientInfo.TabIndex = 6;
             // 
+            // BtnRemove
+            // 
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnRemove.Image = global::DriveFitnessApp.Properties.Resources.ClientDelete;
+            this.BtnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnRemove.Location = new System.Drawing.Point(264, 344);
+            this.BtnRemove.Name = "BtnRemove";
+            this.BtnRemove.Size = new System.Drawing.Size(188, 52);
+            this.BtnRemove.TabIndex = 5;
+            this.BtnRemove.Text = "Удалить запись";
+            this.BtnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnRemove.UseVisualStyleBackColor = true;
+            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
+            // 
             // cmbClientGroup
             // 
             this.cmbClientGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -97,6 +114,21 @@
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(301, 26);
             this.dtpBirthday.TabIndex = 6;
+            // 
+            // BtnChangeInfo
+            // 
+            this.BtnChangeInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnChangeInfo.Image = global::DriveFitnessApp.Properties.Resources.ClientChangeInfo;
+            this.BtnChangeInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnChangeInfo.Location = new System.Drawing.Point(111, 239);
+            this.BtnChangeInfo.Name = "BtnChangeInfo";
+            this.BtnChangeInfo.Size = new System.Drawing.Size(341, 52);
+            this.BtnChangeInfo.TabIndex = 5;
+            this.BtnChangeInfo.Text = "Изменить информацию о клиенте";
+            this.BtnChangeInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnChangeInfo.UseVisualStyleBackColor = true;
+            this.BtnChangeInfo.Click += new System.EventHandler(this.BtnChangeInfo_Click);
             // 
             // label1
             // 
@@ -245,37 +277,6 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Группа:";
             // 
-            // BtnRemove
-            // 
-            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnRemove.Image = global::DriveFitnessApp.Properties.Resources.ClientDelete;
-            this.BtnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnRemove.Location = new System.Drawing.Point(264, 344);
-            this.BtnRemove.Name = "BtnRemove";
-            this.BtnRemove.Size = new System.Drawing.Size(188, 52);
-            this.BtnRemove.TabIndex = 5;
-            this.BtnRemove.Text = "Удалить запись";
-            this.BtnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnRemove.UseVisualStyleBackColor = true;
-            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
-            // 
-            // BtnChangeInfo
-            // 
-            this.BtnChangeInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnChangeInfo.Image = global::DriveFitnessApp.Properties.Resources.ClientChangeInfo;
-            this.BtnChangeInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnChangeInfo.Location = new System.Drawing.Point(111, 239);
-            this.BtnChangeInfo.Name = "BtnChangeInfo";
-            this.BtnChangeInfo.Size = new System.Drawing.Size(341, 52);
-            this.BtnChangeInfo.TabIndex = 5;
-            this.BtnChangeInfo.Text = "Изменить информацию о клиенте";
-            this.BtnChangeInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnChangeInfo.UseVisualStyleBackColor = true;
-            this.BtnChangeInfo.Click += new System.EventHandler(this.BtnChangeInfo_Click);
-            // 
             // ChangeClientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,6 +284,7 @@
             this.ClientSize = new System.Drawing.Size(855, 439);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pClientInfo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1100, 600);
             this.MinimumSize = new System.Drawing.Size(871, 477);
             this.Name = "ChangeClientInfo";
