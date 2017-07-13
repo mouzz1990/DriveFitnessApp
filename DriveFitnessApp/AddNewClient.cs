@@ -64,6 +64,7 @@ namespace DriveFitnessApp
         public event EventHandler GroupsRequred;
         public event EventHandler ClientInformationChanged;
         public event EventHandler ClientDeleted;
+        public event EventHandler CreateClientCard;
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {

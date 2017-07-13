@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeClientInfo));
             this.pClientInfo = new System.Windows.Forms.Panel();
+            this.BtnBarCode = new System.Windows.Forms.Button();
             this.BtnRemove = new System.Windows.Forms.Button();
             this.cmbClientGroup = new System.Windows.Forms.ComboBox();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
@@ -48,7 +49,6 @@
             this.lbClients = new System.Windows.Forms.ListBox();
             this.cmbGroup = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.BtnBarCode = new System.Windows.Forms.Button();
             this.pClientInfo.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +78,20 @@
             this.pClientInfo.Name = "pClientInfo";
             this.pClientInfo.Size = new System.Drawing.Size(468, 415);
             this.pClientInfo.TabIndex = 6;
+            // 
+            // BtnBarCode
+            // 
+            this.BtnBarCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnBarCode.Image = global::DriveFitnessApp.Properties.Resources.SubscriptionAdd;
+            this.BtnBarCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnBarCode.Location = new System.Drawing.Point(179, 280);
+            this.BtnBarCode.Name = "BtnBarCode";
+            this.BtnBarCode.Size = new System.Drawing.Size(273, 55);
+            this.BtnBarCode.TabIndex = 8;
+            this.BtnBarCode.Text = "Создать карточку клинта";
+            this.BtnBarCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnBarCode.UseVisualStyleBackColor = true;
+            this.BtnBarCode.Click += new System.EventHandler(this.BtnBarCode_Click);
             // 
             // BtnRemove
             // 
@@ -123,7 +137,7 @@
             this.BtnChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnChangeInfo.Image = global::DriveFitnessApp.Properties.Resources.ClientChangeInfo;
             this.BtnChangeInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnChangeInfo.Location = new System.Drawing.Point(111, 239);
+            this.BtnChangeInfo.Location = new System.Drawing.Point(111, 222);
             this.BtnChangeInfo.Name = "BtnChangeInfo";
             this.BtnChangeInfo.Size = new System.Drawing.Size(341, 52);
             this.BtnChangeInfo.TabIndex = 5;
@@ -278,16 +292,6 @@
             this.label7.Size = new System.Drawing.Size(65, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "Группа:";
-            // 
-            // BtnBarCode
-            // 
-            this.BtnBarCode.Location = new System.Drawing.Point(12, 340);
-            this.BtnBarCode.Name = "BtnBarCode";
-            this.BtnBarCode.Size = new System.Drawing.Size(74, 55);
-            this.BtnBarCode.TabIndex = 8;
-            this.BtnBarCode.Text = "Create Barcode";
-            this.BtnBarCode.UseVisualStyleBackColor = true;
-            this.BtnBarCode.Click += new System.EventHandler(this.BtnBarCode_Click);
             // 
             // ChangeClientInfo
             // 

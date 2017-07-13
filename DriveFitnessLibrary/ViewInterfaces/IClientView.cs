@@ -24,5 +24,6 @@ namespace DriveFitnessLibrary.ViewInterfaces
         event EventHandler ClientInformationChanged;
         event EventHandler ClientDeleted;
         event EventHandler GroupChanged;
+        event EventHandler CreateClientCard;
     }
 }

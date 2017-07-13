@@ -14,6 +14,7 @@ using ZXing.QrCode;
 using ZXing.Common;
 using System.Xml.Serialization;
 using ZXing;
+using System.Threading.Tasks;
 
 namespace DriveFitnessApp
 {
@@ -30,6 +31,13 @@ namespace DriveFitnessApp
             InitializeComponent();
             selectedGr = selectedGroup;
         }
+
+        public event EventHandler AddClientClicked;
+        public event EventHandler GroupsRequred;
+        public event EventHandler ClientInformationChanged;
+        public event EventHandler ClientDeleted;
+        public event EventHandler GroupChanged;
+        public event EventHandler CreateClientCard;
 
         Group selectedGr;
 
@@ -105,12 +113,6 @@ namespace DriveFitnessApp
                 lbClients.Items.Add(c);
         }
 
-        public event EventHandler AddClientClicked;
-        public event EventHandler GroupsRequred;
-        public event EventHandler ClientInformationChanged;
-        public event EventHandler ClientDeleted;
-        public event EventHandler GroupChanged;
-
         private void cmbGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (GroupChanged != null)
@@ -184,29 +186,35 @@ namespace DriveFitnessApp
 
         private void BtnBarCode_Click(object sender, EventArgs e)
         {
-            QRCodeWriter qrEncode = new QRCodeWriter();
+            ClientEventArgs clEvArg = new ClientEventArgs((Client)lbClients.SelectedItem);
 
-            Client client = (Client)lbClients.SelectedItem;
+            if (CreateClientCard != null)
+                CreateClientCard(this, clEvArg);
+            
+            //QRCodeWriter qrEncode = new QRCodeWriter();
 
-            string encString = string.Format("{0}:{1} {2}", client.ID, client.Name, client.LastName);
+            //Client client = (Client)lbClients.SelectedItem;
 
-            Dictionary<EncodeHintType, object> hints = new Dictionary<EncodeHintType, object>();    //для колекции поведений
-            hints.Add(EncodeHintType.CHARACTER_SET, "utf-8");
+            //string encString = string.Format("{0}:{1} {2}", client.ID, client.Name, client.LastName);
 
-            BitMatrix qrMatrix = qrEncode.encode(
-                encString,
-                BarcodeFormat.QR_CODE,
-                300,
-                300,
-                hints
-                );
+            //Dictionary<EncodeHintType, object> hints = new Dictionary<EncodeHintType, object>();    //для колекции поведений
+            //hints.Add(EncodeHintType.CHARACTER_SET, "utf-8");
 
-            BarcodeWriter qrWriter = new BarcodeWriter();
-            Bitmap qrImage = qrWriter.Write(qrMatrix);
+            //BitMatrix qrMatrix = qrEncode.encode(
+            //    encString,
+            //    BarcodeFormat.QR_CODE,
+            //    300,
+            //    300,
+            //    hints
+            //    );
 
-            qrImage.Save("client.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            //BarcodeWriter qrWriter = new BarcodeWriter();
 
-            MessageBox.Show("QR-код успешно создан!","QR-код создан", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Bitmap qrImage = qrWriter.Write(qrMatrix);
+
+            //qrImage.Save(client + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            //MessageBox.Show("QR-код успешно создан!", "QR-код создан", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace DriveFitnessLibrary.Presenters
         IClientManager clientManager;
         IGroupManager groupManager;
         IMessager messager;
+        IClientCardCreator clientCardCreator;
 
         public ClientPresenter(IClientView view, IClientManager clientManager, IGroupManager groupManager, IMessager messager)
         {
@@ -27,6 +28,15 @@ namespace DriveFitnessLibrary.Presenters
             view.ClientInformationChanged += new EventHandler(view_ClientInformationChanged);
             view.ClientDeleted += new EventHandler(view_ClientDeleted);
             view.GroupChanged += new EventHandler(view_GroupChanged);
+            view.CreateClientCard += new EventHandler(view_CreateClientCard);
+        }
+
+        void view_CreateClientCard(object sender, EventArgs e)
+        {
+            ClientEventArgs clArg = (ClientEventArgs)e;
+            Client client = clArg.client;
+
+            clientCardCreator.MakeClientCard(client);
         }
 
         void view_GroupChanged(object sender, EventArgs e)

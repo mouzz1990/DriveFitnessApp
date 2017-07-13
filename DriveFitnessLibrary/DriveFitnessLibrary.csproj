@@ -53,12 +53,16 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="zxing">
+      <HintPath>E:\Install\C#\.NET libarys\ZXing.Net.0.14.0.0\net4.0\zxing.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttendanceEventArgs.cs" />
@@ -66,6 +70,7 @@
     <Compile Include="ClientEventArgs.cs" />
     <Compile Include="DateTimeFormatter.cs" />
     <Compile Include="DriveInterfaces\IAttendanceManager.cs" />
+    <Compile Include="DriveInterfaces\IClientCardCreator.cs" />
     <Compile Include="DriveInterfaces\IClientManager.cs" />
     <Compile Include="DriveInterfaces\IDataBaseExecutable.cs" />
     <Compile Include="DriveInterfaces\IGroupManager.cs" />
@@ -74,6 +79,7 @@
     <Compile Include="DriveInterfaces\ISubscriptionManager.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="Managers\AttendanceManager.cs" />
+    <Compile Include="Managers\ClientCardCreatorManager.cs" />
     <Compile Include="Managers\ClientManager.cs" />
     <Compile Include="Managers\GroupManager.cs" />
     <Compile Include="Managers\ReportManager.cs" />

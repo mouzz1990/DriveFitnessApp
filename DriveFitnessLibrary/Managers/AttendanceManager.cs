@@ -27,6 +27,7 @@ namespace DriveFitnessLibrary.Managers
             if (client == null) 
             {
                 messager.ErrorMessage("Клиент не найден. Операция отменена.");
+                return;
             }
 
             if (!CheckAttendance(client, dateVisit))
