@@ -63,6 +63,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="zxing">
+      <HintPath>E:\Install\C#\.NET libarys\ZXing.Net.0.14.0.0\net4.0\zxing.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNewClient.cs">
@@ -76,6 +79,12 @@
     </Compile>
     <Compile Include="AttendanceForm.Designer.cs">
       <DependentUpon>AttendanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForm2.Designer.cs">
+      <DependentUpon>AttendanceForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="ChangeClientInfo.cs">
       <SubType>Form</SubType>
@@ -115,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForm.resx">
       <DependentUpon>AttendanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForm2.resx">
+      <DependentUpon>AttendanceForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeClientInfo.resx">
       <DependentUpon>ChangeClientInfo.cs</DependentUpon>

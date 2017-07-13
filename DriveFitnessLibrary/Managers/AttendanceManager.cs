@@ -24,6 +24,11 @@ namespace DriveFitnessLibrary.Managers
 
         public void AddAttendance(Client client, DateTime dateVisit, float price)
         {
+            if (client == null) 
+            {
+                messager.ErrorMessage("Клиент не найден. Операция отменена.");
+            }
+
             if (!CheckAttendance(client, dateVisit))
             {
                 messager.ExclamationMessage(

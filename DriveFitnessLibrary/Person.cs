@@ -2,6 +2,7 @@
 
 namespace DriveFitnessLibrary
 {
+    [Serializable]
     public class Person
     {
         public int ID { get; private set; }

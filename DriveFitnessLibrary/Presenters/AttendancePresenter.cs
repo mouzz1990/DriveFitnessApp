@@ -32,6 +32,7 @@ namespace DriveFitnessLibrary.Presenters
         void view_VisitationChecked(object sender, EventArgs e)
         {
             Client client = view.GetClient();
+
             DateTime dateVisitation = view.DateVisit;
             float price = view.Price;
 

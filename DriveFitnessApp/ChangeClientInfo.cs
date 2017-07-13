@@ -8,6 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 using DriveFitnessLibrary.ViewInterfaces;
 using DriveFitnessLibrary;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using ZXing.QrCode;
+using ZXing.Common;
+using System.Xml.Serialization;
+using ZXing;
 
 namespace DriveFitnessApp
 {
@@ -168,14 +174,39 @@ namespace DriveFitnessApp
 
                 if (ClientDeleted != null)
                     ClientDeleted(this, clEvArg);
-
-                
             }
         }
 
         private void ChangeClientInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void BtnBarCode_Click(object sender, EventArgs e)
+        {
+            QRCodeWriter qrEncode = new QRCodeWriter();
+
+            Client client = (Client)lbClients.SelectedItem;
+
+            string encString = string.Format("{0}:{1} {2}", client.ID, client.Name, client.LastName);
+
+            Dictionary<EncodeHintType, object> hints = new Dictionary<EncodeHintType, object>();    //для колекции поведений
+            hints.Add(EncodeHintType.CHARACTER_SET, "utf-8");
+
+            BitMatrix qrMatrix = qrEncode.encode(
+                encString,
+                BarcodeFormat.QR_CODE,
+                300,
+                300,
+                hints
+                );
+
+            BarcodeWriter qrWriter = new BarcodeWriter();
+            Bitmap qrImage = qrWriter.Write(qrMatrix);
+
+            qrImage.Save("client.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            MessageBox.Show("QR-код успешно создан!","QR-код создан", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

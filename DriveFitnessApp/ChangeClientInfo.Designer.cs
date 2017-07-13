@@ -48,6 +48,7 @@
             this.lbClients = new System.Windows.Forms.ListBox();
             this.cmbGroup = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.BtnBarCode = new System.Windows.Forms.Button();
             this.pClientInfo.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +59,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pClientInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pClientInfo.Controls.Add(this.BtnBarCode);
             this.pClientInfo.Controls.Add(this.BtnRemove);
             this.pClientInfo.Controls.Add(this.cmbClientGroup);
             this.pClientInfo.Controls.Add(this.dtpBirthday);
@@ -277,6 +279,16 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Группа:";
             // 
+            // BtnBarCode
+            // 
+            this.BtnBarCode.Location = new System.Drawing.Point(12, 340);
+            this.BtnBarCode.Name = "BtnBarCode";
+            this.BtnBarCode.Size = new System.Drawing.Size(74, 55);
+            this.BtnBarCode.TabIndex = 8;
+            this.BtnBarCode.Text = "Create Barcode";
+            this.BtnBarCode.UseVisualStyleBackColor = true;
+            this.BtnBarCode.Click += new System.EventHandler(this.BtnBarCode_Click);
+            // 
             // ChangeClientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,5 +333,6 @@
         private System.Windows.Forms.ListBox lbClients;
         private System.Windows.Forms.ComboBox cmbGroup;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button BtnBarCode;
     }
 }

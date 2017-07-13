@@ -65,7 +65,6 @@ namespace DriveFitnessApp
 
         private void BtnAttendance_Click(object sender, EventArgs e)
         {
-            
             AttendanceForm atF = new AttendanceForm();
             AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, atF);
 
@@ -76,6 +75,14 @@ namespace DriveFitnessApp
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void BtnAttendance2_Click(object sender, EventArgs e)
+        {
+            AttendanceForm2 atF2 = new AttendanceForm2();
+            AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, atF2);
+
+            atF2.ShowDialog();
         }
     }
 }
