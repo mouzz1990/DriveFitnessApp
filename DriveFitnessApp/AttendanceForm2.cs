@@ -61,11 +61,13 @@ namespace DriveFitnessApp
 
         private void BtnStartScan_Click(object sender, EventArgs e)
         {
-            string filePath;
+            string filePath = string.Empty;
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.ShowDialog();
-                filePath = ofd.FileName;
+                if (ofd.ShowDialog() == DialogResult.OK)
+                    filePath = ofd.FileName;
+
+                else return;
             }
 
             BarcodeReader qrDecode = new BarcodeReader(); //чтение QR кода

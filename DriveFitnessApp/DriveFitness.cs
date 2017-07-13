@@ -10,6 +10,7 @@ namespace DriveFitnessApp
     {
         static Messager messager = new Messager();
         static MySqlManager dataBaseManager = new MySqlManager();
+        static ClientCardCreatorManager cardCreatorManager = new ClientCardCreatorManager();
         static ReportManager reportManager = new ReportManager(dataBaseManager);
         static GroupManager groupManager = new GroupManager(dataBaseManager, messager);
         static SubscriptionManager subscriptionManager = new SubscriptionManager(dataBaseManager, messager);
@@ -24,7 +25,7 @@ namespace DriveFitnessApp
         private void BtnAddNewClient_Click(object sender, EventArgs e)
         {
             AddNewClient newClientForm = new AddNewClient();
-            ClientPresenter clPres = new ClientPresenter(newClientForm, clientManager, groupManager, messager);
+            ClientPresenter clPres = new ClientPresenter(newClientForm, clientManager, groupManager, cardCreatorManager, messager);
 
             newClientForm.ShowDialog();
         }
@@ -32,7 +33,7 @@ namespace DriveFitnessApp
         private void BtnChangeClientInfo_Click(object sender, EventArgs e)
         {
             ChangeClientInfo chClient = new ChangeClientInfo();
-            ClientPresenter clPress = new ClientPresenter(chClient, clientManager, groupManager, messager);
+            ClientPresenter clPress = new ClientPresenter(chClient, clientManager, groupManager, cardCreatorManager, messager);
 
             chClient.ShowDialog();
         }
@@ -80,9 +81,11 @@ namespace DriveFitnessApp
         private void BtnAttendance2_Click(object sender, EventArgs e)
         {
             AttendanceForm2 atF2 = new AttendanceForm2();
-            AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, atF2);
+            AttendanceVideoForm avf = new AttendanceVideoForm();
+            //AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, atF2);
+            AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, avf);
 
-            atF2.ShowDialog();
+            avf.ShowDialog();
         }
     }
 }

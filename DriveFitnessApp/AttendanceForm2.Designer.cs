@@ -61,6 +61,11 @@
             this.numPrice.Name = "numPrice";
             this.numPrice.Size = new System.Drawing.Size(72, 26);
             this.numPrice.TabIndex = 2;
+            this.numPrice.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // dtpDateVisit
             // 

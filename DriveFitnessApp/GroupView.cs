@@ -80,11 +80,12 @@ namespace DriveFitnessApp
                 {
                     MySqlManager dbm = new MySqlManager();
                     Messager mess = new Messager();
+                    ClientCardCreatorManager clientCardCreator = new ClientCardCreatorManager();
                     ClientManager clm = new ClientManager(dbm, mess);
                     GroupManager gm = new GroupManager(dbm, mess);
                     ChangeClientInfo chClient = new ChangeClientInfo((Group)lbGroups.SelectedItem);
 
-                    ClientPresenter clPress = new ClientPresenter(chClient, clm, gm, mess);
+                    ClientPresenter clPress = new ClientPresenter(chClient, clm, gm, clientCardCreator, mess);
 
                     int grInx = lbGroups.SelectedIndex;
                     DialogResult clientFormClosedResult = chClient.ShowDialog();

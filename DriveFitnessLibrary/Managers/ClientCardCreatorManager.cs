@@ -7,6 +7,7 @@ using ZXing.QrCode;
 using ZXing;
 using ZXing.Common;
 using System.Drawing;
+using System.IO;
 
 namespace DriveFitnessLibrary.Managers
 {
@@ -14,27 +15,39 @@ namespace DriveFitnessLibrary.Managers
     {
         public void MakeClientCard(Client client)
         {
-            QRCodeWriter qrEncode = new QRCodeWriter();
+            string filename = string.Format("{0}.jpeg", client);
 
-            
-            string encString = string.Format("{0}:{1} {2}", client.ID, client.Name, client.LastName);
+            try
+            {
+                if (File.Exists(filename))
+                    File.Delete(filename);
 
-            Dictionary<EncodeHintType, object> hints = new Dictionary<EncodeHintType, object>();    //для колекции поведений
-            hints.Add(EncodeHintType.CHARACTER_SET, "utf-8");
+                QRCodeWriter qrEncode = new QRCodeWriter();
 
-            BitMatrix qrMatrix = qrEncode.encode(
-                encString,
-                BarcodeFormat.QR_CODE,
-                300,
-                300,
-                hints
-                );
+                string encString = string.Format("{0}:{1} {2}", client.ID, client.Name, client.LastName);
 
-            BarcodeWriter qrWriter = new BarcodeWriter();
+                Dictionary<EncodeHintType, object> hints = new Dictionary<EncodeHintType, object>();    //для колекции поведений
+                hints.Add(EncodeHintType.CHARACTER_SET, "utf-8");
 
-            Bitmap qrImage = qrWriter.Write(qrMatrix);
+                BitMatrix qrMatrix = qrEncode.encode(
+                    encString,
+                    BarcodeFormat.QR_CODE,
+                    300,
+                    300,
+                    hints
+                    );
 
-            qrImage.Save(client + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                BarcodeWriter qrWriter = new BarcodeWriter();
+
+                Bitmap qrImage = qrWriter.Write(qrMatrix);
+
+                qrImage.Save(filename, System.Drawing.Imaging.ImageFormat.Jpeg);
+                qrImage.Dispose();
+            }
+            catch
+            {
+                throw new Exception("Невозможно создать карту клиента. Пожалуйста попробуйте позже или перезапустите приложение");
+            }
         }
     }
 }

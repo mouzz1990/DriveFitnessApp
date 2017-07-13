@@ -15,12 +15,13 @@ namespace DriveFitnessLibrary.Presenters
         IMessager messager;
         IClientCardCreator clientCardCreator;
 
-        public ClientPresenter(IClientView view, IClientManager clientManager, IGroupManager groupManager, IMessager messager)
+        public ClientPresenter(IClientView view, IClientManager clientManager, IGroupManager groupManager, IClientCardCreator clientCardCreator, IMessager messager)
         {
             this.view = view;
             this.clientManager = clientManager;
             this.groupManager = groupManager;
             this.messager = messager;
+            this.clientCardCreator = clientCardCreator;
 
             view.GroupsRequred += new EventHandler(view_GroupsRequred);
             view.AddClientClicked += new EventHandler(view_AddClientClicked);
@@ -36,7 +37,15 @@ namespace DriveFitnessLibrary.Presenters
             ClientEventArgs clArg = (ClientEventArgs)e;
             Client client = clArg.client;
 
-            clientCardCreator.MakeClientCard(client);
+            try
+            {
+                clientCardCreator.MakeClientCard(client);
+                messager.SuccessMessage(string.Format("Карта абонента \"{0}\" успешно создана.", client));
+            }
+            catch (Exception exc)
+            {
+                messager.ErrorMessage(exc.Message);
+            }
         }
 
         void view_GroupChanged(object sender, EventArgs e)
