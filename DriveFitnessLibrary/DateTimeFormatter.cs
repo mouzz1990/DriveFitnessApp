@@ -21,6 +21,11 @@ namespace DriveFitnessLibrary
                     ((DateTime)arg).Day
                     );
 
+            if (arg.GetType() == typeof(float))
+                return string.Format("{0}",
+                    ((float)arg).ToString().Replace(',', '.')
+                    );
+
             return s;
         }
 

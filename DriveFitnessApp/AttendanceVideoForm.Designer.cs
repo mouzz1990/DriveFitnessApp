@@ -36,6 +36,8 @@
             this.BtnStart = new System.Windows.Forms.Button();
             this.pbWebCam = new System.Windows.Forms.PictureBox();
             this.txbResult = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWebCam)).BeginInit();
             this.SuspendLayout();
@@ -82,16 +84,16 @@
             // 
             this.lbDevices.FormattingEnabled = true;
             this.lbDevices.ItemHeight = 20;
-            this.lbDevices.Location = new System.Drawing.Point(27, 76);
+            this.lbDevices.Location = new System.Drawing.Point(27, 96);
             this.lbDevices.Name = "lbDevices";
-            this.lbDevices.Size = new System.Drawing.Size(341, 124);
+            this.lbDevices.Size = new System.Drawing.Size(341, 144);
             this.lbDevices.TabIndex = 4;
             // 
             // BtnStart
             // 
-            this.BtnStart.Location = new System.Drawing.Point(123, 206);
+            this.BtnStart.Location = new System.Drawing.Point(23, 246);
             this.BtnStart.Name = "BtnStart";
-            this.BtnStart.Size = new System.Drawing.Size(127, 48);
+            this.BtnStart.Size = new System.Drawing.Size(342, 53);
             this.BtnStart.TabIndex = 5;
             this.BtnStart.Text = "Старт";
             this.BtnStart.UseVisualStyleBackColor = true;
@@ -99,35 +101,58 @@
             // 
             // pbWebCam
             // 
+            this.pbWebCam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbWebCam.Location = new System.Drawing.Point(375, 12);
             this.pbWebCam.Name = "pbWebCam";
-            this.pbWebCam.Size = new System.Drawing.Size(300, 300);
+            this.pbWebCam.Size = new System.Drawing.Size(400, 225);
             this.pbWebCam.TabIndex = 6;
             this.pbWebCam.TabStop = false;
             // 
             // txbResult
             // 
-            this.txbResult.Location = new System.Drawing.Point(27, 286);
+            this.txbResult.Location = new System.Drawing.Point(375, 268);
+            this.txbResult.Multiline = true;
             this.txbResult.Name = "txbResult";
-            this.txbResult.Size = new System.Drawing.Size(341, 26);
+            this.txbResult.Size = new System.Drawing.Size(400, 31);
             this.txbResult.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(371, 245);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(203, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Результат сканирования:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(301, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Устройства для считывания QR-кода:";
             // 
             // AttendanceVideoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(692, 328);
+            this.ClientSize = new System.Drawing.Size(792, 315);
             this.Controls.Add(this.txbResult);
             this.Controls.Add(this.pbWebCam);
             this.Controls.Add(this.BtnStart);
             this.Controls.Add(this.lbDevices);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AttendanceVideoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AttendanceVideoForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AttendanceVideoForm_FormClosing);
             this.Load += new System.EventHandler(this.AttendanceVideoForm_Load);
@@ -148,5 +173,7 @@
         private System.Windows.Forms.Button BtnStart;
         private System.Windows.Forms.PictureBox pbWebCam;
         private System.Windows.Forms.TextBox txbResult;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

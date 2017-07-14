@@ -95,11 +95,11 @@
     <Compile Include="AttendanceForm.Designer.cs">
       <DependentUpon>AttendanceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AttendanceForm2.cs">
+    <Compile Include="AttendanceSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AttendanceForm2.Designer.cs">
-      <DependentUpon>AttendanceForm2.cs</DependentUpon>
+    <Compile Include="AttendanceSelectForm.Designer.cs">
+      <DependentUpon>AttendanceSelectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AttendanceVideoForm.cs">
       <SubType>Form</SubType>
@@ -146,8 +146,8 @@
     <EmbeddedResource Include="AttendanceForm.resx">
       <DependentUpon>AttendanceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AttendanceForm2.resx">
-      <DependentUpon>AttendanceForm2.cs</DependentUpon>
+    <EmbeddedResource Include="AttendanceSelectForm.resx">
+      <DependentUpon>AttendanceSelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceVideoForm.resx">
       <DependentUpon>AttendanceVideoForm.cs</DependentUpon>
@@ -248,6 +248,8 @@
   <ItemGroup>
     <Content Include="Icon1.ico" />
     <Content Include="Icon2.ico" />
+    <None Include="Resources\attendance_check.png" />
+    <None Include="Resources\QR-scanner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

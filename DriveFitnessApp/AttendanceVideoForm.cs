@@ -19,7 +19,7 @@ namespace DriveFitnessApp
         public AttendanceVideoForm()
         {
             InitializeComponent();
-            pbWebCam.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbWebCam.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         public DateTime DateVisit { get { return dateTimePicker1.Value; } }
@@ -58,11 +58,11 @@ namespace DriveFitnessApp
             if (FormLoaded != null)
                 FormLoaded(this, EventArgs.Empty);
 
+            isStarted = false;
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             reader = new BarcodeReader();
-            reader.Options.PossibleFormats = new List<BarcodeFormat>();
-            reader.Options.PossibleFormats.Add(BarcodeFormat.QR_CODE);
-
+            reader.Options.PossibleFormats = new List<BarcodeFormat>() { BarcodeFormat.QR_CODE };
+            //reader.Options.PossibleFormats.Add(BarcodeFormat.QR_CODE);
 
             if (videoDevices.Count > 0)
             {
@@ -77,6 +77,8 @@ namespace DriveFitnessApp
         FilterInfoCollection videoDevices;
         VideoCaptureDevice videoSource;
         BarcodeReader reader;
+        bool isStarted;
+
         delegate void SetStringDelegate(string parameter);
 
         void SetResult(string result)
@@ -89,9 +91,27 @@ namespace DriveFitnessApp
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            videoSource = new VideoCaptureDevice(videoDevices[lbDevices.SelectedIndex].MonikerString);
-            videoSource.NewFrame += VideoSource_NewFrame;
-            videoSource.Start();
+            if (!isStarted)
+            {
+                if (lbDevices.Items.Count > 0)
+                {
+                    StartScan();
+                }
+                else
+                    MessageBox.Show(string.Format("К компьютеру не подключена Web-камера.{0}{0}Пожалуйста подключите Web-камеру и перезагрузите окно программы",
+                        Environment.NewLine
+                        ),
+                        "Ошибка подключение Web-камеры", MessageBoxButtons.OK, MessageBoxIcon.Error
+                        );
+
+            }
+            else
+            {
+                videoSource.SignalToStop();
+                videoSource.WaitForStop();
+                BtnStart.Text = "Старт";
+                isStarted = false;
+            }
         }
 
         private void VideoSource_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
@@ -105,10 +125,28 @@ namespace DriveFitnessApp
             if (result != null)
             {
                 SetResult(result.Text);
+                scannedQr = result.Text;
+
+                if (VisitationChecked != null)
+                    VisitationChecked(this, EventArgs.Empty);
             }
         }
 
         private void AttendanceVideoForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            StopScan();
+        }
+
+        void StartScan()
+        {
+            videoSource = new VideoCaptureDevice(videoDevices[lbDevices.SelectedIndex].MonikerString);
+            videoSource.NewFrame += VideoSource_NewFrame;
+            videoSource.Start();
+            BtnStart.Text = "Stop";
+            isStarted = true;
+        }
+
+        void StopScan()
         {
             if (videoSource != null)
             {

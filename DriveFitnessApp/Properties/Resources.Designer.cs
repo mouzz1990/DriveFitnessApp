@@ -83,6 +83,16 @@ namespace DriveFitnessApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap attendance_check {
+            get {
+                object obj = ResourceManager.GetObject("attendance_check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ClientChangeInfo {
             get {
                 object obj = ResourceManager.GetObject("ClientChangeInfo", resourceCulture);
@@ -136,6 +146,16 @@ namespace DriveFitnessApp.Properties {
         internal static System.Drawing.Bitmap GroupsEdit {
             get {
                 object obj = ResourceManager.GetObject("GroupsEdit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QR_scanner {
+            get {
+                object obj = ResourceManager.GetObject("QR-scanner", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

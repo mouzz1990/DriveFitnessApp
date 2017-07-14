@@ -69,7 +69,7 @@ namespace DriveFitnessLibrary.Managers
 
         void AddAttendanceByCash(Client client, DateTime dateVisit, float price)
         {
-            string priceString = price.ToString().Replace(',', '.');
+            //string priceString = price.ToString().Replace(',', '.');
 
             string querry = string.Format(
                     dtFormatter,
@@ -77,8 +77,10 @@ namespace DriveFitnessLibrary.Managers
                 "VALUES ('{0}', '{1}', '{2}', '{3}');",
                         client.ID,
                         dateVisit,
-                        priceString,
-                        priceString
+                        price,
+                        price
+                        //priceString,
+                        //priceString
                         );
 
             string paymnt = "Наличный расчет " + price + " грн.";

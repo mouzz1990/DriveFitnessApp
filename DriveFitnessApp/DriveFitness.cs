@@ -66,10 +66,10 @@ namespace DriveFitnessApp
 
         private void BtnAttendance_Click(object sender, EventArgs e)
         {
-            AttendanceForm atF = new AttendanceForm();
-            AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, atF);
+            
+            AttendanceSelectForm atSelect = new AttendanceSelectForm(attendanceManager, groupManager);
 
-            atF.ShowDialog();
+            atSelect.ShowDialog();
 
         }
 
@@ -80,12 +80,7 @@ namespace DriveFitnessApp
 
         private void BtnAttendance2_Click(object sender, EventArgs e)
         {
-            AttendanceForm2 atF2 = new AttendanceForm2();
-            AttendanceVideoForm avf = new AttendanceVideoForm();
-            //AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, atF2);
-            AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, avf);
-
-            avf.ShowDialog();
+            
         }
     }
 }

@@ -44,7 +44,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BtnAttendance2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -119,7 +118,7 @@
             this.BtnChangeClientInfo.Name = "BtnChangeClientInfo";
             this.BtnChangeClientInfo.Size = new System.Drawing.Size(410, 40);
             this.BtnChangeClientInfo.TabIndex = 2;
-            this.BtnChangeClientInfo.Text = "Изменение информации";
+            this.BtnChangeClientInfo.Text = "Информация о клиентах";
             this.BtnChangeClientInfo.UseVisualStyleBackColor = true;
             this.BtnChangeClientInfo.Click += new System.EventHandler(this.BtnChangeClientInfo_Click);
             // 
@@ -132,7 +131,7 @@
             this.BtnAddNewClient.Name = "BtnAddNewClient";
             this.BtnAddNewClient.Size = new System.Drawing.Size(410, 40);
             this.BtnAddNewClient.TabIndex = 1;
-            this.BtnAddNewClient.Text = "Добавить нового клиента";
+            this.BtnAddNewClient.Text = "   Добавить нового клиента";
             this.BtnAddNewClient.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnAddNewClient.UseVisualStyleBackColor = true;
             this.BtnAddNewClient.Click += new System.EventHandler(this.BtnAddNewClient_Click);
@@ -213,30 +212,15 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
-            // 
-            // BtnAttendance2
-            // 
-            this.BtnAttendance2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnAttendance2.Image = global::DriveFitnessApp.Properties.Resources.Attendance;
-            this.BtnAttendance2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAttendance2.Location = new System.Drawing.Point(24, 463);
-            this.BtnAttendance2.Name = "BtnAttendance2";
-            this.BtnAttendance2.Size = new System.Drawing.Size(410, 40);
-            this.BtnAttendance2.TabIndex = 0;
-            this.BtnAttendance2.Text = "Учет посещаемости клиентов";
-            this.BtnAttendance2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnAttendance2.UseVisualStyleBackColor = true;
-            this.BtnAttendance2.Click += new System.EventHandler(this.BtnAttendance2_Click);
             // 
             // DriveFitness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 511);
-            this.Controls.Add(this.BtnAttendance2);
+            this.ClientSize = new System.Drawing.Size(454, 465);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -279,7 +263,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
-        private System.Windows.Forms.Button BtnAttendance2;
 
     }
 }
