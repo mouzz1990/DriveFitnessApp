@@ -78,6 +78,7 @@ namespace DriveFitnessApp
         VideoCaptureDevice videoSource;
         BarcodeReader reader;
         bool isStarted;
+        object locker;
 
         delegate void SetStringDelegate(string parameter);
 
@@ -103,19 +104,16 @@ namespace DriveFitnessApp
                         ),
                         "Ошибка подключение Web-камеры", MessageBoxButtons.OK, MessageBoxIcon.Error
                         );
-
             }
             else
             {
-                videoSource.SignalToStop();
-                videoSource.WaitForStop();
-                BtnStart.Text = "Старт";
-                isStarted = false;
+                StopScan();
             }
         }
 
         private void VideoSource_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
         {
+
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
 
             pbWebCam.Image = bitmap;
@@ -129,6 +127,8 @@ namespace DriveFitnessApp
 
                 if (VisitationChecked != null)
                     VisitationChecked(this, EventArgs.Empty);
+                
+                StopScan();
             }
         }
 
@@ -142,7 +142,7 @@ namespace DriveFitnessApp
             videoSource = new VideoCaptureDevice(videoDevices[lbDevices.SelectedIndex].MonikerString);
             videoSource.NewFrame += VideoSource_NewFrame;
             videoSource.Start();
-            BtnStart.Text = "Stop";
+            BtnStart.Text = "Стоп";
             isStarted = true;
         }
 
@@ -151,7 +151,10 @@ namespace DriveFitnessApp
             if (videoSource != null)
             {
                 videoSource.SignalToStop();
+                videoSource.NewFrame -= VideoSource_NewFrame;
                 videoSource.WaitForStop();
+                BtnStart.Text = "Старт";
+                isStarted = false;
             }
         }
     }
