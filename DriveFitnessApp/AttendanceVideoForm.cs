@@ -152,7 +152,7 @@ namespace DriveFitnessApp
             {
                 videoSource.SignalToStop();
                 videoSource.NewFrame -= VideoSource_NewFrame;
-                videoSource.WaitForStop();
+                //videoSource.WaitForStop();
                 BtnStart.Text = "Старт";
                 isStarted = false;
             }
