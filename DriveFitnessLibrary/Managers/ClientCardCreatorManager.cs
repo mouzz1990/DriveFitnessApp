@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using DriveFitnessLibrary.DriveInterfaces;
 using ZXing.QrCode;
 using ZXing;
@@ -13,9 +11,11 @@ namespace DriveFitnessLibrary.Managers
 {
     public class ClientCardCreatorManager : IClientCardCreator
     {
-        public void MakeClientCard(Client client)
+        string filename;
+
+        void CreateQrCodeImage(Client client)
         {
-            string filename = string.Format("{0}.jpeg", client);
+            filename = string.Format("{0}.jpeg", client);
 
             try
             {
@@ -24,7 +24,7 @@ namespace DriveFitnessLibrary.Managers
 
                 QRCodeWriter qrEncode = new QRCodeWriter();
 
-                string encString = string.Format("{0}:{1} {2}", client.ID, client.Name, client.LastName);
+                string encString = string.Format("{0}:{1}", client.ID, client);
 
                 Dictionary<EncodeHintType, object> hints = new Dictionary<EncodeHintType, object>();    //для колекции поведений
                 hints.Add(EncodeHintType.CHARACTER_SET, "utf-8");
@@ -48,6 +48,11 @@ namespace DriveFitnessLibrary.Managers
             {
                 throw new Exception("Невозможно создать карту клиента. Пожалуйста попробуйте позже или перезапустите приложение");
             }
+        }
+
+        public void MakeClientCard(Client client)
+        {
+            CreateQrCodeImage(client);
         }
     }
 }

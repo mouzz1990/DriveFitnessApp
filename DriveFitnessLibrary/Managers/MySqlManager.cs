@@ -10,7 +10,7 @@ namespace DriveFitnessLibrary.Managers
     public class MySqlManager : IDataBaseExecutable
     {
         public static MySqlManager SqlManager { get; set; }
-        static readonly string connString = "server=192.168.0.1;database=drivefitness;pwd=root;user=root;";
+        static readonly string connString = "server=localhost;database=drivefitness;pwd=root;user=root;";
 
         static MySqlManager()
         {

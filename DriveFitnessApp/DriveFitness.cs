@@ -1,5 +1,4 @@
-﻿using DriveFitnessLibrary;
-using DriveFitnessLibrary.Managers;
+﻿using DriveFitnessLibrary.Managers;
 using System;
 using System.Windows.Forms;
 using DriveFitnessLibrary.Presenters;

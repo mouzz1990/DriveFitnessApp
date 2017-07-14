@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using DriveFitnessLibrary.DriveInterfaces;
 using DriveFitnessLibrary.ViewInterfaces;
-using DriveFitnessLibrary.Managers;
 
 namespace DriveFitnessLibrary.Presenters
 {
