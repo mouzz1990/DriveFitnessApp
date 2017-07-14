@@ -78,8 +78,7 @@ namespace DriveFitnessApp
         VideoCaptureDevice videoSource;
         BarcodeReader reader;
         bool isStarted;
-        object locker;
-
+        
         delegate void SetStringDelegate(string parameter);
 
         void SetResult(string result)
@@ -153,6 +152,8 @@ namespace DriveFitnessApp
                 videoSource.SignalToStop();
                 videoSource.NewFrame -= VideoSource_NewFrame;
                 //videoSource.WaitForStop();
+                pbWebCam.Image = new Bitmap(300, 300);
+                txbResult.Text = string.Empty;
                 BtnStart.Text = "Старт";
                 isStarted = false;
             }
