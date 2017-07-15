@@ -15,7 +15,7 @@ namespace DriveFitnessLibrary.Managers
         {
             subscriptionManager = sm;
             DataBaseManager = subscriptionManager.DataBaseManager;
-            messager = sm.messager;
+            messager = subscriptionManager.messager;
             
             dtFormatter = new DateTimeFormatter();
         }

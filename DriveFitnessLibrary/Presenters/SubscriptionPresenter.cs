@@ -11,8 +11,7 @@ namespace DriveFitnessLibrary.Presenters
         IGroupManager groupManager;
         ISubscriptionManager subscriptionManager;
         IMessager messager;
-        IDataBaseExecutable DataBaseManager;
-
+        
         public SubscriptionPresenter(ISubscriptionManager subscriptionManager, IGroupManager groupManager, IMessager messager, IClientManager clientManager, ISubscriptionView view)
         {
             this.view = view;

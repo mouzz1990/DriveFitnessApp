@@ -41,7 +41,12 @@ namespace DriveFitnessLibrary.Presenters
             }
             catch (Exception exc)
             {
-                messager.ErrorMessage(exc.Message);
+                messager.ErrorMessage(string.Format("{0}{1}{1}{2}{1}{3}",
+                    exc.Message,
+                    Environment.NewLine,
+                    exc.TargetSite,
+                    exc.StackTrace
+                    ));
             }
         }
 

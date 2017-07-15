@@ -6,21 +6,36 @@ using ZXing;
 using ZXing.Common;
 using System.Drawing;
 using System.IO;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace DriveFitnessLibrary.Managers
 {
     public class ClientCardCreatorManager : IClientCardCreator
     {
-        string filename;
+        string filenameQrCode;
+        
+        string patternCardPath = string.Format(@"{0}\ClientCard.dotm", Environment.CurrentDirectory);
+
+        public void MakeClientCard(Client client)
+        {
+            CreateQrCodeImage(client);
+
+            CreateWordDocument(client);
+        }
 
         void CreateQrCodeImage(Client client)
         {
-            filename = string.Format("{0}.jpeg", client);
+            if (!Directory.Exists("ClientCards"))
+            {
+                Directory.CreateDirectory("ClientCards");
+            }
+
+            filenameQrCode = string.Format(@"ClientCards\{0}.jpeg", client);
 
             try
             {
-                if (File.Exists(filename))
-                    File.Delete(filename);
+                if (File.Exists(filenameQrCode))
+                    File.Delete(filenameQrCode);
 
                 QRCodeWriter qrEncode = new QRCodeWriter();
 
@@ -41,7 +56,7 @@ namespace DriveFitnessLibrary.Managers
 
                 Bitmap qrImage = qrWriter.Write(qrMatrix);
 
-                qrImage.Save(filename, System.Drawing.Imaging.ImageFormat.Jpeg);
+                qrImage.Save(filenameQrCode, System.Drawing.Imaging.ImageFormat.Jpeg);
                 qrImage.Dispose();
             }
             catch
@@ -50,9 +65,44 @@ namespace DriveFitnessLibrary.Managers
             }
         }
 
-        public void MakeClientCard(Client client)
+        void CreateWordDocument(Client client)
         {
-            CreateQrCodeImage(client);
+            string fileQrPath = string.Format(@"{0}\{1}", Environment.CurrentDirectory, filenameQrCode);
+
+            Word.Application wApp = new Word.Application();
+            Word.Document wDoc = wApp.Documents.Add(patternCardPath);
+
+            foreach (Word.Bookmark b in wDoc.Bookmarks)
+            {
+                if (b.Name == "clientInfo")
+                {
+                    Word.Range range = b.Range;
+                    range.Text = client.ToString();
+                }
+
+                if (b.Name == "qrCode")
+                {
+                    Word.Range rangeB = b.Range;
+                    object f = false;
+                    object t = true;
+                    object left = Type.Missing;
+                    object top = Type.Missing;
+                    object width = 93;
+                    object height = 93;
+                    object range = rangeB;
+                    Word.WdWrapType wrap = Word.WdWrapType.wdWrapSquare;
+
+                    wDoc.Shapes.AddPicture(fileQrPath, ref f, ref t, ref left, ref top, ref width, ref height, ref range).WrapFormat.Type = wrap;
+                }
+            }
+
+            wDoc.SaveAs(string.Format(@"{0}\ClientCards\{1}", 
+                Environment.CurrentDirectory, 
+                client + ".docx"
+                ));
+
+            wApp.Visible = true;
+            wApp.Activate();
         }
     }
 }

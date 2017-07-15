@@ -54,11 +54,11 @@ namespace DriveFitnessApp
                 FormLoaded(this, EventArgs.Empty);
 
             isStarted = false;
+
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             reader = new BarcodeReader();
             reader.Options.PossibleFormats = new List<BarcodeFormat>() { BarcodeFormat.QR_CODE };
-            //reader.Options.PossibleFormats.Add(BarcodeFormat.QR_CODE);
-
+            
             if (videoDevices.Count > 0)
             {
                 foreach (FilterInfo d in videoDevices)
@@ -104,7 +104,7 @@ namespace DriveFitnessApp
                 StopScan();
             }
         }
-
+        
         private void VideoSource_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
         {
 
@@ -113,7 +113,7 @@ namespace DriveFitnessApp
             pbWebCam.Image = bitmap;
 
             Result result = reader.Decode((Bitmap)eventArgs.Frame.Clone());
-
+            
             if (result != null)
             {
                 SetResult(result.Text);
