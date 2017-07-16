@@ -139,14 +139,17 @@
   <data name="SubscriptionAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SubscriptionAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="QR-scanner" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\QR-scanner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Groups" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Groups.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AddClient" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddClient.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Groups" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Groups.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="QR-scanner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\QR-scanner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attendance_remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Attendance_remove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Attendance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Attendance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,10 +157,16 @@
   <data name="Report1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Report1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SubscriptionChange" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SubscriptionChange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="GroupsEdit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GroupsEdit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="attendance_check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\attendance_check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SubscriptionClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SubscriptionClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

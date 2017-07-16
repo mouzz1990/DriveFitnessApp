@@ -23,6 +23,23 @@ namespace DriveFitnessLibrary.Presenters
             view.AddNewSubscription += new EventHandler(view_AddNewSubscription);
             view.Refresh += new EventHandler(view_Refresh);
             view.AddNewSubscription += view_Refresh;
+            view.CloseSubscription += View_CloseSubscription;
+            view.ChangeSubscription += View_ChangeSubscription;
+        }
+
+        private void View_ChangeSubscription(object sender, EventArgs e)
+        {
+            subscriptionManager.ChangeSubscriptionData(
+                view.Client, 
+                view.SelectedSubscriptionCount, 
+                view.SelectedSubscriptionPrice,
+                view.SelectedSubscriptionDate
+                );
+        }
+
+        private void View_CloseSubscription(object sender, EventArgs e)
+        {
+            subscriptionManager.CloseSubscription(view.Client);
         }
 
         void view_Refresh(object sender, EventArgs e)

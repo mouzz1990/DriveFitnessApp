@@ -130,6 +130,8 @@
             // 
             this.BtnRemoveAttendance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnRemoveAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnRemoveAttendance.Image = global::DriveFitnessApp.Properties.Resources.Attendance_remove;
+            this.BtnRemoveAttendance.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnRemoveAttendance.Location = new System.Drawing.Point(9, 381);
             this.BtnRemoveAttendance.Name = "BtnRemoveAttendance";
             this.BtnRemoveAttendance.Size = new System.Drawing.Size(142, 57);
@@ -182,7 +184,7 @@
             this.mcVisitation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mcVisitation.ApptFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.mcVisitation.ApptFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.mcVisitation.BackColor = System.Drawing.Color.LightSteelBlue;
             this.mcVisitation.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.mcVisitation.BoldedDateFontColor = System.Drawing.Color.Red;
@@ -273,7 +275,6 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MaximumSize = new System.Drawing.Size(1100, 700);
             this.MinimumSize = new System.Drawing.Size(715, 505);
             this.Name = "AttendanceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

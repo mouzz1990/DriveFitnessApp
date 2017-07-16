@@ -69,5 +69,23 @@ namespace DriveFitnessLibrary.Managers
                 client.Subscription.CountTraining)
                 );
         }
+        public void ChangeSubscriptionData(Client client, int newCount, float newPrice, DateTime dateBuy)
+        {
+            string querry = string.Format(dtFormatter,
+                "UPDATE `drivefitness`.`subscription` SET `count`='{0}', `subprice`='{1}', `subdate`='{2}' WHERE `id`='{3}';",
+                newCount,
+                newPrice,
+                dateBuy,
+                client.Subscription.ID
+                );
+
+            DataBaseManager.SendCommand(querry);
+
+            messager.SuccessMessage(string.Format(
+                "Информация об абонементе клиента \"{0}\" успешно изменена.",
+                client
+                )
+                );
+        }
     }
 }

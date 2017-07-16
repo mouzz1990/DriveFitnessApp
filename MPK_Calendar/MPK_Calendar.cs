@@ -65,8 +65,8 @@ namespace MPK_Calendar
 		private Font p_HeaderFont = new Font(FontFamily.GenericSansSerif,9,FontStyle.Regular);
 		private Rectangle[,] rects;
 		private Rectangle[] rectDays;
-		private string[] strDays = new string[7] {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
-		private string[] strAbbrDays = new string[7] {"Вс","Пн","Вт","Ср","Чт","Пт","Сб"};
+		private string[] strDays = new string[7] {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday", "Sunday"};
+		private string[] strAbbrDays = new string[7] {"Пн","Вт","Ср","Чт","Пт","Сб", "Вс"};
 		private string[] strMonths = new string[12] {"Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"};
 		private string[] strAbbrMonths = new string[12] {"Янв","Фев","Мрт","Апр","Май","Июн","Июл","Авг","Сен","Окт","Нбр","Дек"};
 		
@@ -819,7 +819,7 @@ namespace MPK_Calendar
 						}
 						else if(bActive)//not selected but active
 						{
-							if(((i == 0) || (i==6)) && p_DisplayWeekendsDarker)//weekend
+							if(((i == 5) || (i==6)) && p_DisplayWeekendsDarker)//weekend
 							{
 								g.FillRectangle(brushActiveDarker,rects[i,j]);
 							}

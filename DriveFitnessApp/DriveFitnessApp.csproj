@@ -250,6 +250,9 @@
   <ItemGroup>
     <Content Include="Icon1.ico" />
     <Content Include="Icon2.ico" />
+    <None Include="Resources\SubscriptionClose.png" />
+    <None Include="Resources\SubscriptionChange.png" />
+    <None Include="Resources\Attendance_remove.png" />
     <None Include="Resources\attendance_check.png" />
     <None Include="Resources\QR-scanner.png" />
   </ItemGroup>
