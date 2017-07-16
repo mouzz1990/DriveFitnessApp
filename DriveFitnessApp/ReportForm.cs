@@ -54,7 +54,6 @@ namespace DriveFitnessApp
             if (cmbGroup.Items.Count >= 0) cmbGroup.SelectedIndex = 0;
         }
 
-
         public void DisplayAttendanceTable(DataTable AttendanceTable)
         {
             dgvReport.DataSource = null;

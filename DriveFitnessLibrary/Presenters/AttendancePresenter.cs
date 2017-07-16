@@ -18,6 +18,19 @@ namespace DriveFitnessLibrary.Presenters
 
             view.VisitationChecked += new EventHandler(view_VisitationChecked);
             view.FormLoaded += new EventHandler(view_FormLoaded);
+            view.ClientChanged += View_ClientChanged;
+            view.VisitationDeleted += View_VisitationDeleted;
+        }
+
+        private void View_VisitationDeleted(object sender, EventArgs e)
+        {
+            attendanceManager.RemoveAttendance(view.GetClient(), view.DateVisit);
+        }
+
+        private void View_ClientChanged(object sender, EventArgs e)
+        {
+            Client client = view.GetClient();
+            view.DisplayVisitedDates(attendanceManager.GetAttendanceDates(client));
         }
 
         void view_FormLoaded(object sender, EventArgs e)

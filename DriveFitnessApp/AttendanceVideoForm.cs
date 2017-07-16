@@ -23,6 +23,8 @@ namespace DriveFitnessApp
 
         public event EventHandler VisitationChecked;
         public event EventHandler FormLoaded;
+        public event EventHandler ClientChanged;
+        public event EventHandler VisitationDeleted;
 
         List<Group> groupList;
         string scannedQr;
@@ -152,6 +154,11 @@ namespace DriveFitnessApp
                 BtnStart.Text = "Старт";
                 isStarted = false;
             }
+        }
+
+        public void DisplayVisitedDates(List<DateTime> datesVisitation)
+        {
+            throw new NotImplementedException();
         }
     }
 }

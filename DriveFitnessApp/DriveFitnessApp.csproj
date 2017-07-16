@@ -258,6 +258,10 @@
       <Project>{cb75d05b-1db4-4710-b327-ea3f97d64b16}</Project>
       <Name>DriveFitnessLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MPK_Calendar\MPK_Calendar.csproj">
+      <Project>{406c22da-812c-403e-a7da-8c231f188d8f}</Project>
+      <Name>MPK_Calendar</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

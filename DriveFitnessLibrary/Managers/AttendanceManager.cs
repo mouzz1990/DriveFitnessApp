@@ -1,5 +1,6 @@
 ﻿using DriveFitnessLibrary.DriveInterfaces;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DriveFitnessLibrary.Managers
@@ -119,7 +120,47 @@ namespace DriveFitnessLibrary.Managers
 
         public void RemoveAttendance(Client client, DateTime dateVisit)
         {
-            throw new NotImplementedException();
+            if (!CheckAttendance(client, dateVisit))
+            {
+                string querry = string.Format(dtFormatter,
+                    "DELETE FROM `drivefitness`.`attendance` WHERE `clientid`='{0}' AND `datevisit`='{1}';",
+                    client.ID,
+                    dateVisit
+                    );
+
+                DataBaseManager.SendCommand(querry);
+
+                messager.SuccessMessage(string.Format("Посещение клиента \"{0}\"успешно удалено!", 
+                    client
+                    ));
+            }
+            else
+            {
+                messager.ErrorMessage(string.Format("Клиент \"{0}\"не посещал занятие: {1}.{2}{2}Операция отменена.",
+                    client,
+                    dateVisit.ToShortDateString(),
+                    Environment.NewLine
+                    ));
+            }
+        }
+
+        public List<DateTime> GetAttendanceDates(Client client)
+        {
+            string querry = string.Format(
+                "SELECT `datevisit` FROM `drivefitness`.`attendance` WHERE `clientid`='{0}'",
+                client.ID
+                );
+
+            DataTable datesTable = DataBaseManager.GetData(querry);
+
+            List<DateTime> datesList = new List<DateTime>();
+
+            foreach (var date in datesTable.Select())
+            {
+                datesList.Add((DateTime)date["datevisit"]);
+            }
+
+            return datesList;
         }
     }
 }

@@ -1,9 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.12
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriveFitnessApp", "DriveFitnessApp\DriveFitnessApp.csproj", "{F547A3A3-6B5C-4178-B3D5-7A140C74F5E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriveFitnessLibrary", "DriveFitnessLibrary\DriveFitnessLibrary.csproj", "{CB75D05B-1DB4-4710-B327-EA3F97D64B16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPK_Calendar", "MPK_Calendar\MPK_Calendar.csproj", "{406C22DA-812C-403E-A7DA-8C231F188D8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{CB75D05B-1DB4-4710-B327-EA3F97D64B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB75D05B-1DB4-4710-B327-EA3F97D64B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB75D05B-1DB4-4710-B327-EA3F97D64B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{406C22DA-812C-403E-A7DA-8C231F188D8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{406C22DA-812C-403E-A7DA-8C231F188D8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{406C22DA-812C-403E-A7DA-8C231F188D8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{406C22DA-812C-403E-A7DA-8C231F188D8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

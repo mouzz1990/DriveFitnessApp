@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using DriveFitnessLibrary.ViewInterfaces;
 using DriveFitnessLibrary;
+using MPK_Calendar;
 
 namespace DriveFitnessApp
 {
@@ -11,13 +12,11 @@ namespace DriveFitnessApp
         public AttendanceForm()
         {
             InitializeComponent();
+            pSubscription.Visible = false;
+            dtpVisit.Enabled = false;
+            pCheck.Visible = false;
         }
-
-        //public Client Client
-        //{
-        //    get { return (Client)lbClients.SelectedItem; }
-        //}
-
+        
         public DateTime DateVisit
         {
             get { return dtpVisit.Value; }
@@ -36,6 +35,8 @@ namespace DriveFitnessApp
 
         public event EventHandler VisitationChecked;
         public event EventHandler FormLoaded;
+        public event EventHandler ClientChanged;
+        public event EventHandler VisitationDeleted;
 
         public Client GetClient()
         {
@@ -48,7 +49,8 @@ namespace DriveFitnessApp
             if (VisitationChecked != null)
                 VisitationChecked(this, EventArgs.Empty);
 
-            pgClientInfo.Refresh();
+            if (ClientChanged != null) ClientChanged(this, EventArgs.Empty);
+            //pgClientInfo.Refresh();
         }
 
         public void DisplayGroups(List<Group> group)
@@ -63,8 +65,8 @@ namespace DriveFitnessApp
 
         private void AttendanceForm_Load(object sender, EventArgs e)
         {
-            lbPrice.Visible = false;
-            numPrice.Visible = false;
+            lbPrice.Enabled = false;
+            numPrice.Enabled = false;
 
             if (FormLoaded != null)
                 FormLoaded(this, EventArgs.Empty);
@@ -73,30 +75,78 @@ namespace DriveFitnessApp
         private void cmbGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             lbClients.Items.Clear();
-
+            pCheck.Visible = false;
             foreach (var c in ((Group)cmbGroup.SelectedItem).ClientsList)
                 lbClients.Items.Add(c);
         }
 
         private void lbClients_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbClients.SelectedIndex < 0) return;
-            
+            if (lbClients.SelectedIndex < 0)
+            {
+                pCheck.Visible = false;
+                return;
+            }
+
+            pCheck.Visible = true;
             Client client = (Client)lbClients.SelectedItem;
 
-            pgClientInfo.SelectedObject = client;
+            DisplayClientInformatio(client);
+
+            if (ClientChanged != null) ClientChanged(this, EventArgs.Empty);
+
+            //pgClientInfo.SelectedObject = client;
 
             if (client.Subscription != null)
             {
-                numPrice.Visible = false;
-                lbPrice.Visible = false;
+                numPrice.Enabled = false;
+                lbPrice.Enabled = false;
             }
             else
             {
-                numPrice.Visible = true;
-                lbPrice.Visible = true;
+                numPrice.Enabled = true;
+                lbPrice.Enabled = true;
             }
-            
+        }
+
+        void DisplayClientInformatio(Client client)
+        {
+            if (client.Subscription != null)
+            {
+                pSubscription.Visible = true;
+                txbSubscriptionCount.Text = client.Subscription.CountTraining.ToString();
+            }
+            else
+            {
+                pSubscription.Visible = false;
+            }
+        }
+
+        public void DisplayVisitedDates(List<DateTime> datesVisitation)
+        {
+            mcVisitation.BoldedDates = datesVisitation.ToArray();
+
+            //mcVisitation.Update();
+            mcVisitation.Visible = false;
+            mcVisitation.Visible = true;
+        }
+
+        private void mcVisitation_SelectedDateChanged(object sender, SelectedDateChangedEventArgs e)
+        {
+            dtpVisit.Value = mcVisitation.SelectedDate;
+        }
+
+        private void dtpVisit_ValueChanged(object sender, EventArgs e)
+        {
+            mcVisitation.SelectedDate = dtpVisit.Value;
+        }
+
+        private void BtnRemoveAttendance_Click(object sender, EventArgs e)
+        {
+            if (VisitationDeleted != null)
+                VisitationDeleted(this, EventArgs.Empty);
+
+            if (ClientChanged != null) ClientChanged(this, EventArgs.Empty);
         }
     }
 }

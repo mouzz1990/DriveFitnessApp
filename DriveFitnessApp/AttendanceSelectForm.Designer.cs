@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.pAutoScan = new System.Windows.Forms.Panel();
+            this.BtnAuto = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pManualScan = new System.Windows.Forms.Panel();
+            this.BtnManual = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.BtnManual = new System.Windows.Forms.Button();
-            this.BtnAuto = new System.Windows.Forms.Button();
             this.pAutoScan.SuspendLayout();
             this.pManualScan.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +51,16 @@
             this.pAutoScan.Name = "pAutoScan";
             this.pAutoScan.Size = new System.Drawing.Size(250, 250);
             this.pAutoScan.TabIndex = 0;
+            // 
+            // BtnAuto
+            // 
+            this.BtnAuto.Image = global::DriveFitnessApp.Properties.Resources.QR_scanner;
+            this.BtnAuto.Location = new System.Drawing.Point(50, 67);
+            this.BtnAuto.Name = "BtnAuto";
+            this.BtnAuto.Size = new System.Drawing.Size(150, 150);
+            this.BtnAuto.TabIndex = 2;
+            this.BtnAuto.UseVisualStyleBackColor = true;
+            this.BtnAuto.Click += new System.EventHandler(this.BtnAuto_Click);
             // 
             // label2
             // 
@@ -82,24 +92,6 @@
             this.pManualScan.Size = new System.Drawing.Size(250, 250);
             this.pManualScan.TabIndex = 1;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(39, 34);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = " с в ручном режиме";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Учет посещения";
-            // 
             // BtnManual
             // 
             this.BtnManual.Image = global::DriveFitnessApp.Properties.Resources.attendance_check;
@@ -110,15 +102,23 @@
             this.BtnManual.UseVisualStyleBackColor = true;
             this.BtnManual.Click += new System.EventHandler(this.BtnManual_Click);
             // 
-            // BtnAuto
+            // label4
             // 
-            this.BtnAuto.Image = global::DriveFitnessApp.Properties.Resources.QR_scanner;
-            this.BtnAuto.Location = new System.Drawing.Point(50, 67);
-            this.BtnAuto.Name = "BtnAuto";
-            this.BtnAuto.Size = new System.Drawing.Size(150, 150);
-            this.BtnAuto.TabIndex = 2;
-            this.BtnAuto.UseVisualStyleBackColor = true;
-            this.BtnAuto.Click += new System.EventHandler(this.BtnAuto_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(50, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(153, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "в ручном режиме";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(51, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(148, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Учет посещения";
             // 
             // AttendanceSelectForm
             // 

@@ -43,12 +43,16 @@ namespace DriveFitnessApp
         {
             if (AddNewGroup != null)
                 AddNewGroup(this, EventArgs.Empty);
+
+            txbAdd.Text = string.Empty;
         }
 
         private void BtnChange_Click(object sender, EventArgs e)
         {
             if (ChangeGroup != null)
                 ChangeGroup(this, EventArgs.Empty);
+
+            pEdit.Visible = false;
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -59,6 +63,7 @@ namespace DriveFitnessApp
                     RemoveGroup(this, EventArgs.Empty);
 
                 txbEdit.Text = string.Empty;
+                pEdit.Visible = false;
             }
             catch (RemoveGroupException rge)
             {
