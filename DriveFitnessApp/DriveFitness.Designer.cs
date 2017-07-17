@@ -44,6 +44,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.связьСКлиентамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msSendMessage = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -194,7 +196,8 @@
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.менюToolStripMenuItem});
+            this.менюToolStripMenuItem,
+            this.связьСКлиентамиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(454, 29);
@@ -212,9 +215,24 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
+            // связьСКлиентамиToolStripMenuItem
+            // 
+            this.связьСКлиентамиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msSendMessage});
+            this.связьСКлиентамиToolStripMenuItem.Name = "связьСКлиентамиToolStripMenuItem";
+            this.связьСКлиентамиToolStripMenuItem.Size = new System.Drawing.Size(155, 25);
+            this.связьСКлиентамиToolStripMenuItem.Text = "Связь с клиентами";
+            // 
+            // msSendMessage
+            // 
+            this.msSendMessage.Name = "msSendMessage";
+            this.msSendMessage.Size = new System.Drawing.Size(242, 26);
+            this.msSendMessage.Text = "Отправить сообщение";
+            this.msSendMessage.Click += new System.EventHandler(this.msSendMessage_Click);
             // 
             // DriveFitness
             // 
@@ -266,6 +284,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem связьСКлиентамиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem msSendMessage;
 
     }
 }

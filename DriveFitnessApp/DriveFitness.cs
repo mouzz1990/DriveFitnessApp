@@ -2,6 +2,8 @@
 using System;
 using System.Windows.Forms;
 using DriveFitnessLibrary.Presenters;
+using DriveFitnessLibrary.DriveInterfaces;
+using DriveFitnessLibrary.MessageSenders;
 
 namespace DriveFitnessApp
 {
@@ -15,7 +17,8 @@ namespace DriveFitnessApp
         static SubscriptionManager subscriptionManager = new SubscriptionManager(dataBaseManager, messager);
         static ClientManager clientManager = new ClientManager(dataBaseManager, messager, subscriptionManager);
         static AttendanceManager attendanceManager = new AttendanceManager(subscriptionManager);
-
+        static MessageSenderEmail messageSender = new MessageSenderEmail(messager);
+        
         public DriveFitness()
         {
             InitializeComponent();
@@ -80,6 +83,14 @@ namespace DriveFitnessApp
         private void BtnAttendance2_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void msSendMessage_Click(object sender, EventArgs e)
+        {
+            MessageSenderForm msf = new MessageSenderForm();
+
+            SenderMessagePresenter smp = new SenderMessagePresenter(groupManager, messageSender, messager, msf);
+            msf.ShowDialog();
         }
     }
 }
