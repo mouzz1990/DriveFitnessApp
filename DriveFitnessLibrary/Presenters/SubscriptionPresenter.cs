@@ -25,6 +25,12 @@ namespace DriveFitnessLibrary.Presenters
             view.AddNewSubscription += view_Refresh;
             view.CloseSubscription += View_CloseSubscription;
             view.ChangeSubscription += View_ChangeSubscription;
+            view.RemoveSubscription += new EventHandler(view_RemoveSubscription);
+        }
+
+        void view_RemoveSubscription(object sender, EventArgs e)
+        {
+            subscriptionManager.RemoveSubscription(view.Client);
         }
 
         private void View_ChangeSubscription(object sender, EventArgs e)

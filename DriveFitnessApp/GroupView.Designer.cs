@@ -50,6 +50,8 @@
             // 
             // lbGroups
             // 
+            this.lbGroups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.lbGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbGroups.FormattingEnabled = true;
             this.lbGroups.ItemHeight = 20;
@@ -97,6 +99,8 @@
             // 
             // pEdit
             // 
+            this.pEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pEdit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pEdit.Controls.Add(this.BtnDelete);
             this.pEdit.Controls.Add(this.BtnChange);
@@ -110,6 +114,7 @@
             // 
             // BtnDelete
             // 
+            this.BtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnDelete.Image = global::DriveFitnessApp.Properties.Resources.GroupsDelete;
             this.BtnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -124,6 +129,7 @@
             // 
             // BtnChange
             // 
+            this.BtnChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnChange.Image = global::DriveFitnessApp.Properties.Resources.GroupsEdit;
             this.BtnChange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -148,6 +154,8 @@
             // 
             // txbEdit
             // 
+            this.txbEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txbEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txbEdit.Location = new System.Drawing.Point(18, 39);
             this.txbEdit.Name = "txbEdit";
@@ -156,6 +164,8 @@
             // 
             // pAdd
             // 
+            this.pAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pAdd.Controls.Add(this.BtnAdd);
             this.pAdd.Controls.Add(this.label3);
@@ -168,6 +178,7 @@
             // 
             // BtnAdd
             // 
+            this.BtnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnAdd.Image = global::DriveFitnessApp.Properties.Resources.GroupsAdd;
             this.BtnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -192,6 +203,8 @@
             // 
             // txbAdd
             // 
+            this.txbAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txbAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txbAdd.Location = new System.Drawing.Point(18, 37);
             this.txbAdd.Name = "txbAdd";
@@ -200,6 +213,8 @@
             // 
             // pGroups
             // 
+            this.pGroups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.pGroups.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pGroups.Controls.Add(this.label1);
             this.pGroups.Controls.Add(this.lbGroups);
@@ -221,6 +236,7 @@
             this.Controls.Add(this.rbEdit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(741, 479);
             this.Name = "GroupView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Работа с группами";

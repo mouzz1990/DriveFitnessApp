@@ -21,5 +21,6 @@ namespace DriveFitnessLibrary.ViewInterfaces
         event EventHandler Refresh;
         event EventHandler ChangeSubscription;
         event EventHandler CloseSubscription;
+        event EventHandler RemoveSubscription;
     }
 }

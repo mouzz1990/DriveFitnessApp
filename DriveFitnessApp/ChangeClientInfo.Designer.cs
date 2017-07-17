@@ -81,6 +81,7 @@
             // 
             // BtnBarCode
             // 
+            this.BtnBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnBarCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnBarCode.Image = global::DriveFitnessApp.Properties.Resources.SubscriptionAdd;
             this.BtnBarCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -95,7 +96,7 @@
             // 
             // BtnRemove
             // 
-            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnRemove.Image = global::DriveFitnessApp.Properties.Resources.ClientDelete;
@@ -301,7 +302,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pClientInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1100, 600);
             this.MinimumSize = new System.Drawing.Size(871, 477);
             this.Name = "ChangeClientInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

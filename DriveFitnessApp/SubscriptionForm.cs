@@ -80,6 +80,7 @@ namespace DriveFitnessApp
         public new event EventHandler Refresh;
         public event EventHandler ChangeSubscription;
         public event EventHandler CloseSubscription;
+        public event EventHandler RemoveSubscription;
 
         private void SubscriptionForm_Load(object sender, EventArgs e)
         {
@@ -189,6 +190,27 @@ namespace DriveFitnessApp
                 if (Refresh != null)
                     Refresh(this, EventArgs.Empty);
             }
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show(
+                string.Format("Вы уверены что хотите полностью удалить информацию об абонементе?{0}{0}Информация будет безвозвратно удалена из базы данных, сведения о покупке абонемента не будут учитываться в финансовых расчетах.", 
+                Environment.NewLine),
+                "Внести изменения?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Asterisk
+                );
+
+            if (dr == DialogResult.OK)
+            {
+                if (RemoveSubscription != null)
+                    RemoveSubscription(this, EventArgs.Empty);
+
+                if (Refresh != null)
+                    Refresh(this, EventArgs.Empty);
+            }
+            else return;
         }
     }
 }

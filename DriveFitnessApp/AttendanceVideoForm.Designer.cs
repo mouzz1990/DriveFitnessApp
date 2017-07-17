@@ -83,6 +83,8 @@
             // 
             // lbDevices
             // 
+            this.lbDevices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.lbDevices.FormattingEnabled = true;
             this.lbDevices.ItemHeight = 20;
             this.lbDevices.Location = new System.Drawing.Point(27, 96);
@@ -92,6 +94,7 @@
             // 
             // BtnStart
             // 
+            this.BtnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnStart.Location = new System.Drawing.Point(23, 246);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(342, 53);
@@ -102,8 +105,12 @@
             // 
             // pbWebCam
             // 
+            this.pbWebCam.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pbWebCam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbWebCam.Location = new System.Drawing.Point(375, 12);
+            this.pbWebCam.MinimumSize = new System.Drawing.Size(400, 225);
             this.pbWebCam.Name = "pbWebCam";
             this.pbWebCam.Size = new System.Drawing.Size(400, 225);
             this.pbWebCam.TabIndex = 6;
@@ -111,6 +118,8 @@
             // 
             // txbResult
             // 
+            this.txbResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txbResult.Location = new System.Drawing.Point(375, 268);
             this.txbResult.Multiline = true;
             this.txbResult.Name = "txbResult";
@@ -119,6 +128,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(371, 245);
             this.label3.Name = "label3";
@@ -153,6 +163,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(808, 353);
             this.Name = "AttendanceVideoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Учет посещения тренеровок";
