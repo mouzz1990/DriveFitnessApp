@@ -44,6 +44,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.связьСКлиентамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msSendMessage = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -118,7 +120,7 @@
             this.BtnChangeClientInfo.Name = "BtnChangeClientInfo";
             this.BtnChangeClientInfo.Size = new System.Drawing.Size(410, 40);
             this.BtnChangeClientInfo.TabIndex = 2;
-            this.BtnChangeClientInfo.Text = "Изменение информации";
+            this.BtnChangeClientInfo.Text = "Информация о клиентах";
             this.BtnChangeClientInfo.UseVisualStyleBackColor = true;
             this.BtnChangeClientInfo.Click += new System.EventHandler(this.BtnChangeClientInfo_Click);
             // 
@@ -131,7 +133,7 @@
             this.BtnAddNewClient.Name = "BtnAddNewClient";
             this.BtnAddNewClient.Size = new System.Drawing.Size(410, 40);
             this.BtnAddNewClient.TabIndex = 1;
-            this.BtnAddNewClient.Text = "Добавить нового клиента";
+            this.BtnAddNewClient.Text = "   Добавить нового клиента";
             this.BtnAddNewClient.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnAddNewClient.UseVisualStyleBackColor = true;
             this.BtnAddNewClient.Click += new System.EventHandler(this.BtnAddNewClient_Click);
@@ -194,7 +196,8 @@
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.менюToolStripMenuItem});
+            this.менюToolStripMenuItem,
+            this.связьСКлиентамиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(454, 29);
@@ -212,15 +215,30 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
+            // связьСКлиентамиToolStripMenuItem
+            // 
+            this.связьСКлиентамиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msSendMessage});
+            this.связьСКлиентамиToolStripMenuItem.Name = "связьСКлиентамиToolStripMenuItem";
+            this.связьСКлиентамиToolStripMenuItem.Size = new System.Drawing.Size(155, 25);
+            this.связьСКлиентамиToolStripMenuItem.Text = "Связь с клиентами";
+            // 
+            // msSendMessage
+            // 
+            this.msSendMessage.Name = "msSendMessage";
+            this.msSendMessage.Size = new System.Drawing.Size(242, 26);
+            this.msSendMessage.Text = "Отправить сообщение";
+            this.msSendMessage.Click += new System.EventHandler(this.msSendMessage_Click);
             // 
             // DriveFitness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 464);
+            this.ClientSize = new System.Drawing.Size(454, 465);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -231,6 +249,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(464, 497);
+            this.MinimumSize = new System.Drawing.Size(464, 497);
             this.Name = "DriveFitness";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Студия современной хореографии \"Drive\"";
@@ -264,6 +284,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem связьСКлиентамиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem msSendMessage;
 
     }
 }

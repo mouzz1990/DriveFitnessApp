@@ -2,18 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ApplicationIcon>Icon1.ico</ApplicationIcon>
-  </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F547A3A3-6B5C-4178-B3D5-7A140C74F5E8}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>DriveFitnessApp</RootNamespace>
-    <AssemblyName>DriveFitnessApp</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,9 +15,21 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F547A3A3-6B5C-4178-B3D5-7A140C74F5E8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DriveFitnessApp</RootNamespace>
+    <AssemblyName>DriveFitnessApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,6 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,8 +52,25 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,9 +79,16 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="zxing, Version=0.15.0.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.15.0.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNewClient.cs">
@@ -76,6 +102,18 @@
     </Compile>
     <Compile Include="AttendanceForm.Designer.cs">
       <DependentUpon>AttendanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceSelectForm.Designer.cs">
+      <DependentUpon>AttendanceSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceVideoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceVideoForm.Designer.cs">
+      <DependentUpon>AttendanceVideoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ChangeClientInfo.cs">
       <SubType>Form</SubType>
@@ -96,6 +134,12 @@
       <DependentUpon>GroupView.cs</DependentUpon>
     </Compile>
     <Compile Include="Messager.cs" />
+    <Compile Include="MessageSenderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageSenderForm.Designer.cs">
+      <DependentUpon>MessageSenderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportForm.cs">
@@ -116,6 +160,12 @@
     <EmbeddedResource Include="AttendanceForm.resx">
       <DependentUpon>AttendanceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceSelectForm.resx">
+      <DependentUpon>AttendanceSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceVideoForm.resx">
+      <DependentUpon>AttendanceVideoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChangeClientInfo.resx">
       <DependentUpon>ChangeClientInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GroupView.resx">
       <DependentUpon>GroupView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageSenderForm.resx">
+      <DependentUpon>MessageSenderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -141,6 +194,7 @@
     <EmbeddedResource Include="SubscriptionForm.resx">
       <DependentUpon>SubscriptionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,12 +207,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DriveFitnessLibrary\DriveFitnessLibrary.csproj">
-      <Project>{cb75d05b-1db4-4710-b327-ea3f97d64b16}</Project>
-      <Name>DriveFitnessLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -211,6 +259,22 @@
   <ItemGroup>
     <Content Include="Icon1.ico" />
     <Content Include="Icon2.ico" />
+    <None Include="Resources\Remove.png" />
+    <None Include="Resources\SubscriptionClose.png" />
+    <None Include="Resources\SubscriptionChange.png" />
+    <None Include="Resources\Attendance_remove.png" />
+    <None Include="Resources\attendance_check.png" />
+    <None Include="Resources\QR-scanner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DriveFitnessLibrary\DriveFitnessLibrary.csproj">
+      <Project>{cb75d05b-1db4-4710-b327-ea3f97d64b16}</Project>
+      <Name>DriveFitnessLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MPK_Calendar\MPK_Calendar.csproj">
+      <Project>{406c22da-812c-403e-a7da-8c231f188d8f}</Project>
+      <Name>MPK_Calendar</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeClientInfo));
             this.pClientInfo = new System.Windows.Forms.Panel();
+            this.BtnBarCode = new System.Windows.Forms.Button();
             this.BtnRemove = new System.Windows.Forms.Button();
             this.cmbClientGroup = new System.Windows.Forms.ComboBox();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
@@ -58,6 +59,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pClientInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pClientInfo.Controls.Add(this.BtnBarCode);
             this.pClientInfo.Controls.Add(this.BtnRemove);
             this.pClientInfo.Controls.Add(this.cmbClientGroup);
             this.pClientInfo.Controls.Add(this.dtpBirthday);
@@ -77,9 +79,24 @@
             this.pClientInfo.Size = new System.Drawing.Size(468, 415);
             this.pClientInfo.TabIndex = 6;
             // 
+            // BtnBarCode
+            // 
+            this.BtnBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnBarCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnBarCode.Image = global::DriveFitnessApp.Properties.Resources.SubscriptionAdd;
+            this.BtnBarCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnBarCode.Location = new System.Drawing.Point(179, 280);
+            this.BtnBarCode.Name = "BtnBarCode";
+            this.BtnBarCode.Size = new System.Drawing.Size(273, 55);
+            this.BtnBarCode.TabIndex = 8;
+            this.BtnBarCode.Text = "Создать карточку клинта";
+            this.BtnBarCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnBarCode.UseVisualStyleBackColor = true;
+            this.BtnBarCode.Click += new System.EventHandler(this.BtnBarCode_Click);
+            // 
             // BtnRemove
             // 
-            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnRemove.Image = global::DriveFitnessApp.Properties.Resources.ClientDelete;
@@ -121,7 +138,7 @@
             this.BtnChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnChangeInfo.Image = global::DriveFitnessApp.Properties.Resources.ClientChangeInfo;
             this.BtnChangeInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnChangeInfo.Location = new System.Drawing.Point(111, 239);
+            this.BtnChangeInfo.Location = new System.Drawing.Point(111, 222);
             this.BtnChangeInfo.Name = "BtnChangeInfo";
             this.BtnChangeInfo.Size = new System.Drawing.Size(341, 52);
             this.BtnChangeInfo.TabIndex = 5;
@@ -285,7 +302,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pClientInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1100, 600);
             this.MinimumSize = new System.Drawing.Size(871, 477);
             this.Name = "ChangeClientInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -321,5 +337,6 @@
         private System.Windows.Forms.ListBox lbClients;
         private System.Windows.Forms.ComboBox cmbGroup;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button BtnBarCode;
     }
 }

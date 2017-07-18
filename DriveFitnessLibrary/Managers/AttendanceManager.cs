@@ -1,7 +1,6 @@
 ﻿using DriveFitnessLibrary.DriveInterfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data;
 
 namespace DriveFitnessLibrary.Managers
@@ -17,13 +16,19 @@ namespace DriveFitnessLibrary.Managers
         {
             subscriptionManager = sm;
             DataBaseManager = subscriptionManager.DataBaseManager;
-            messager = sm.messager;
+            messager = subscriptionManager.messager;
             
             dtFormatter = new DateTimeFormatter();
         }
 
         public void AddAttendance(Client client, DateTime dateVisit, float price)
         {
+            if (client == null) 
+            {
+                messager.ErrorMessage("Клиент не найден. Операция отменена.");
+                return;
+            }
+
             if (!CheckAttendance(client, dateVisit))
             {
                 messager.ExclamationMessage(
@@ -63,7 +68,7 @@ namespace DriveFitnessLibrary.Managers
 
         void AddAttendanceByCash(Client client, DateTime dateVisit, float price)
         {
-            string priceString = price.ToString().Replace(',', '.');
+            //string priceString = price.ToString().Replace(',', '.');
 
             string querry = string.Format(
                     dtFormatter,
@@ -71,8 +76,10 @@ namespace DriveFitnessLibrary.Managers
                 "VALUES ('{0}', '{1}', '{2}', '{3}');",
                         client.ID,
                         dateVisit,
-                        priceString,
-                        priceString
+                        price,
+                        price
+                        //priceString,
+                        //priceString
                         );
 
             string paymnt = "Наличный расчет " + price + " грн.";
@@ -113,7 +120,47 @@ namespace DriveFitnessLibrary.Managers
 
         public void RemoveAttendance(Client client, DateTime dateVisit)
         {
-            throw new NotImplementedException();
+            if (!CheckAttendance(client, dateVisit))
+            {
+                string querry = string.Format(dtFormatter,
+                    "DELETE FROM `drivefitness`.`attendance` WHERE `clientid`='{0}' AND `datevisit`='{1}';",
+                    client.ID,
+                    dateVisit
+                    );
+
+                DataBaseManager.SendCommand(querry);
+
+                messager.SuccessMessage(string.Format("Посещение клиента \"{0}\"успешно удалено!", 
+                    client
+                    ));
+            }
+            else
+            {
+                messager.ErrorMessage(string.Format("Клиент \"{0}\"не посещал занятие: {1}.{2}{2}Операция отменена.",
+                    client,
+                    dateVisit.ToShortDateString(),
+                    Environment.NewLine
+                    ));
+            }
+        }
+
+        public List<DateTime> GetAttendanceDates(Client client)
+        {
+            string querry = string.Format(
+                "SELECT `datevisit` FROM `drivefitness`.`attendance` WHERE `clientid`='{0}'",
+                client.ID
+                );
+
+            DataTable datesTable = DataBaseManager.GetData(querry);
+
+            List<DateTime> datesList = new List<DateTime>();
+
+            foreach (var date in datesTable.Select())
+            {
+                datesList.Add((DateTime)date["datevisit"]);
+            }
+
+            return datesList;
         }
     }
 }

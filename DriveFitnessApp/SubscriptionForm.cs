@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DriveFitnessLibrary.ViewInterfaces;
 using DriveFitnessLibrary;
@@ -52,14 +48,40 @@ namespace DriveFitnessApp
             get { return dtpNewDate.Value; }
         }
 
-        public DriveFitnessLibrary.Client Client
+        public Client Client
         {
             get { return (Client)lbClients.SelectedItem; }
         }
 
+        public int SelectedSubscriptionCount
+        {
+            get { return int.Parse(txbSubCount.Text); }
+        }
+
+        public float SelectedSubscriptionPrice
+        {
+            get
+            {
+                string val = txbSubPrice.Text.Replace('.', ',');
+                float temp;
+                if (float.TryParse(val, out temp))
+                    return temp;
+
+                else return 0;
+            }
+        }
+
+        public DateTime SelectedSubscriptionDate
+        {
+            get { return dtpSubDate.Value; }
+        }
+
         public event EventHandler AddNewSubscription;
         public new event EventHandler Refresh;
-        
+        public event EventHandler ChangeSubscription;
+        public event EventHandler CloseSubscription;
+        public event EventHandler RemoveSubscription;
+
         private void SubscriptionForm_Load(object sender, EventArgs e)
         {
             if (Refresh != null)
@@ -131,6 +153,64 @@ namespace DriveFitnessApp
             txbNewCount.Text = string.Empty;
             txbNewPrice.Text = string.Empty;
             dtpNewDate.Value = DateTime.Today;
+        }
+
+        private void BtnChange_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Вы уверены что хотите внести изменения в абонемент клиента?",
+                "Внести изменения?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Asterisk
+                );
+
+            if (dr == DialogResult.OK)
+            {
+                if (ChangeSubscription != null)
+                    ChangeSubscription(this, EventArgs.Empty);
+
+                if (Refresh != null)
+                    Refresh(this, EventArgs.Empty);
+            }
+            else return;
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Вы уверены что хотите закрыть абонемент клиента?",
+                "Закрыть абонемент?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Asterisk
+                );
+
+            if (dr == DialogResult.OK)
+            {
+                if (CloseSubscription != null)
+                    CloseSubscription(this, EventArgs.Empty);
+
+                if (Refresh != null)
+                    Refresh(this, EventArgs.Empty);
+            }
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show(
+                string.Format("Вы уверены что хотите полностью удалить информацию об абонементе?{0}{0}Информация будет безвозвратно удалена из базы данных, сведения о покупке абонемента не будут учитываться в финансовых расчетах.", 
+                Environment.NewLine),
+                "Внести изменения?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Asterisk
+                );
+
+            if (dr == DialogResult.OK)
+            {
+                if (RemoveSubscription != null)
+                    RemoveSubscription(this, EventArgs.Empty);
+
+                if (Refresh != null)
+                    Refresh(this, EventArgs.Empty);
+            }
+            else return;
         }
     }
 }

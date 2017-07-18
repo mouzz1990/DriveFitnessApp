@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DriveFitnessLibrary.ViewInterfaces;
 using DriveFitnessLibrary;
@@ -64,6 +59,7 @@ namespace DriveFitnessApp
         public event EventHandler GroupsRequred;
         public event EventHandler ClientInformationChanged;
         public event EventHandler ClientDeleted;
+        public event EventHandler CreateClientCard;
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {

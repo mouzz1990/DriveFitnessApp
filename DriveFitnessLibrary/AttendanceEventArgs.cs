@@ -2,7 +2,7 @@
 
 namespace DriveFitnessLibrary
 {
-    public class AttendanceEventArgs
+    public class AttendanceEventArgs : EventArgs
     {
         public float Sum { get; set; }
         public DateTime Date { get; set; }

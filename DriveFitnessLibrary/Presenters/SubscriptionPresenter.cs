@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using DriveFitnessLibrary.DriveInterfaces;
 using DriveFitnessLibrary.ViewInterfaces;
 
@@ -14,8 +11,7 @@ namespace DriveFitnessLibrary.Presenters
         IGroupManager groupManager;
         ISubscriptionManager subscriptionManager;
         IMessager messager;
-        IDataBaseExecutable DataBaseManager;
-
+        
         public SubscriptionPresenter(ISubscriptionManager subscriptionManager, IGroupManager groupManager, IMessager messager, IClientManager clientManager, ISubscriptionView view)
         {
             this.view = view;
@@ -27,6 +23,29 @@ namespace DriveFitnessLibrary.Presenters
             view.AddNewSubscription += new EventHandler(view_AddNewSubscription);
             view.Refresh += new EventHandler(view_Refresh);
             view.AddNewSubscription += view_Refresh;
+            view.CloseSubscription += View_CloseSubscription;
+            view.ChangeSubscription += View_ChangeSubscription;
+            view.RemoveSubscription += new EventHandler(view_RemoveSubscription);
+        }
+
+        void view_RemoveSubscription(object sender, EventArgs e)
+        {
+            subscriptionManager.RemoveSubscription(view.Client);
+        }
+
+        private void View_ChangeSubscription(object sender, EventArgs e)
+        {
+            subscriptionManager.ChangeSubscriptionData(
+                view.Client, 
+                view.SelectedSubscriptionCount, 
+                view.SelectedSubscriptionPrice,
+                view.SelectedSubscriptionDate
+                );
+        }
+
+        private void View_CloseSubscription(object sender, EventArgs e)
+        {
+            subscriptionManager.CloseSubscription(view.Client);
         }
 
         void view_Refresh(object sender, EventArgs e)

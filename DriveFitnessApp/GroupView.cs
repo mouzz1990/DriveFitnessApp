@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DriveFitnessLibrary.ViewInterfaces;
 using DriveFitnessLibrary;
@@ -47,12 +43,16 @@ namespace DriveFitnessApp
         {
             if (AddNewGroup != null)
                 AddNewGroup(this, EventArgs.Empty);
+
+            txbAdd.Text = string.Empty;
         }
 
         private void BtnChange_Click(object sender, EventArgs e)
         {
             if (ChangeGroup != null)
                 ChangeGroup(this, EventArgs.Empty);
+
+            pEdit.Visible = false;
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -63,6 +63,7 @@ namespace DriveFitnessApp
                     RemoveGroup(this, EventArgs.Empty);
 
                 txbEdit.Text = string.Empty;
+                pEdit.Visible = false;
             }
             catch (RemoveGroupException rge)
             {
@@ -80,11 +81,12 @@ namespace DriveFitnessApp
                 {
                     MySqlManager dbm = new MySqlManager();
                     Messager mess = new Messager();
+                    ClientCardCreatorManager clientCardCreator = new ClientCardCreatorManager();
                     ClientManager clm = new ClientManager(dbm, mess);
                     GroupManager gm = new GroupManager(dbm, mess);
                     ChangeClientInfo chClient = new ChangeClientInfo((Group)lbGroups.SelectedItem);
 
-                    ClientPresenter clPress = new ClientPresenter(chClient, clm, gm, mess);
+                    ClientPresenter clPress = new ClientPresenter(chClient, clm, gm, clientCardCreator, mess);
 
                     int grInx = lbGroups.SelectedIndex;
                     DialogResult clientFormClosedResult = chClient.ShowDialog();

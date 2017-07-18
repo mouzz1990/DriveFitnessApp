@@ -1,8 +1,9 @@
-﻿using DriveFitnessLibrary;
-using DriveFitnessLibrary.Managers;
+﻿using DriveFitnessLibrary.Managers;
 using System;
 using System.Windows.Forms;
 using DriveFitnessLibrary.Presenters;
+using DriveFitnessLibrary.DriveInterfaces;
+using DriveFitnessLibrary.MessageSenders;
 
 namespace DriveFitnessApp
 {
@@ -10,12 +11,14 @@ namespace DriveFitnessApp
     {
         static Messager messager = new Messager();
         static MySqlManager dataBaseManager = new MySqlManager();
+        static ClientCardCreatorManager cardCreatorManager = new ClientCardCreatorManager();
         static ReportManager reportManager = new ReportManager(dataBaseManager);
         static GroupManager groupManager = new GroupManager(dataBaseManager, messager);
         static SubscriptionManager subscriptionManager = new SubscriptionManager(dataBaseManager, messager);
         static ClientManager clientManager = new ClientManager(dataBaseManager, messager, subscriptionManager);
         static AttendanceManager attendanceManager = new AttendanceManager(subscriptionManager);
-
+        static MessageSenderEmail messageSender = new MessageSenderEmail(messager);
+        
         public DriveFitness()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace DriveFitnessApp
         private void BtnAddNewClient_Click(object sender, EventArgs e)
         {
             AddNewClient newClientForm = new AddNewClient();
-            ClientPresenter clPres = new ClientPresenter(newClientForm, clientManager, groupManager, messager);
+            ClientPresenter clPres = new ClientPresenter(newClientForm, clientManager, groupManager, cardCreatorManager, messager);
 
             newClientForm.ShowDialog();
         }
@@ -32,7 +35,7 @@ namespace DriveFitnessApp
         private void BtnChangeClientInfo_Click(object sender, EventArgs e)
         {
             ChangeClientInfo chClient = new ChangeClientInfo();
-            ClientPresenter clPress = new ClientPresenter(chClient, clientManager, groupManager, messager);
+            ClientPresenter clPress = new ClientPresenter(chClient, clientManager, groupManager, cardCreatorManager, messager);
 
             chClient.ShowDialog();
         }
@@ -66,16 +69,28 @@ namespace DriveFitnessApp
         private void BtnAttendance_Click(object sender, EventArgs e)
         {
             
-            AttendanceForm atF = new AttendanceForm();
-            AttendancePresenter ptPres = new AttendancePresenter(attendanceManager, groupManager, atF);
+            AttendanceSelectForm atSelect = new AttendanceSelectForm(attendanceManager, groupManager);
 
-            atF.ShowDialog();
+            atSelect.ShowDialog();
 
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void BtnAttendance2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void msSendMessage_Click(object sender, EventArgs e)
+        {
+            MessageSenderForm msf = new MessageSenderForm();
+
+            SenderMessagePresenter smp = new SenderMessagePresenter(groupManager, messageSender, messager, msf);
+            msf.ShowDialog();
         }
     }
 }

@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using DriveFitnessLibrary.ViewInterfaces;
 using DriveFitnessLibrary;
@@ -24,6 +19,13 @@ namespace DriveFitnessApp
             InitializeComponent();
             selectedGr = selectedGroup;
         }
+
+        public event EventHandler AddClientClicked;
+        public event EventHandler GroupsRequred;
+        public event EventHandler ClientInformationChanged;
+        public event EventHandler ClientDeleted;
+        public event EventHandler GroupChanged;
+        public event EventHandler CreateClientCard;
 
         Group selectedGr;
 
@@ -99,12 +101,6 @@ namespace DriveFitnessApp
                 lbClients.Items.Add(c);
         }
 
-        public event EventHandler AddClientClicked;
-        public event EventHandler GroupsRequred;
-        public event EventHandler ClientInformationChanged;
-        public event EventHandler ClientDeleted;
-        public event EventHandler GroupChanged;
-
         private void cmbGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (GroupChanged != null)
@@ -168,14 +164,20 @@ namespace DriveFitnessApp
 
                 if (ClientDeleted != null)
                     ClientDeleted(this, clEvArg);
-
-                
             }
         }
 
         private void ChangeClientInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void BtnBarCode_Click(object sender, EventArgs e)
+        {
+            ClientEventArgs clEvArg = new ClientEventArgs((Client)lbClients.SelectedItem);
+
+            if (CreateClientCard != null)
+                CreateClientCard(this, clEvArg);
         }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using DriveFitnessLibrary.ViewInterfaces;
 using DriveFitnessLibrary.DriveInterfaces;
 
@@ -13,13 +10,15 @@ namespace DriveFitnessLibrary.Presenters
         IClientManager clientManager;
         IGroupManager groupManager;
         IMessager messager;
+        IClientCardCreator clientCardCreator;
 
-        public ClientPresenter(IClientView view, IClientManager clientManager, IGroupManager groupManager, IMessager messager)
+        public ClientPresenter(IClientView view, IClientManager clientManager, IGroupManager groupManager, IClientCardCreator clientCardCreator, IMessager messager)
         {
             this.view = view;
             this.clientManager = clientManager;
             this.groupManager = groupManager;
             this.messager = messager;
+            this.clientCardCreator = clientCardCreator;
 
             view.GroupsRequred += new EventHandler(view_GroupsRequred);
             view.AddClientClicked += new EventHandler(view_AddClientClicked);
@@ -27,6 +26,28 @@ namespace DriveFitnessLibrary.Presenters
             view.ClientInformationChanged += new EventHandler(view_ClientInformationChanged);
             view.ClientDeleted += new EventHandler(view_ClientDeleted);
             view.GroupChanged += new EventHandler(view_GroupChanged);
+            view.CreateClientCard += new EventHandler(view_CreateClientCard);
+        }
+
+        void view_CreateClientCard(object sender, EventArgs e)
+        {
+            ClientEventArgs clArg = (ClientEventArgs)e;
+            Client client = clArg.client;
+
+            try
+            {
+                clientCardCreator.MakeClientCard(client);
+                messager.SuccessMessage(string.Format("Карта абонента \"{0}\" успешно создана.", client));
+            }
+            catch (Exception exc)
+            {
+                messager.ErrorMessage(string.Format("{0}{1}{1}{2}{1}{3}",
+                    exc.Message,
+                    Environment.NewLine,
+                    exc.TargetSite,
+                    exc.StackTrace
+                    ));
+            }
         }
 
         void view_GroupChanged(object sender, EventArgs e)
