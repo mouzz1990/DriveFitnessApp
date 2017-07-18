@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageSenderForm));
             this.txbLogin = new System.Windows.Forms.TextBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.txbMessage = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.BtnSnd = new System.Windows.Forms.Button();
             this.txbSubject = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@
             this.cmbGroup = new System.Windows.Forms.ComboBox();
             this.clbClients = new System.Windows.Forms.CheckedListBox();
             this.BtnCheckAll = new System.Windows.Forms.Button();
+            this.BtnSnd = new System.Windows.Forms.Button();
             this.pSend.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -93,17 +94,6 @@
             this.label2.Size = new System.Drawing.Size(71, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Пароль:";
-            // 
-            // BtnSnd
-            // 
-            this.BtnSnd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnSnd.Location = new System.Drawing.Point(99, 374);
-            this.BtnSnd.Name = "BtnSnd";
-            this.BtnSnd.Size = new System.Drawing.Size(190, 41);
-            this.BtnSnd.TabIndex = 6;
-            this.BtnSnd.Text = "Отправить сообщение";
-            this.BtnSnd.UseVisualStyleBackColor = true;
-            this.BtnSnd.Click += new System.EventHandler(this.BtnSnd_Click);
             // 
             // txbSubject
             // 
@@ -187,13 +177,29 @@
             // 
             // BtnCheckAll
             // 
-            this.BtnCheckAll.Location = new System.Drawing.Point(3, 379);
+            this.BtnCheckAll.Image = global::DriveFitnessApp.Properties.Resources.CheckAll;
+            this.BtnCheckAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCheckAll.Location = new System.Drawing.Point(52, 379);
             this.BtnCheckAll.Name = "BtnCheckAll";
-            this.BtnCheckAll.Size = new System.Drawing.Size(288, 40);
+            this.BtnCheckAll.Size = new System.Drawing.Size(191, 40);
             this.BtnCheckAll.TabIndex = 2;
             this.BtnCheckAll.Text = "Выбрать всех";
             this.BtnCheckAll.UseVisualStyleBackColor = true;
             this.BtnCheckAll.Click += new System.EventHandler(this.BtnCheckAll_Click);
+            // 
+            // BtnSnd
+            // 
+            this.BtnSnd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BtnSnd.Image = global::DriveFitnessApp.Properties.Resources.SendMessage;
+            this.BtnSnd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnSnd.Location = new System.Drawing.Point(71, 374);
+            this.BtnSnd.Name = "BtnSnd";
+            this.BtnSnd.Size = new System.Drawing.Size(223, 41);
+            this.BtnSnd.TabIndex = 6;
+            this.BtnSnd.Text = "Отправить сообщение";
+            this.BtnSnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnSnd.UseVisualStyleBackColor = true;
+            this.BtnSnd.Click += new System.EventHandler(this.BtnSnd_Click);
             // 
             // MessageSenderForm
             // 
@@ -203,6 +209,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pSend);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(707, 485);
             this.Name = "MessageSenderForm";

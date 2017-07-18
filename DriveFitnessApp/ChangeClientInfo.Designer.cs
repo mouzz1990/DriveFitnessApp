@@ -30,13 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeClientInfo));
             this.pClientInfo = new System.Windows.Forms.Panel();
-            this.BtnBarCode = new System.Windows.Forms.Button();
-            this.BtnRemove = new System.Windows.Forms.Button();
             this.cmbClientGroup = new System.Windows.Forms.ComboBox();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
-            this.BtnChangeInfo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txbTelephone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txbEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +45,10 @@
             this.lbClients = new System.Windows.Forms.ListBox();
             this.cmbGroup = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.BtnBarCode = new System.Windows.Forms.Button();
+            this.BtnRemove = new System.Windows.Forms.Button();
+            this.BtnChangeInfo = new System.Windows.Forms.Button();
+            this.txbTelephone = new System.Windows.Forms.MaskedTextBox();
             this.pClientInfo.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -59,13 +59,13 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pClientInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pClientInfo.Controls.Add(this.txbTelephone);
             this.pClientInfo.Controls.Add(this.BtnBarCode);
             this.pClientInfo.Controls.Add(this.BtnRemove);
             this.pClientInfo.Controls.Add(this.cmbClientGroup);
             this.pClientInfo.Controls.Add(this.dtpBirthday);
             this.pClientInfo.Controls.Add(this.BtnChangeInfo);
             this.pClientInfo.Controls.Add(this.label1);
-            this.pClientInfo.Controls.Add(this.txbTelephone);
             this.pClientInfo.Controls.Add(this.label2);
             this.pClientInfo.Controls.Add(this.txbEmail);
             this.pClientInfo.Controls.Add(this.label3);
@@ -78,37 +78,6 @@
             this.pClientInfo.Name = "pClientInfo";
             this.pClientInfo.Size = new System.Drawing.Size(468, 415);
             this.pClientInfo.TabIndex = 6;
-            // 
-            // BtnBarCode
-            // 
-            this.BtnBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnBarCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnBarCode.Image = global::DriveFitnessApp.Properties.Resources.SubscriptionAdd;
-            this.BtnBarCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnBarCode.Location = new System.Drawing.Point(179, 280);
-            this.BtnBarCode.Name = "BtnBarCode";
-            this.BtnBarCode.Size = new System.Drawing.Size(273, 55);
-            this.BtnBarCode.TabIndex = 8;
-            this.BtnBarCode.Text = "Создать карточку клинта";
-            this.BtnBarCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnBarCode.UseVisualStyleBackColor = true;
-            this.BtnBarCode.Click += new System.EventHandler(this.BtnBarCode_Click);
-            // 
-            // BtnRemove
-            // 
-            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnRemove.Image = global::DriveFitnessApp.Properties.Resources.ClientDelete;
-            this.BtnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnRemove.Location = new System.Drawing.Point(264, 344);
-            this.BtnRemove.Name = "BtnRemove";
-            this.BtnRemove.Size = new System.Drawing.Size(188, 52);
-            this.BtnRemove.TabIndex = 5;
-            this.BtnRemove.Text = "Удалить запись";
-            this.BtnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnRemove.UseVisualStyleBackColor = true;
-            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // cmbClientGroup
             // 
@@ -130,22 +99,7 @@
             this.dtpBirthday.Location = new System.Drawing.Point(151, 83);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(301, 26);
-            this.dtpBirthday.TabIndex = 6;
-            // 
-            // BtnChangeInfo
-            // 
-            this.BtnChangeInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnChangeInfo.Image = global::DriveFitnessApp.Properties.Resources.ClientChangeInfo;
-            this.BtnChangeInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnChangeInfo.Location = new System.Drawing.Point(111, 222);
-            this.BtnChangeInfo.Name = "BtnChangeInfo";
-            this.BtnChangeInfo.Size = new System.Drawing.Size(341, 52);
-            this.BtnChangeInfo.TabIndex = 5;
-            this.BtnChangeInfo.Text = "Изменить информацию о клиенте";
-            this.BtnChangeInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnChangeInfo.UseVisualStyleBackColor = true;
-            this.BtnChangeInfo.Click += new System.EventHandler(this.BtnChangeInfo_Click);
+            this.dtpBirthday.TabIndex = 4;
             // 
             // label1
             // 
@@ -156,16 +110,6 @@
             this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Фамилия:*";
-            // 
-            // txbTelephone
-            // 
-            this.txbTelephone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txbTelephone.Location = new System.Drawing.Point(151, 153);
-            this.txbTelephone.Name = "txbTelephone";
-            this.txbTelephone.Size = new System.Drawing.Size(301, 26);
-            this.txbTelephone.TabIndex = 4;
             // 
             // label2
             // 
@@ -185,7 +129,7 @@
             this.txbEmail.Location = new System.Drawing.Point(151, 118);
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(301, 26);
-            this.txbEmail.TabIndex = 3;
+            this.txbEmail.TabIndex = 5;
             // 
             // label3
             // 
@@ -205,7 +149,7 @@
             this.txbName.Location = new System.Drawing.Point(151, 48);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(301, 26);
-            this.txbName.TabIndex = 2;
+            this.txbName.TabIndex = 3;
             // 
             // label4
             // 
@@ -225,7 +169,7 @@
             this.txbLastName.Location = new System.Drawing.Point(151, 13);
             this.txbLastName.Name = "txbLastName";
             this.txbLastName.Size = new System.Drawing.Size(301, 26);
-            this.txbLastName.TabIndex = 1;
+            this.txbLastName.TabIndex = 2;
             // 
             // label5
             // 
@@ -294,6 +238,61 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Группа:";
             // 
+            // BtnBarCode
+            // 
+            this.BtnBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnBarCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnBarCode.Image = global::DriveFitnessApp.Properties.Resources.SubscriptionAdd;
+            this.BtnBarCode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnBarCode.Location = new System.Drawing.Point(179, 280);
+            this.BtnBarCode.Name = "BtnBarCode";
+            this.BtnBarCode.Size = new System.Drawing.Size(273, 55);
+            this.BtnBarCode.TabIndex = 9;
+            this.BtnBarCode.Text = "Создать карточку клинта";
+            this.BtnBarCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnBarCode.UseVisualStyleBackColor = true;
+            this.BtnBarCode.Click += new System.EventHandler(this.BtnBarCode_Click);
+            // 
+            // BtnRemove
+            // 
+            this.BtnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnRemove.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnRemove.Image = global::DriveFitnessApp.Properties.Resources.ClientDelete;
+            this.BtnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnRemove.Location = new System.Drawing.Point(264, 344);
+            this.BtnRemove.Name = "BtnRemove";
+            this.BtnRemove.Size = new System.Drawing.Size(188, 52);
+            this.BtnRemove.TabIndex = 10;
+            this.BtnRemove.Text = "Удалить запись";
+            this.BtnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnRemove.UseVisualStyleBackColor = true;
+            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
+            // 
+            // BtnChangeInfo
+            // 
+            this.BtnChangeInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnChangeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnChangeInfo.Image = global::DriveFitnessApp.Properties.Resources.ClientChangeInfo;
+            this.BtnChangeInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnChangeInfo.Location = new System.Drawing.Point(111, 222);
+            this.BtnChangeInfo.Name = "BtnChangeInfo";
+            this.BtnChangeInfo.Size = new System.Drawing.Size(341, 52);
+            this.BtnChangeInfo.TabIndex = 8;
+            this.BtnChangeInfo.Text = "Изменить информацию о клиенте";
+            this.BtnChangeInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnChangeInfo.UseVisualStyleBackColor = true;
+            this.BtnChangeInfo.Click += new System.EventHandler(this.BtnChangeInfo_Click);
+            // 
+            // txbTelephone
+            // 
+            this.txbTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txbTelephone.Location = new System.Drawing.Point(153, 153);
+            this.txbTelephone.Mask = "(999) 000-00-00";
+            this.txbTelephone.Name = "txbTelephone";
+            this.txbTelephone.Size = new System.Drawing.Size(299, 26);
+            this.txbTelephone.TabIndex = 6;
+            // 
             // ChangeClientInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,7 +323,6 @@
         private System.Windows.Forms.Button BtnRemove;
         private System.Windows.Forms.Button BtnChangeInfo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txbTelephone;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbEmail;
         private System.Windows.Forms.Label label3;
@@ -338,5 +336,6 @@
         private System.Windows.Forms.ComboBox cmbGroup;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button BtnBarCode;
+        private System.Windows.Forms.MaskedTextBox txbTelephone;
     }
 }

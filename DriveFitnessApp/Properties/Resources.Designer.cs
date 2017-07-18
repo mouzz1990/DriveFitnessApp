@@ -103,6 +103,16 @@ namespace DriveFitnessApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CheckAll {
+            get {
+                object obj = ResourceManager.GetObject("CheckAll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ClientChangeInfo {
             get {
                 object obj = ResourceManager.GetObject("ClientChangeInfo", resourceCulture);
@@ -116,6 +126,16 @@ namespace DriveFitnessApp.Properties {
         internal static System.Drawing.Bitmap ClientDelete {
             get {
                 object obj = ResourceManager.GetObject("ClientDelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CloseApp {
+            get {
+                object obj = ResourceManager.GetObject("CloseApp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,6 +183,26 @@ namespace DriveFitnessApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Message {
+            get {
+                object obj = ResourceManager.GetObject("Message", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap QR_scanner {
             get {
                 object obj = ResourceManager.GetObject("QR-scanner", resourceCulture);
@@ -196,6 +236,16 @@ namespace DriveFitnessApp.Properties {
         internal static System.Drawing.Bitmap Report1 {
             get {
                 object obj = ResourceManager.GetObject("Report1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SendMessage {
+            get {
+                object obj = ResourceManager.GetObject("SendMessage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

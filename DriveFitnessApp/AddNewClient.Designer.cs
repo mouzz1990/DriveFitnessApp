@@ -38,11 +38,11 @@
             this.txbLastName = new System.Windows.Forms.TextBox();
             this.txbName = new System.Windows.Forms.TextBox();
             this.txbEmail = new System.Windows.Forms.TextBox();
-            this.txbTelephone = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbGroup = new System.Windows.Forms.ComboBox();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
             this.BtnAdd = new System.Windows.Forms.Button();
+            this.txbTelephone = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,27 +136,17 @@
             this.txbEmail.Size = new System.Drawing.Size(301, 26);
             this.txbEmail.TabIndex = 3;
             // 
-            // txbTelephone
-            // 
-            this.txbTelephone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txbTelephone.Location = new System.Drawing.Point(151, 153);
-            this.txbTelephone.Name = "txbTelephone";
-            this.txbTelephone.Size = new System.Drawing.Size(301, 26);
-            this.txbTelephone.TabIndex = 4;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txbTelephone);
             this.panel1.Controls.Add(this.cmbGroup);
             this.panel1.Controls.Add(this.dtpBirthday);
             this.panel1.Controls.Add(this.BtnAdd);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txbTelephone);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txbEmail);
             this.panel1.Controls.Add(this.label3);
@@ -207,6 +197,15 @@
             this.BtnAdd.UseVisualStyleBackColor = true;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
+            // txbTelephone
+            // 
+            this.txbTelephone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txbTelephone.Location = new System.Drawing.Point(151, 153);
+            this.txbTelephone.Mask = "(999) 000-00-00";
+            this.txbTelephone.Name = "txbTelephone";
+            this.txbTelephone.Size = new System.Drawing.Size(299, 26);
+            this.txbTelephone.TabIndex = 4;
+            // 
             // AddNewClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,10 +237,10 @@
         private System.Windows.Forms.TextBox txbLastName;
         private System.Windows.Forms.TextBox txbName;
         private System.Windows.Forms.TextBox txbEmail;
-        private System.Windows.Forms.TextBox txbTelephone;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cmbGroup;
         private System.Windows.Forms.DateTimePicker dtpBirthday;
         private System.Windows.Forms.Button BtnAdd;
+        private System.Windows.Forms.MaskedTextBox txbTelephone;
     }
 }

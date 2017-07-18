@@ -259,6 +259,11 @@
   <ItemGroup>
     <Content Include="Icon1.ico" />
     <Content Include="Icon2.ico" />
+    <None Include="Resources\Message.png" />
+    <None Include="Resources\Icon1.png" />
+    <None Include="Resources\CloseApp.png" />
+    <None Include="Resources\SendMessage.png" />
+    <None Include="Resources\CheckAll.png" />
     <None Include="Resources\Remove.png" />
     <None Include="Resources\SubscriptionClose.png" />
     <None Include="Resources\SubscriptionChange.png" />
