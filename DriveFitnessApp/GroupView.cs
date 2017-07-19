@@ -69,7 +69,7 @@ namespace DriveFitnessApp
             {
                 DialogResult dr = MessageBox.Show(
                     string.Format("{0}{1}{1}{2}",
-                    rge.MessageRemoveGroupException, 
+                    rge, 
                     Environment.NewLine,
                     "Открыть форму работы с клиентами?"),
                     "Ошибка удаления группы",

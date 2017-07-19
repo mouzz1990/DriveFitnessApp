@@ -27,7 +27,11 @@ namespace DriveFitnessLibrary.Managers
 
         public void AddNewClient(Client client, Group group)
         {
-            string querry = string.Format(dtFormatter, "call add_new_client('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+            string querry = string.Format(dtFormatter,
+                "INSERT INTO `drivefitness`.`clients` " +
+                "(`groupid`, `name`, `lastname`, `birthday`, `email`, `telephone`) " +
+                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}'); ",
+                //"call add_new_client('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
                 group.ID,
                 client.Name,
                 client.LastName,
@@ -67,7 +71,16 @@ namespace DriveFitnessLibrary.Managers
 
         public void ChangeClientInformation(Client client, Group group)
         {
-            string querry = string.Format(dtFormatter, "call change_client_info('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
+            string querry = string.Format(dtFormatter,
+                "UPDATE `drivefitness`.`clients` " +
+                "SET `groupid`= '{1}', " +
+                "`name`= '{2}', " +
+                "`lastname`= '{3}', " +
+                "`birthday`= '{4}', " +
+                "`email`= '{5}', " +
+                "`telephone`= '{6}' " +
+                "WHERE `id`= '{0}'; ",
+                //"call change_client_info('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
                 client.ID,
                 group.ID,
                 client.Name,
@@ -84,10 +97,13 @@ namespace DriveFitnessLibrary.Managers
 
         public void RemoveClient(Client client)
         {
-            string querry = string.Format("DELETE FROM `drivefitness`.`clients` WHERE `id`='{0}'", client.ID);
-            DataBaseManager.SendCommand(querry);
+            if (client.Subscription != null)
+                subscriptionManager.RemoveSubscription(client);
 
-            messager.SuccessMessage(string.Format("Информация о клиенте \"{0}\" успешно удалена из базы данных.", client));
+            string querry = string.Format("DELETE FROM `drivefitness`.`clients` WHERE `id`='{0}'", client.ID);
+                DataBaseManager.SendCommand(querry);
+
+                messager.SuccessMessage(string.Format("Информация о клиенте \"{0}\" успешно удалена из базы данных.", client));
         }
     }
 }

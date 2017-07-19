@@ -23,7 +23,13 @@ namespace DriveFitnessLibrary.Managers
             string stDt = startDate.ToString("yyyy-MM-dd");
             string enDt = endDate.ToString("yyyy-MM-dd");
 
-            string querry = string.Format(dtFormatter, "call get_attendance_dates_by_group('{0}','{1}','{2}')",
+            string querry = string.Format(dtFormatter,
+                "SELECT DISTINCT datevisit FROM attendance " +
+                "JOIN clients on clientid = clients.id " +
+                "WHERE datevisit >= '{0}' " +
+                "and datevisit <= '{1}' " +
+                "and groupid = '{2}' ORDER BY datevisit; ",
+                //"call get_attendance_dates_by_group('{0}','{1}','{2}')",
                 startDate,
                 endDate,
                 group.ID
