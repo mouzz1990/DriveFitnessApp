@@ -19,6 +19,12 @@ namespace DriveFitnessLibrary.Presenters
 
             view.ShowGroups += new EventHandler(view_ShowGroups);
             view.ShowReportClicked += new EventHandler(view_ShowReportClicked);
+            view.SaveReportClicked += new EventHandler(view_SaveReportClicked);
+        }
+
+        void view_SaveReportClicked(object sender, EventArgs e)
+        {
+            reportManager.CreateReport(view.AttendanceTable, view.SaveFileTo);
         }
 
         void view_ShowReportClicked(object sender, EventArgs e)

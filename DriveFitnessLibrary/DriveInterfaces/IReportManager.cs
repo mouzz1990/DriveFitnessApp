@@ -6,5 +6,6 @@ namespace DriveFitnessLibrary.DriveInterfaces
     public interface IReportManager
     {
         DataTable GetAttendanceData(Group group, DateTime startDate, DateTime endDate);
+        void CreateReport(DataTable data, string saveToPath);
     }
 }

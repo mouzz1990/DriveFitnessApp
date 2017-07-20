@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using DriveFitnessLibrary.DriveInterfaces;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace DriveFitnessLibrary.Managers
 {
     public class ReportManager : IReportManager
     {
         IDataBaseExecutable DataBaseManager;
+        IMessager messager;
         DateTimeFormatter dtFormatter;
 
-        public ReportManager(IDataBaseExecutable DataBaseManager)
+        public ReportManager(IDataBaseExecutable DataBaseManager, IMessager messager)
         {
             this.DataBaseManager = DataBaseManager;
+            this.messager = messager;
             dtFormatter = new DateTimeFormatter();
         }
 
@@ -237,6 +241,92 @@ namespace DriveFitnessLibrary.Managers
             }
 
             return attendanceTable;
+        }
+
+        public void CreateReport(DataTable data, string saveToPath)
+        {
+            if (data == null)
+            {
+                messager.ErrorMessage("Ошибка получения отчетной таблицы! Повторите попытку или обратитесь к разработчику.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(saveToPath) || string.IsNullOrWhiteSpace(saveToPath))
+            {
+                messager.ErrorMessage(string.Format("Ошибка в указанном пути файла:{1}\"{0}\",{1}укажите правильный путь и имя файла!", 
+                    saveToPath,
+                    Environment.NewLine
+                    ));
+
+                return;
+            }
+
+            if (!Directory.Exists(Path.GetDirectoryName(saveToPath)))
+                Directory.CreateDirectory(Path.GetDirectoryName(saveToPath));
+
+            try
+            {
+                Excel.Application eApp = new Excel.Application();
+                Excel.Workbook wBook = eApp.Workbooks.Add();
+                Excel.Worksheet wSheet = wBook.Worksheets.Add();
+
+                for (int i = 0; i < data.Columns.Count; i++)
+                {
+                    wSheet.Cells[1, i + 1] = data.Columns[i].ColumnName;
+                }
+
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    for (int j = 0; j < data.Columns.Count; j++)
+                    {
+                        wSheet.Cells[i + 2, j + 1] = data.Rows[i][j];
+                    }
+                }
+
+                //finding a last cell
+                Excel.Range r1 = wSheet.Cells.get_End(Excel.XlDirection.xlToRight);
+                Excel.Range r2 = wSheet.Cells.get_End(Excel.XlDirection.xlDown);
+
+                string rightEnd = r1.get_Address();
+                string bottomEnd = r2.get_Address();
+
+                //last cell address
+                string lastCell = rightEnd[1].ToString() + bottomEnd[3].ToString();
+
+                //painting grid
+                List<Excel.XlBordersIndex> borders = new List<Excel.XlBordersIndex>()
+                {
+                    Excel.XlBordersIndex.xlEdgeRight,
+                    Excel.XlBordersIndex.xlEdgeLeft,
+                    Excel.XlBordersIndex.xlEdgeBottom,
+                    Excel.XlBordersIndex.xlEdgeTop,
+                    Excel.XlBordersIndex.xlInsideHorizontal,
+                    Excel.XlBordersIndex.xlInsideVertical
+                };
+
+                foreach (Excel.XlBordersIndex brd in borders)
+                {
+                    Excel.Range r = wSheet.get_Range("A1", lastCell);
+
+                    r.Borders[brd].Weight = Excel.XlBorderWeight.xlThin;
+                    r.Borders[brd].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    r.Borders[brd].ColorIndex = 0;
+                }
+
+                wSheet.get_Range("A1", lastCell).Font.Size = 14;
+
+                wSheet.Columns.AutoFit();
+
+                wBook.SaveAs(saveToPath);
+                eApp.Visible = true;
+            }
+            catch
+            {
+                messager.ErrorMessage(string.Format("Ошибка создания документа Microsoft Office Excel - \"{0}\"{1}{1}Обратитесь к разработчику!", 
+                    Path.GetFileName(saveToPath),
+                    Environment.NewLine
+                    ));
+            }
         }
     }
 }

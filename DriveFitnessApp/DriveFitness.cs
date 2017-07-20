@@ -12,7 +12,7 @@ namespace DriveFitnessApp
         static Messager messager = new Messager();
         static MySqlManager dataBaseManager = new MySqlManager();
         static ClientCardCreatorManager cardCreatorManager = new ClientCardCreatorManager();
-        static ReportManager reportManager = new ReportManager(dataBaseManager);
+        static ReportManager reportManager = new ReportManager(dataBaseManager, messager);
         static GroupManager groupManager = new GroupManager(dataBaseManager, messager);
         static SubscriptionManager subscriptionManager = new SubscriptionManager(dataBaseManager, messager);
         static ClientManager clientManager = new ClientManager(dataBaseManager, messager, subscriptionManager);

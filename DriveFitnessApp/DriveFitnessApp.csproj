@@ -67,6 +67,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\MySql.Data.dll</HintPath>
@@ -84,10 +87,6 @@
     <Reference Include="zxing, Version=0.15.0.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\zxing.dll</HintPath>
-    </Reference>
-    <Reference Include="zxing.presentation, Version=0.15.0.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\zxing.presentation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +258,7 @@
   <ItemGroup>
     <Content Include="Icon1.ico" />
     <Content Include="Icon2.ico" />
+    <None Include="Resources\Excel.png" />
     <None Include="Resources\Message.png" />
     <None Include="Resources\Icon1.png" />
     <None Include="Resources\CloseApp.png" />

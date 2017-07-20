@@ -143,6 +143,16 @@ namespace DriveFitnessApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Excel {
+            get {
+                object obj = ResourceManager.GetObject("Excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Groups {
             get {
                 object obj = ResourceManager.GetObject("Groups", resourceCulture);

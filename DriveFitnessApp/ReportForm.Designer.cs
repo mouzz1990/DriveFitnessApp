@@ -37,8 +37,9 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.BtnReport = new System.Windows.Forms.Button();
             this.dgvReport = new System.Windows.Forms.DataGridView();
+            this.BtnToExcel = new System.Windows.Forms.Button();
+            this.BtnReport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
@@ -119,12 +120,42 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.BtnToExcel);
             this.panel2.Controls.Add(this.BtnReport);
             this.panel2.Controls.Add(this.dgvReport);
             this.panel2.Location = new System.Drawing.Point(12, 75);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1028, 512);
             this.panel2.TabIndex = 3;
+            // 
+            // dgvReport
+            // 
+            this.dgvReport.AllowUserToAddRows = false;
+            this.dgvReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReport.Location = new System.Drawing.Point(3, 3);
+            this.dgvReport.Name = "dgvReport";
+            this.dgvReport.RowHeadersVisible = false;
+            this.dgvReport.Size = new System.Drawing.Size(1020, 456);
+            this.dgvReport.TabIndex = 0;
+            // 
+            // BtnToExcel
+            // 
+            this.BtnToExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnToExcel.Image = global::DriveFitnessApp.Properties.Resources.Excel;
+            this.BtnToExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnToExcel.Location = new System.Drawing.Point(815, 466);
+            this.BtnToExcel.Name = "BtnToExcel";
+            this.BtnToExcel.Size = new System.Drawing.Size(208, 41);
+            this.BtnToExcel.TabIndex = 2;
+            this.BtnToExcel.Text = "Отправить в Excel";
+            this.BtnToExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnToExcel.UseVisualStyleBackColor = true;
+            this.BtnToExcel.Visible = false;
+            this.BtnToExcel.Click += new System.EventHandler(this.BtnToExcel_Click);
             // 
             // BtnReport
             // 
@@ -140,19 +171,6 @@
             this.BtnReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnReport.UseVisualStyleBackColor = true;
             this.BtnReport.Click += new System.EventHandler(this.BtnReport_Click);
-            // 
-            // dgvReport
-            // 
-            this.dgvReport.AllowUserToAddRows = false;
-            this.dgvReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReport.Location = new System.Drawing.Point(3, 3);
-            this.dgvReport.Name = "dgvReport";
-            this.dgvReport.RowHeadersVisible = false;
-            this.dgvReport.Size = new System.Drawing.Size(1020, 456);
-            this.dgvReport.TabIndex = 0;
             // 
             // ReportForm
             // 
@@ -188,5 +206,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button BtnReport;
         private System.Windows.Forms.DataGridView dgvReport;
+        private System.Windows.Forms.Button BtnToExcel;
     }
 }
