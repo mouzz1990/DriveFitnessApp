@@ -50,7 +50,9 @@ namespace DriveFitnessApp
                 VisitationChecked(this, EventArgs.Empty);
 
             if (ClientChanged != null) ClientChanged(this, EventArgs.Empty);
-            //pgClientInfo.Refresh();
+
+
+            DisplayClientInformatio((Client)lbClients.SelectedItem);
         }
 
         public void DisplayGroups(List<Group> group)
@@ -89,13 +91,12 @@ namespace DriveFitnessApp
             }
 
             pCheck.Visible = true;
+            
+            if (ClientChanged != null) ClientChanged(this, EventArgs.Empty);
+
             Client client = (Client)lbClients.SelectedItem;
 
             DisplayClientInformatio(client);
-
-            if (ClientChanged != null) ClientChanged(this, EventArgs.Empty);
-
-            //pgClientInfo.SelectedObject = client;
 
             if (client.Subscription != null)
             {
@@ -126,7 +127,6 @@ namespace DriveFitnessApp
         {
             mcVisitation.BoldedDates = datesVisitation.ToArray();
 
-            //mcVisitation.Update();
             mcVisitation.Visible = false;
             mcVisitation.Visible = true;
         }

@@ -45,7 +45,7 @@ namespace DriveFitnessLibrary.Presenters
             DateTime dateVisitation = view.DateVisit;
             float price = view.Price;
 
-            attendanceManager.AddAttendance(client, dateVisitation, price);
+            attendanceManager.AddAttendance(client, dateVisitation, price);            
         }
     }
 }

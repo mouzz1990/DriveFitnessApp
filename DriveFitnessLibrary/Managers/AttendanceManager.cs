@@ -45,7 +45,21 @@ namespace DriveFitnessLibrary.Managers
             }
             else
             {
-                AddAttendanceBySubscription(client, dateVisit);
+                if (CheckSubscriptionAttendanceDate(client, dateVisit))
+                {
+                    AddAttendanceBySubscription(client, dateVisit);
+                }
+                else
+                {
+                    messager.ErrorMessage(
+                        string.Format("Ошибка учета посещения. Абонмент был приобретен: \"{0}\", а занятие фиксируется: \"{1}\"{2}{2}Пожалуйста проверьте вводимые данные.",
+                        client.Subscription.SubDate.ToShortDateString(),
+                        dateVisit.ToShortDateString(),
+                        Environment.NewLine)
+                        );
+
+                    return;
+                }
             }
         }
 
@@ -96,12 +110,20 @@ namespace DriveFitnessLibrary.Managers
             DataBaseManager.SendCommand(querry);
         }
 
+        bool CheckSubscriptionAttendanceDate(Client client, DateTime dateVisit)
+        {
+            if (client.Subscription.SubDate <= dateVisit)
+                return true;
+
+            return false;
+        }
+
         void AddAttendanceBySubscription(Client client, DateTime dateVisit)
         {
             string querry = string.Format(
-                    dtFormatter,
-                    "INSERT INTO `drivefitness`.`attendance` (`clientid`, `datevisit`, `payment`, `attprice`)" +
-                    "VALUES ('{0}', '{1}', '{2}', '{3}');",
+                        dtFormatter,
+                        "INSERT INTO `drivefitness`.`attendance` (`clientid`, `datevisit`, `payment`, `attprice`)" +
+                        "VALUES ('{0}', '{1}', '{2}', '{3}');",
                         client.ID,
                         dateVisit,
                         "А",
