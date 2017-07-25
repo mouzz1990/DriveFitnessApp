@@ -287,12 +287,12 @@ namespace DriveFitnessLibrary.Managers
                 Excel.Range r1 = wSheet.Cells.get_End(Excel.XlDirection.xlToRight);
                 Excel.Range r2 = wSheet.Cells.get_End(Excel.XlDirection.xlDown);
 
-                string rightEnd = r1.get_Address();
-                string bottomEnd = r2.get_Address();
+                string rightEnd = r1.get_Address().Split('$')[1];   //letter
+                string bottomEnd = r2.get_Address().Split('$')[2];  //number
 
                 //last cell address
-                string lastCell = rightEnd[1].ToString() + bottomEnd[3].ToString();
-
+                string lastCell = rightEnd + bottomEnd;
+                
                 //painting grid
                 List<Excel.XlBordersIndex> borders = new List<Excel.XlBordersIndex>()
                 {
