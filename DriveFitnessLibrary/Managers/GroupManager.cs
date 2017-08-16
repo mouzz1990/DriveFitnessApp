@@ -47,34 +47,34 @@ namespace DriveFitnessLibrary.Managers
         {
             List<Client> ClientsList = new List<Client>();
             DataTable dt = DataBaseManager.GetData(
-                "SELECT * FROM clients " +
-                "LEFT JOIN groups on groupid = groups.id " +
-                "LEFT JOIN subscription on subscriptionid = subscription.id " +
-                "WHERE groupid = " + groupId);
+                "SELECT * FROM [drivefitness].[dbo].[Client] " +
+                "LEFT JOIN [drivefitness].[dbo].[Group] on [drivefitness].[dbo].[Client].[GroupId] = [drivefitness].[dbo].[Group].[GroupId] " +
+                "LEFT JOIN [drivefitness].[dbo].[Subscription] on [drivefitness].[dbo].[Client].[SubscriptionId] = [drivefitness].[dbo].[Subscription].[SubscriptionId] " +
+                "WHERE [drivefitness].[dbo].[Client].[GroupId] = " + groupId);
 
             DataRow[] rows = dt.Select();
             foreach (var r in rows)
             {
                 Subscription sub = null;
                 int subid;
-                if (int.TryParse(r["subscriptionid"].ToString(), out subid))
+                if (int.TryParse(r["SubscriptionId"].ToString(), out subid))
                 {
                     sub = new Subscription(
-                        (int)r["subscriptionid"],
-                        (int)r["count"],
-                        (float)r["subprice"],
-                        (DateTime)r["subdate"],
-                        (int)r["clientsubid"]
+                        (int)r["SubscriptionId"],
+                        (int)r["SubscriptionCountExcercise"],
+                        (float)r["SubscriptionPrice"],
+                        (DateTime)r["SubscriptionDate"],
+                        (int)r["ClientSubscriptionId"]
                         );
                 }
 
                 ClientsList.Add(new Client(
-                    (int)r["id"],
-                    (string)r["name"],
-                    (string)r["lastname"],
-                    (DateTime)r["birthday"],
-                    (string)r["email"],
-                    (string)r["telephone"],
+                    (int)r["ClientId"],
+                    (string)r["ClientName"],
+                    (string)r["ClientLastname"],
+                    (DateTime)r["ClientBirthday"],
+                    (string)r["ClientEmail"],
+                    (string)r["ClientTelephone"],
                     sub)
                     );
             }
@@ -85,16 +85,16 @@ namespace DriveFitnessLibrary.Managers
         public List<Group> GetGroups()
         {
             List<Group> GroupList = new List<Group>();
-            DataTable dt = DataBaseManager.GetData("SELECT * FROM groups");
+            DataTable dt = DataBaseManager.GetData("SELECT * FROM [drivefitness].[dbo].[Group]");
 
 
             DataRow[] rows = dt.Select();
             foreach (var r in rows)
             {
                 GroupList.Add(new Group(
-                    (int)r["id"],
-                    (string)r["groupname"],
-                    GetClients((int)r["id"]))
+                    (int)r["GroupId"],
+                    (string)r["GroupName"],
+                    GetClients((int)r["GroupId"]))
                     );
             }
 
