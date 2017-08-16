@@ -18,12 +18,12 @@ namespace DriveFitnessLibrary.Managers
 
         public void AddNewSubscription(Client client, Subscription subscription)
         {
-            string subNextId = DataBaseManager.GetNextId("subscription");
+            string subNextId = DataBaseManager.GetNextId("Subscription");
             string price = subscription.SubPrice.ToString().Replace(',', '.');
 
             string querry = string.Format(dtFormatter,
-                "INSERT INTO `drivefitness`.`subscription` " +
-                "(`count`, `subprice`, `subdate`, `clientsubid`)" +
+                "INSERT INTO [drivefitness].[dbo].[Subscription] " +
+                "([SubscriptionCountExcercise], [SubscriptionPrice], [SubscriptionDate], [ClientSubscriptionId])" +
                 " VALUES ('{0}', '{1}', '{2}', '{3}');",
             subscription.CountTraining,
             price,
@@ -37,7 +37,7 @@ namespace DriveFitnessLibrary.Managers
         public void CloseSubscription(Client client)
         {
             string delQuerry = string.Format(
-                "UPDATE `drivefitness`.`clients` SET `subscriptionid`=NULL WHERE `id`='{0}';",
+                "UPDATE [drivefitness].[dbo].[Client] SET [SubscriptionId] = NULL WHERE [ClientId] = '{0}';",
                         client.Subscription.ClientId
                         );
 
@@ -56,7 +56,7 @@ namespace DriveFitnessLibrary.Managers
         {
             client.Subscription.SubtractVisitation();
 
-            string querry = string.Format("UPDATE `drivefitness`.`subscription` SET `count`='{0}' WHERE `id`='{1}';",
+            string querry = string.Format("UPDATE [drivefitness].[dbo].[Subscription] SET [SubscriptionCountExcercise] ='{0}' WHERE [SubscriptionId] ='{1}';",
                     client.Subscription.CountTraining,
                     client.Subscription.ID);
 
@@ -73,7 +73,7 @@ namespace DriveFitnessLibrary.Managers
         public void ChangeSubscriptionData(Client client, int newCount, float newPrice, DateTime dateBuy)
         {
             string querry = string.Format(dtFormatter,
-                "UPDATE `drivefitness`.`subscription` SET `count`='{0}', `subprice`='{1}', `subdate`='{2}' WHERE `id`='{3}';",
+                "UPDATE [drivefitness].[dbo].[Subscription] SET [SubscriptionCountExcercise] ='{0}', [SubscriptionPrice] ='{1}', [SubscriptionDate] ='{2}' WHERE [SubscriptionId] ='{3}';",
                 newCount,
                 newPrice,
                 dateBuy,
@@ -92,13 +92,13 @@ namespace DriveFitnessLibrary.Managers
         public void RemoveSubscription(Client client)
         {
             string delQuerry = string.Format(
-                "UPDATE `drivefitness`.`clients` SET `subscriptionid`=NULL WHERE `id`='{0}';",
+                "UPDATE [drivefitness].[dbo].[Client] SET [SubscriptionId] = NULL WHERE [ClientId] ='{0}';",
                         client.Subscription.ClientId
                         );
 
             DataBaseManager.SendCommand(delQuerry);
 
-            string querry = string.Format("DELETE FROM `drivefitness`.`subscription` WHERE `id`='{0}';",
+            string querry = string.Format("DELETE FROM [drivefitness].[dbo].[Subscription] WHERE [SubscriptionId] ='{0}';",
                 client.Subscription.ID
                 );
 

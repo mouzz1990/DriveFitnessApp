@@ -28,11 +28,11 @@ namespace DriveFitnessLibrary.Managers
             string enDt = endDate.ToString("yyyy-MM-dd");
 
             string querry = string.Format(dtFormatter,
-                "SELECT DISTINCT datevisit FROM attendance " +
-                "JOIN clients on clientid = clients.id " +
-                "WHERE datevisit >= '{0}' " +
-                "and datevisit <= '{1}' " +
-                "and groupid = '{2}' ORDER BY datevisit; ",
+                "SELECT DISTINCT DateVisit FROM [drivefitness].[dbo].[Attendance] " +
+                "JOIN [drivefitness].[dbo].[Client] on [drivefitness].[dbo].[Attendance].[ClientId] = [drivefitness].[dbo].[Client].[ClientId] " +
+                "WHERE [DateVisit] >= '{0}' " +
+                "and [DateVisit] <= '{1}' " +
+                "and [GroupId] = '{2}' ORDER BY [DateVisit]; ",
                 //"call get_attendance_dates_by_group('{0}','{1}','{2}')",
                 startDate,
                 endDate,
@@ -43,16 +43,16 @@ namespace DriveFitnessLibrary.Managers
 
             //получение БД по посещяемости занятий
             //!!!!!
-            querry = string.Format("SELECT * FROM attendance");
+            querry = string.Format("SELECT * FROM [drivefitness].[dbo].[Attendance]");
             //querry = string.Format("SELECT * FROM attendance WHERE datevisit >= '{0}' AND datevisit <= {1}", stDt, enDt);
 
             DataTable Attendance = DataBaseManager.GetData(querry);
 
             //получение информации о всех клиентах
-            querry = "SELECT * FROM drivefitness.clients " +
-                "JOIN groups on groupid = groups.id " +
-                "LEFT JOIN subscription on subscriptionid = subscription.id " +
-                "WHERE groupid = " + group.ID;
+            querry = "SELECT * FROM [drivefitness].[dbo].[Client] " +
+                "JOIN [drivefitness].[dbo].[Group] on [drivefitness].[dbo].[Client].[GroupId] = [drivefitness].[dbo].[Group].[GroupId] " +
+                "LEFT JOIN [drivefitness].[dbo].[Subscription] on [drivefitness].[dbo].[Client].[SubscriptionId] = [drivefitness].[dbo].[Subscription].[SubscriptionId] " +
+                "WHERE [drivefitness].[dbo].[Group].[GroupId] = " + group.ID;
 
             DataTable Clients = DataBaseManager.GetData(querry);
 
@@ -63,9 +63,9 @@ namespace DriveFitnessLibrary.Managers
             attendanceTable.Columns.Add("Клиент");
 
             //Получение всех купленных абониментов в установленных сроках
-            string subQuerry = string.Format(dtFormatter, "SELECT * FROM subscription " +
-                                                 "LEFT JOIN clients ON clientsubid = clients.id " +
-                                                 "WHERE subdate >= '{0}' AND subdate <= '{1}' AND groupid = {2}",
+            string subQuerry = string.Format(dtFormatter, "SELECT * FROM [drivefitness].[dbo].[Subscription] " +
+                                                 "LEFT JOIN [drivefitness].[dbo].[Client] ON [drivefitness].[dbo].[Subscription].[ClientSubscriptionId] = [drivefitness].[dbo].[Client].[ClientId] " +
+                                                 "WHERE [SubscriptionDate] >= '{0}' AND [SubscriptionDate]<= '{1}' AND [GroupId] = {2}",
                                                  startDate,
                                                  endDate,
                                                  group.ID
@@ -78,11 +78,11 @@ namespace DriveFitnessLibrary.Managers
             var allSubscriptions = from a in subSel
                                    select new
                                    {
-                                       ID = (int)a["id"],
-                                       COUNT = (int)a["count"],
-                                       SUBPRICE = (float)a["subprice"],
-                                       SUBDATE = (DateTime)a["subdate"],
-                                       CLIENTID = (int)a["clientsubid"]
+                                       ID = (int)a["SubscriptionId"],
+                                       COUNT = (int)a["SubscriptionCountExcercise"],
+                                       SUBPRICE = (float)a["SubscriptionPrice"],
+                                       SUBDATE = (DateTime)a["SubscriptionDate"],
+                                       CLIENTID = (int)a["ClientSubscriptionId"]
                                    };
 
             //Список дат посещений и покупки абонементов
@@ -93,15 +93,15 @@ namespace DriveFitnessLibrary.Managers
             //добавление дат покупки абонементов
             foreach (var d in subSel)
             {
-                datesList.Add((DateTime)d["subdate"]);
-                hashDatesSubBuy.Add((DateTime)d["subdate"]);
+                datesList.Add((DateTime)d["SubscriptionDate"]);
+                hashDatesSubBuy.Add((DateTime)d["SubscriptionDate"]);
             }
 
             //добавление дат посещений
             foreach (var dates in DatesVisit.Select())
             {
-                datesList.Add((DateTime)dates["datevisit"]);
-                hashVisit.Add((DateTime)dates["datevisit"]);
+                datesList.Add((DateTime)dates["DateVisit"]);
+                hashVisit.Add((DateTime)dates["DateVisit"]);
             }
 
             //сортировка списка в хронологическом порядке
@@ -119,26 +119,26 @@ namespace DriveFitnessLibrary.Managers
             {
                 Subscription subscr;
                 int subid;
-                if (int.TryParse(client["subscriptionid"].ToString(), out subid))
+                if (int.TryParse(client["SubscriptionId"].ToString(), out subid))
                 {
                     subscr = new Subscription(
                         subid,
-                        (int)client["count"],
-                        (float)client["subprice"],
-                        (DateTime)client["subdate"],
-                        (int)client["clientsubid"]
+                        (int)client["SubscriptionCountExcercise"],
+                        (float)client["SubscriptionPrice"],
+                        (DateTime)client["SubscriptionDate"],
+                        (int)client["ClientSubscriptionId"]
                         );
 
                 }
                 else subscr = null;
 
                 ClientsList.Add(new Client(
-                    (int)client["id"],
-                    (string)client["name"],
-                    (string)client["lastname"],
-                    (DateTime)client["birthday"],
-                    (string)client["email"],
-                    (string)client["telephone"],
+                    (int)client["ClientId"],
+                    (string)client["ClientName"],
+                    (string)client["ClientLastname"],
+                    (DateTime)client["ClientBirthday"],
+                    (string)client["ClientEmail"],
+                    (string)client["ClientTelephone"],
                     //new Group((int)client["groupid"], (string)client["groupname"]),
                     subscr
 
@@ -146,17 +146,17 @@ namespace DriveFitnessLibrary.Managers
             }
 
             //Заполнение посещаемости клиентов
-            var attData = Attendance.Select(string.Format("datevisit >= #{0}# and datevisit <= #{1}#", stDt, enDt));
+            var attData = Attendance.Select(string.Format("DateVisit >= #{0}# and DateVisit <= #{1}#", stDt, enDt));
             foreach (var c in ClientsList)
             {
                 foreach (var a in attData)
                 {
-                    DateTime datevisit = (DateTime)a["datevisit"];
-                    string payment = a["payment"].ToString();
+                    DateTime datevisit = (DateTime)a["DateVisit"];
+                    string payment = a["Payment"].ToString();
 
-                    if (c.ID == (int)a["clientid"])
+                    if (c.ID == (int)a["ClientId"])
                     {
-                        c.Cash += (float)a["attprice"];
+                        c.Cash += (float)a["AttendancePrice"];
 
                         //Произведение покупки абонемента в день занятия
                         foreach (var sub in allSubscriptions)
@@ -177,9 +177,9 @@ namespace DriveFitnessLibrary.Managers
                 //Подсчет суммы по абонементам купленным в установленные сроки
                 foreach (var s in subSel)
                 {
-                    if (c.ID == (int)s["clientsubid"])
+                    if (c.ID == (int)s["ClientSubscriptionId"])
                     {
-                        c.Cash += (float)s["subprice"];
+                        c.Cash += (float)s["SubscriptionPrice"];
                     }
                 }
             }

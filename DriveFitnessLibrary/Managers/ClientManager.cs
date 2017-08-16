@@ -28,8 +28,8 @@ namespace DriveFitnessLibrary.Managers
         public void AddNewClient(Client client, Group group)
         {
             string querry = string.Format(dtFormatter,
-                "INSERT INTO `drivefitness`.`clients` " +
-                "(`groupid`, `name`, `lastname`, `birthday`, `email`, `telephone`) " +
+                "INSERT INTO [drivefitness].[dbo].[Client] " +
+                "([GroupId], [ClientName], [ClientLastname], [ClientBirthday], [ClientEmail], [ClientTelephone]) " +
                 "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}'); ",
                 //"call add_new_client('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
                 group.ID,
@@ -47,12 +47,12 @@ namespace DriveFitnessLibrary.Managers
 
         public void BuySubscription(Client client, Subscription subscription)
         {
-            string subNextId = DataBaseManager.GetNextId("subscription");
+            string subNextId = DataBaseManager.GetNextId("Subscription");
 
             subscriptionManager.AddNewSubscription(client, subscription);
 
             string querry = string.Format(
-                "UPDATE `drivefitness`.`clients` SET `subscriptionid`='{0}' WHERE `id`='{1}';",
+                "UPDATE [drivefitness].[dbo].[Client] SET [SubscriptionId] ='{0}' WHERE [ClientId] ='{1}';",
                 subNextId,
                 client.ID
                 );
@@ -72,14 +72,14 @@ namespace DriveFitnessLibrary.Managers
         public void ChangeClientInformation(Client client, Group group)
         {
             string querry = string.Format(dtFormatter,
-                "UPDATE `drivefitness`.`clients` " +
-                "SET `groupid`= '{1}', " +
-                "`name`= '{2}', " +
-                "`lastname`= '{3}', " +
-                "`birthday`= '{4}', " +
-                "`email`= '{5}', " +
-                "`telephone`= '{6}' " +
-                "WHERE `id`= '{0}'; ",
+                "UPDATE [drivefitness].[dbo].[Client] " +
+                "SET [GroupId] = '{1}', " +
+                "[ClientName] = '{2}', " +
+                "[ClientLastname] = '{3}', " +
+                "[ClientBirthday] = '{4}', " +
+                "[ClientEmail] = '{5}', " +
+                "[ClientTelephone] = '{6}' " +
+                "WHERE [ClientId] = '{0}'; ",
                 //"call change_client_info('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
                 client.ID,
                 group.ID,
@@ -100,7 +100,7 @@ namespace DriveFitnessLibrary.Managers
             if (client.Subscription != null)
                 subscriptionManager.RemoveSubscription(client);
 
-            string querry = string.Format("DELETE FROM `drivefitness`.`clients` WHERE `id`='{0}'", client.ID);
+            string querry = string.Format("DELETE FROM [drivefitness].[dbo].[Client] WHERE [ClientId] ='{0}'", client.ID);
                 DataBaseManager.SendCommand(querry);
 
                 messager.SuccessMessage(string.Format("Информация о клиенте \"{0}\" успешно удалена из базы данных.", client));

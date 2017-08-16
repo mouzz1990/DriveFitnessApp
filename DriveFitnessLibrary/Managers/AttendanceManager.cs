@@ -67,7 +67,7 @@ namespace DriveFitnessLibrary.Managers
         {
             string querryCheck = string.Format(
                 dtFormatter,
-                "SELECT * FROM attendance WHERE clientid = '{0}' AND datevisit = '{1}'",
+                "SELECT * FROM [drivefitness].[dbo].[Attendance] WHERE [ClientId] = '{0}' AND [DateVisit] = '{1}'",
                 client.ID,
                 dateVisit
                 );
@@ -86,7 +86,7 @@ namespace DriveFitnessLibrary.Managers
 
             string querry = string.Format(
                     dtFormatter,
-                    "INSERT INTO `drivefitness`.`attendance` (`clientid`, `datevisit`, `payment`, `attprice`) " +
+                    "INSERT INTO [drivefitness].[dbo].[Attendance] ([ClientId], [DateVisit], [Payment], [AttendancePrice]) " +
                 "VALUES ('{0}', '{1}', '{2}', '{3}');",
                         client.ID,
                         dateVisit,
@@ -122,7 +122,7 @@ namespace DriveFitnessLibrary.Managers
         {
             string querry = string.Format(
                         dtFormatter,
-                        "INSERT INTO `drivefitness`.`attendance` (`clientid`, `datevisit`, `payment`, `attprice`)" +
+                        "INSERT INTO [drivefitness].[dbo].[Attendance] ([ClientId], [DateVisit], [Payment], [AttendancePrice])" +
                         "VALUES ('{0}', '{1}', '{2}', '{3}');",
                         client.ID,
                         dateVisit,
@@ -145,7 +145,7 @@ namespace DriveFitnessLibrary.Managers
             if (!CheckAttendance(client, dateVisit))
             {
                 string querry = string.Format(dtFormatter,
-                    "DELETE FROM `drivefitness`.`attendance` WHERE `clientid`='{0}' AND `datevisit`='{1}';",
+                    "DELETE FROM [drivefitness].[dbo].[Attendance] WHERE [ClientId] ='{0}' AND [DateVisit] ='{1}';",
                     client.ID,
                     dateVisit
                     );
@@ -169,7 +169,7 @@ namespace DriveFitnessLibrary.Managers
         public List<DateTime> GetAttendanceDates(Client client)
         {
             string querry = string.Format(
-                "SELECT `datevisit` FROM `drivefitness`.`attendance` WHERE `clientid`='{0}'",
+                "SELECT [DateVisit] FROM [drivefitness].[dbo].[Attendance] WHERE [ClientId] ='{0}'",
                 client.ID
                 );
 
@@ -179,7 +179,7 @@ namespace DriveFitnessLibrary.Managers
 
             foreach (var date in datesTable.Select())
             {
-                datesList.Add((DateTime)date["datevisit"]);
+                datesList.Add((DateTime)date["DateVisit"]);
             }
 
             return datesList;

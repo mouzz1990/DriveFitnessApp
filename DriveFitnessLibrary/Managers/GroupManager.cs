@@ -18,7 +18,7 @@ namespace DriveFitnessLibrary.Managers
 
         public void AddNewGroup(string groupName)
         {
-            string querry = string.Format("INSERT INTO `drivefitness`.`groups` (`groupname`) VALUES ('{0}');",
+            string querry = string.Format("INSERT INTO [drivefitness].[dbo].[Group] ([GroupName]) VALUES ('{0}');",
                 groupName
                 );
 
@@ -28,7 +28,7 @@ namespace DriveFitnessLibrary.Managers
 
         public void ChangeGroupInfo(Group group, string newGroupName)
         {
-            string querry = string.Format("UPDATE `drivefitness`.`groups` SET `groupname`='{0}' WHERE `id`='{1}';",
+            string querry = string.Format("UPDATE [drivefitness].[dbo].[Group] SET [GroupName] ='{0}' WHERE [GroupId] = '{1}';",
                 newGroupName,
                 group.ID
                 );
@@ -112,7 +112,7 @@ namespace DriveFitnessLibrary.Managers
                     );
             }
 
-            string querry = string.Format("DELETE FROM `drivefitness`.`groups` WHERE `id`='{0}';",
+            string querry = string.Format("DELETE FROM [drivefitness].[dbo].[Group] WHERE [GroupId] = '{0}';",
                 group.ID
                 );
 
