@@ -30,28 +30,31 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DriveFitness));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnAttendance = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BtnSubscription = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.связьСКлиентамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BtnReport = new System.Windows.Forms.Button();
-            this.BtnGroupManage = new System.Windows.Forms.Button();
             this.BtnChangeClientInfo = new System.Windows.Forms.Button();
             this.BtnAddNewClient = new System.Windows.Forms.Button();
-            this.BtnSubscription = new System.Windows.Forms.Button();
-            this.BtnAttendance = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.BtnGroupManage = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.BtnReport = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.связьСКлиентамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msSendMessage = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.BtnSchedule = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -59,19 +62,46 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.BtnAttendance);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel1.Location = new System.Drawing.Point(12, 45);
+            this.panel1.Location = new System.Drawing.Point(7, 45);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(431, 60);
             this.panel1.TabIndex = 1;
+            // 
+            // BtnAttendance
+            // 
+            this.BtnAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnAttendance.Image = global::DriveFitnessApp.Properties.Resources.Attendance;
+            this.BtnAttendance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAttendance.Location = new System.Drawing.Point(9, 9);
+            this.BtnAttendance.Name = "BtnAttendance";
+            this.BtnAttendance.Size = new System.Drawing.Size(410, 40);
+            this.BtnAttendance.TabIndex = 0;
+            this.BtnAttendance.Text = "Учет посещаемости клиентов";
+            this.BtnAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAttendance.UseVisualStyleBackColor = true;
+            this.BtnAttendance.Click += new System.EventHandler(this.BtnAttendance_Click);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.BtnSubscription);
-            this.panel2.Location = new System.Drawing.Point(12, 111);
+            this.panel2.Location = new System.Drawing.Point(7, 113);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(431, 60);
             this.panel2.TabIndex = 2;
+            // 
+            // BtnSubscription
+            // 
+            this.BtnSubscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnSubscription.Image = global::DriveFitnessApp.Properties.Resources.Subscription;
+            this.BtnSubscription.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnSubscription.Location = new System.Drawing.Point(9, 10);
+            this.BtnSubscription.Name = "BtnSubscription";
+            this.BtnSubscription.Size = new System.Drawing.Size(410, 40);
+            this.BtnSubscription.TabIndex = 1;
+            this.BtnSubscription.Text = "Работа с абонементами";
+            this.BtnSubscription.UseVisualStyleBackColor = true;
+            this.BtnSubscription.Click += new System.EventHandler(this.BtnSubscription_Click);
             // 
             // panel3
             // 
@@ -79,85 +109,10 @@
             this.panel3.Controls.Add(this.BtnChangeClientInfo);
             this.panel3.Controls.Add(this.BtnAddNewClient);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(12, 177);
+            this.panel3.Location = new System.Drawing.Point(7, 181);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(431, 143);
             this.panel3.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(85, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Работа с клиентами";
-            // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.BtnGroupManage);
-            this.panel4.Location = new System.Drawing.Point(12, 326);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(431, 60);
-            this.panel4.TabIndex = 4;
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.BtnReport);
-            this.panel5.Location = new System.Drawing.Point(12, 392);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(431, 60);
-            this.panel5.TabIndex = 6;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.менюToolStripMenuItem,
-            this.связьСКлиентамиToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(454, 29);
-            this.menuStrip1.TabIndex = 7;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // связьСКлиентамиToolStripMenuItem
-            // 
-            this.связьСКлиентамиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.msSendMessage});
-            this.связьСКлиентамиToolStripMenuItem.Image = global::DriveFitnessApp.Properties.Resources.Message;
-            this.связьСКлиентамиToolStripMenuItem.Name = "связьСКлиентамиToolStripMenuItem";
-            this.связьСКлиентамиToolStripMenuItem.Size = new System.Drawing.Size(171, 25);
-            this.связьСКлиентамиToolStripMenuItem.Text = "Связь с клиентами";
-            // 
-            // BtnReport
-            // 
-            this.BtnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnReport.Image = global::DriveFitnessApp.Properties.Resources.Report;
-            this.BtnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnReport.Location = new System.Drawing.Point(11, 9);
-            this.BtnReport.Name = "BtnReport";
-            this.BtnReport.Size = new System.Drawing.Size(410, 40);
-            this.BtnReport.TabIndex = 5;
-            this.BtnReport.Text = "Финансовый отчет";
-            this.BtnReport.UseVisualStyleBackColor = true;
-            this.BtnReport.Click += new System.EventHandler(this.BtnReport_Click);
-            // 
-            // BtnGroupManage
-            // 
-            this.BtnGroupManage.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnGroupManage.Image = global::DriveFitnessApp.Properties.Resources.Groups;
-            this.BtnGroupManage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGroupManage.Location = new System.Drawing.Point(10, 9);
-            this.BtnGroupManage.Name = "BtnGroupManage";
-            this.BtnGroupManage.Size = new System.Drawing.Size(410, 40);
-            this.BtnGroupManage.TabIndex = 0;
-            this.BtnGroupManage.Text = "Работа с группами";
-            this.BtnGroupManage.UseVisualStyleBackColor = true;
-            this.BtnGroupManage.Click += new System.EventHandler(this.BtnGroupManage_Click);
             // 
             // BtnChangeClientInfo
             // 
@@ -186,32 +141,71 @@
             this.BtnAddNewClient.UseVisualStyleBackColor = true;
             this.BtnAddNewClient.Click += new System.EventHandler(this.BtnAddNewClient_Click);
             // 
-            // BtnSubscription
+            // label1
             // 
-            this.BtnSubscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnSubscription.Image = global::DriveFitnessApp.Properties.Resources.Subscription;
-            this.BtnSubscription.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnSubscription.Location = new System.Drawing.Point(9, 10);
-            this.BtnSubscription.Name = "BtnSubscription";
-            this.BtnSubscription.Size = new System.Drawing.Size(410, 40);
-            this.BtnSubscription.TabIndex = 1;
-            this.BtnSubscription.Text = "Работа с абонементами";
-            this.BtnSubscription.UseVisualStyleBackColor = true;
-            this.BtnSubscription.Click += new System.EventHandler(this.BtnSubscription_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(85, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(248, 29);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Работа с клиентами";
             // 
-            // BtnAttendance
+            // panel4
             // 
-            this.BtnAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnAttendance.Image = global::DriveFitnessApp.Properties.Resources.Attendance;
-            this.BtnAttendance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAttendance.Location = new System.Drawing.Point(9, 9);
-            this.BtnAttendance.Name = "BtnAttendance";
-            this.BtnAttendance.Size = new System.Drawing.Size(410, 40);
-            this.BtnAttendance.TabIndex = 0;
-            this.BtnAttendance.Text = "Учет посещаемости клиентов";
-            this.BtnAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnAttendance.UseVisualStyleBackColor = true;
-            this.BtnAttendance.Click += new System.EventHandler(this.BtnAttendance_Click);
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.BtnGroupManage);
+            this.panel4.Location = new System.Drawing.Point(7, 332);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(431, 60);
+            this.panel4.TabIndex = 4;
+            // 
+            // BtnGroupManage
+            // 
+            this.BtnGroupManage.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnGroupManage.Image = global::DriveFitnessApp.Properties.Resources.Groups;
+            this.BtnGroupManage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGroupManage.Location = new System.Drawing.Point(10, 9);
+            this.BtnGroupManage.Name = "BtnGroupManage";
+            this.BtnGroupManage.Size = new System.Drawing.Size(410, 40);
+            this.BtnGroupManage.TabIndex = 0;
+            this.BtnGroupManage.Text = "Работа с группами";
+            this.BtnGroupManage.UseVisualStyleBackColor = true;
+            this.BtnGroupManage.Click += new System.EventHandler(this.BtnGroupManage_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.BtnReport);
+            this.panel5.Location = new System.Drawing.Point(7, 468);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(431, 60);
+            this.panel5.TabIndex = 6;
+            // 
+            // BtnReport
+            // 
+            this.BtnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnReport.Image = global::DriveFitnessApp.Properties.Resources.Report;
+            this.BtnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnReport.Location = new System.Drawing.Point(11, 9);
+            this.BtnReport.Name = "BtnReport";
+            this.BtnReport.Size = new System.Drawing.Size(410, 40);
+            this.BtnReport.TabIndex = 5;
+            this.BtnReport.Text = "Финансовый отчет";
+            this.BtnReport.UseVisualStyleBackColor = true;
+            this.BtnReport.Click += new System.EventHandler(this.BtnReport_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.менюToolStripMenuItem,
+            this.связьСКлиентамиToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(444, 29);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // менюToolStripMenuItem
             // 
@@ -226,9 +220,18 @@
             // 
             this.выходToolStripMenuItem.Image = global::DriveFitnessApp.Properties.Resources.CloseApp;
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
+            // связьСКлиентамиToolStripMenuItem
+            // 
+            this.связьСКлиентамиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msSendMessage});
+            this.связьСКлиентамиToolStripMenuItem.Image = global::DriveFitnessApp.Properties.Resources.Message;
+            this.связьСКлиентамиToolStripMenuItem.Name = "связьСКлиентамиToolStripMenuItem";
+            this.связьСКлиентамиToolStripMenuItem.Size = new System.Drawing.Size(171, 25);
+            this.связьСКлиентамиToolStripMenuItem.Text = "Связь с клиентами";
             // 
             // msSendMessage
             // 
@@ -238,11 +241,33 @@
             this.msSendMessage.Text = "Отправить сообщение";
             this.msSendMessage.Click += new System.EventHandler(this.msSendMessage_Click);
             // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.BtnSchedule);
+            this.panel6.Location = new System.Drawing.Point(7, 400);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(431, 60);
+            this.panel6.TabIndex = 8;
+            // 
+            // BtnSchedule
+            // 
+            this.BtnSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnSchedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnSchedule.Location = new System.Drawing.Point(11, 9);
+            this.BtnSchedule.Name = "BtnSchedule";
+            this.BtnSchedule.Size = new System.Drawing.Size(410, 40);
+            this.BtnSchedule.TabIndex = 5;
+            this.BtnSchedule.Text = "Расписание занятий";
+            this.BtnSchedule.UseVisualStyleBackColor = true;
+            this.BtnSchedule.Click += new System.EventHandler(this.BtnSchedule_Click);
+            // 
             // DriveFitness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 465);
+            this.ClientSize = new System.Drawing.Size(444, 537);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -253,8 +278,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(464, 497);
-            this.MinimumSize = new System.Drawing.Size(464, 497);
+            this.MaximumSize = new System.Drawing.Size(464, 1200);
+            this.MinimumSize = new System.Drawing.Size(464, 500);
             this.Name = "DriveFitness";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Студия современной хореографии \"Drive\"";
@@ -266,6 +291,7 @@
             this.panel5.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,6 +316,7 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem связьСКлиентамиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem msSendMessage;
-
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button BtnSchedule;
     }
 }

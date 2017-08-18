@@ -18,6 +18,7 @@ namespace DriveFitnessApp
         static ClientManager clientManager = new ClientManager(dataBaseManager, messager, subscriptionManager);
         static AttendanceManager attendanceManager = new AttendanceManager(subscriptionManager);
         static MessageSenderEmail messageSender = new MessageSenderEmail(messager);
+        static ScheduleManager scheduleManager = new ScheduleManager(dataBaseManager, groupManager, messager);
         
         public DriveFitness()
         {
@@ -91,6 +92,14 @@ namespace DriveFitnessApp
 
             SenderMessagePresenter smp = new SenderMessagePresenter(groupManager, messageSender, messager, msf);
             msf.ShowDialog();
+        }
+
+        private void BtnSchedule_Click(object sender, EventArgs e)
+        {
+            ScheduleForm sf = new ScheduleForm();
+            SchedulePresenter sp = new SchedulePresenter(scheduleManager, sf, messager);
+
+            sf.ShowDialog();
         }
     }
 }

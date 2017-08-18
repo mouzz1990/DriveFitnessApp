@@ -12,9 +12,7 @@ namespace DriveFitnessLibrary.Managers
     {
         static readonly string connString = @"Data Source=MOUZZ-ПК\SQLEXPRESS;Initial Catalog=drivefitness;Integrated Security=True";
         public static MySqlManager SqlManager { get; set; }
-        //public static MySqlManager SqlManager { get; set; }
-        //static readonly string connString = "server=localhost;database=drivefitness;pwd=root;user=root;";
-
+        
         static MySqlManager()
         {
             if (SqlManager == null)
@@ -33,28 +31,7 @@ namespace DriveFitnessLibrary.Managers
             con.Close();
             return dt;
         }
-        //public DataTable GetData(string querryString)
-        //{
-        //    //creating a connection
-        //    MySqlConnection con = new MySqlConnection(connString);
-        //    con.Open();
-
-        //    //creating a command
-        //    MySqlCommand command = new MySqlCommand(querryString, con);
-        //    command.ExecuteNonQuery();
-
-        //    //creating dataadapter 
-        //    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-        //    DataTable dt = new DataTable();
-
-        //    //Filling datatable
-        //    adapter.Fill(dt);
-
-        //    con.Close();
-
-        //    return dt;
-        //}
-
+        
         public void SendCommand(string querryString)
         {
             SqlConnection con = new SqlConnection(connString);

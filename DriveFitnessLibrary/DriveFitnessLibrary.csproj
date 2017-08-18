@@ -98,12 +98,14 @@
     <Compile Include="DriveInterfaces\IMessager.cs" />
     <Compile Include="DriveInterfaces\IMessageSender.cs" />
     <Compile Include="DriveInterfaces\IReportManager.cs" />
+    <Compile Include="DriveInterfaces\IScheduleManager.cs" />
     <Compile Include="DriveInterfaces\ISubscriptionManager.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="Managers\AttendanceManager.cs" />
     <Compile Include="Managers\ClientCardCreatorManager.cs" />
     <Compile Include="Managers\ClientManager.cs" />
     <Compile Include="Managers\GroupManager.cs" />
+    <Compile Include="Managers\ScheduleManager.cs" />
     <Compile Include="MessageSenders\MessageSenderEmail.cs" />
     <Compile Include="Managers\ReportManager.cs" />
     <Compile Include="Managers\SubscriptionManager.cs" />
@@ -114,16 +116,19 @@
     <Compile Include="Presenters\ClientPresenter.cs" />
     <Compile Include="Presenters\GroupPresenter.cs" />
     <Compile Include="Presenters\ReportPresenter.cs" />
+    <Compile Include="Presenters\SchedulePresenter.cs" />
     <Compile Include="Presenters\SenderMessagePresenter.cs" />
     <Compile Include="Presenters\SubscriptionPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoveGroupException.cs" />
     <Compile Include="ReportEventArgs.cs" />
+    <Compile Include="Schedule.cs" />
     <Compile Include="Subscription.cs" />
     <Compile Include="ViewInterfaces\IAttendanceView.cs" />
     <Compile Include="ViewInterfaces\IClientView.cs" />
     <Compile Include="ViewInterfaces\IGroupView.cs" />
     <Compile Include="ViewInterfaces\IReportView.cs" />
+    <Compile Include="ViewInterfaces\IScheduleView.cs" />
     <Compile Include="ViewInterfaces\ISenderMessageView.cs" />
     <Compile Include="ViewInterfaces\ISubscriptionView.cs" />
   </ItemGroup>
